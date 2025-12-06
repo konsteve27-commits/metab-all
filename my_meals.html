@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Metab-all | My Meals</title>
+  <meta name="description" content="Review your saved meals in Metab-all, see total macros and micronutrients for the day and compare them to your personal targets." />
+
+  <!-- CSS architecture -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/hero_section.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="icon" type="image/png" href="icon.png">
+
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="aio-header">
+    <div class="aio-logo">
+      <h1>Metab-all</h1>
+      <span>Nutrition &amp; Training Suite</span>
+    </div>
+
+    <nav class="aio-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="calories.html">Calories</a>
+      <a href="meals.html">Meals</a>
+      <a href="my_meals.html" class="active" aria-current="page">My Meals</a>
+      <a href="workout.html">Workout</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-container">
+    <section class="hero">
+      <h2>Saved Meals</h2>
+      <p>
+        Review your saved meals, see total macros for the day and track
+        micronutrient intake against your Metab-all targets.
+      </p>
+    </section>
+    <section class="meals-card card" aria-labelledby="mealBuilderTitle">
+      <!-- === Saved meals list === -->
+      <div id="mealsContainer" class="saved-meals" aria-live="polite" aria-atomic="true"></div>
+
+      <!-- === Total nutrients from all meals === -->
+      <div id="summarySection" class="summary-section" style="margin-top: 1.5rem;">
+        <h3>Total Nutrients from All Meals</h3>
+        <div id="totalStats"></div>
+      </div>
+
+      <!-- === Daily macro & micro progress bars === -->
+      <section id="dailyProgress" class="card" style="margin-top: 1.5rem;">
+</section>
+
+
+      <!-- === Actions === -->
+      <div class="actions" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+        <a href="meals.html" class="btn btn-outline">← Back to Meal Creator</a>
+        <button id="clearTodayBtn" class="btn-danger" type="button">Clear Today</button>
+      </div>
+    </section>
+  </main>
+
+   <footer>
+  <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+  <p>
+    <a href="terms.html" class="link">Terms of Use</a> •
+    <a href="privacy.html" class="link">Privacy Policy</a> •
+    <a href="disclaimer.html" class="link">Disclaimer</a>
+  </p>
+</footer>
+
+  <script type="module" src="js/my_meals.js"></script>
+
+</body>
+</html>

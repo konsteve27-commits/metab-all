@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Metab-all | Workout Builder & Performance Tracker</title>
+  <meta name="description"
+    content="Build custom workouts with Metab-all, track volume and estimated 1RM, compare sessions and store your routines with PR tracking." />
+
+  <!-- CSS architecture -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/hero_section.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="icon" type="image/png" href="icon.png">
+
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="aio-header">
+    <div class="aio-logo">
+      <h1>Metab-all</h1>
+      <span>Nutrition &amp; Training Suite</span>
+    </div>
+
+    <nav class="aio-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="calories.html">Calories</a>
+      <a href="meals.html">Meals</a>
+      <a href="my_meals.html">My Meals</a>
+      <a href="workout.html" class="active" aria-current="page">Workout</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h2>Workout Performance Tracker</h2>
+      <p>
+        Create structured workouts, log your sets and track strength and volume
+        progress over time with automatic PR detection.
+      </p>
+    </section>
+
+    <!-- WORKOUT BUILDER + HISTORY -->
+    <section class="card" aria-labelledby="workoutSectionTitle">
+      <h3 id="workoutSectionTitle">Your Workouts</h3>
+      <p class="index-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+        Start by creating a workout, then add exercises by muscle group. Metab-all
+        will track estimated 1RM, volume and highlight new personal records.
+      </p>
+
+      <!-- Saved workouts list -->
+      <div id="myWorkouts" class="my-workouts-list" aria-live="polite" aria-atomic="true"></div>
+
+
+
+
+      <!-- Create new workout -->
+      <div style="margin-top: 1.2rem; margin-bottom: 1.5rem;">
+        <button id="createWorkoutBtn" class="btn-primary" type="button">
+          Create New Workout
+        </button>
+      </div>
+
+      <!-- ACTIVE WORKOUT BLOCK -->
+      <div id="activeWorkoutBox" class="card" style="margin-top:1.5rem; padding:1.5rem; display:none;">
+
+        <!-- ACTIVE WORKOUT TITLE -->
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1.2rem;">
+          <span style="font-size:1.2rem; font-weight:600;">
+            Active Workout:
+          </span>
+          <span id="activeWorkoutName" style="font-size:1.2rem; font-weight:700;">
+            (none)
+          </span>
+        </div>
+
+
+        <!-- ADD EXERCISE ROW -->
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem;">
+
+          <label style="font-weight:600; min-width:120px;">Add exercise:</label>
+
+          <div class="input-wrapper" style="position:relative; flex:1;">
+            <input id="exerciseSearch" class="exercise-search" type="text" placeholder="Search exercises"
+              autocomplete="off" style="width:100%;" />
+            <div id="exerciseResults" class="suggestions"></div>
+          </div>
+        </div>
+
+        <!-- TABLE -->
+        <div id="exerciseTable" style="margin-top:1rem;"></div>
+
+        <!-- SAVE -->
+        <div class="workout-save-row">
+          <button id="saveWorkoutBtn" class="btn-primary">Calculate & Save New Data</button>
+        </div>
+
+       <div class="workout-actions">
+    <button id="cancelEditBtn" class="action-btn cancel-btn">Cancel</button>
+    <button id="deleteWorkoutBtn" class="action-btn delete-btn">Delete</button>
+    <button id="undoBtn" class="action-btn undo-btn">Undo</button>
+</div>
+
+
+
+
+
+
+
+
+        <!-- RESULTS -->
+        <div id="workoutResults" style="margin-top:1.5rem;" aria-live="polite" aria-atomic="true"></div>
+
+      </div>
+
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+    <p>
+      <a href="terms.html" class="link">Terms of Use</a> •
+      <a href="privacy.html" class="link">Privacy Policy</a> •
+      <a href="disclaimer.html" class="link">Disclaimer</a>
+    </p>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <!-- workout_search.js imports workoutData.js as ES module -->
+  <script type="module" src="js/workout.js"></script>
+
+</body>
+
+</html>

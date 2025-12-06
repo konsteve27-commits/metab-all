@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Metab-all | Meal Macro & Micro Calculator</title>
+  <meta name="description"
+    content="Build meals with Metab-all, analyze full macros and micronutrients, track daily progress and save your meals for later review." />
+
+  <!-- CSS architecture -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/hero_section.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="icon" type="image/png" href="icon.png">
+
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="aio-header">
+    <div class="aio-logo">
+      <h1>Metab-all</h1>
+      <span>Nutrition &amp; Training Suite</span>
+    </div>
+
+    <nav class="aio-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="calories.html">Calories</a>
+      <a href="meals.html" class="active" aria-current="page">Meals</a>
+      <a href="my_meals.html">My Meals</a>
+      <a href="workout.html">Workout</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h2>Meal Macro &amp; Micro Calculator</h2>
+      <p>
+        Search foods, add ingredients to your meal, see full macro &amp; micronutrient
+        analysis and track how close you are to your daily targets.
+      </p>
+    </section>
+
+    <!-- MAIN PAGE CONTENT -->
+    <section class="meals-card card" aria-labelledby="mealBuilderTitle">
+      <h3 id="mealBuilderTitle">Build Your Meal</h3>
+      <p class="index-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+        Your daily targets are loaded from the Calorie &amp; Nutrient Calculator.
+        Add ingredients in grams and Metab-all will update your macros and micros in real time.
+      </p>
+
+      <!-- === Inputs Row === -->
+      <div class="meal-inputs">
+        <div class="food-row">
+          <div class="food-search">
+            <label for="foodInput" class="visually-hidden">Food search</label>
+            <input id="foodInput" type="text" placeholder="Search food (e.g. chicken, rice, feta)" autocomplete="off" />
+            <div id="suggestions" class="suggestions"></div>
+          </div>
+          <div>
+            <label for="grams" class="visually-hidden">Grams</label>
+            <input type="number" id="grams" placeholder="Grams" min="1" step="1" />
+          </div>
+
+          <button id="addFoodBtn" class="btn-primary" type="button">
+            Add
+          </button>
+        </div>
+      </div>
+
+      <!-- === Meal Table === -->
+      <div id="meal-table" aria-live="polite" aria-atomic="true"></div>
+
+      <!-- === Progress (Macros & Micros) === -->
+      <section id="daily-progress" class="card" style="margin-top: 1.5rem;" aria-live="polite" aria-atomic="true">
+        <!-- Το περιεχόμενο θα γεμίσει από το meals.js (updateProgressBars) -->
+      </section>
+
+      <!-- === Summary (optional extra info) === -->
+      <div id="meal-summary" class="meal-summary"></div>
+
+      <!-- === Actions === -->
+      <div class="meal-actions" style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <button id="saveMealBtn" class="btn-primary" type="button">
+          Save Meal
+        </button>
+        <a href="my_meals.html" class="btn btn-outline">
+          View Saved Meals
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+  <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+  <p>
+    <a href="terms.html" class="link">Terms of Use</a> •
+    <a href="privacy.html" class="link">Privacy Policy</a> •
+    <a href="disclaimer.html" class="link">Disclaimer</a>
+  </p>
+</footer>
+  <script type="module" src="js/meals.js"></script>
+</body>
+
+</html>

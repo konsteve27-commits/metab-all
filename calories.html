@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Metab-all | Calorie & Nutrient Calculator</title>
+  <meta name="description" content="Use Metab-all to calculate your BMR, TDEE and full daily macro and micronutrient targets based on your profile and training habits." />
+
+  <!-- CSS architecture -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/hero_section.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="icon" type="image/png" href="icon.png">
+
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="aio-header">
+    <div class="aio-logo">
+      <h1>Metab-all</h1>
+      <span>Nutrition &amp; Training Suite</span>
+    </div>
+
+    <nav class="aio-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="calories.html" class="active" aria-current="page">Calories</a>
+      <a href="meals.html">Meals</a>
+      <a href="my_meals.html">My Meals</a>
+      <a href="workout.html">Workout</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h2>Calorie &amp; Nutrient Calculator</h2>
+      <p>
+        Enter your details to estimate your BMR, daily energy expenditure (TDEE)
+        and personalized macro &amp; micronutrient targets.
+      </p>
+    </section>
+
+    <!-- CALCULATOR CARD -->
+    <section class="calories-card card" aria-labelledby="calorieFormTitle">
+      <h3 id="calorieFormTitle">Your Profile</h3>
+      <p class="index-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+        These values are used to calculate your daily targets. You can always come back
+        and update them as your bodyweight or training changes.
+      </p>
+
+      <!-- We use plain layout so existing JS (main.js) continues to work perfectly -->
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="" disabled selected hidden>Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input id="age" type="number" min="16" max="90" placeholder="Age (years)" />
+      </div>
+
+      <div class="form-group">
+        <label for="weight">Weight (kg)</label>
+        <input id="weight" type="number" min="30" max="250" step="0.1" placeholder="Your weight in kg" />
+      </div>
+
+      <div class="form-group">
+        <label for="height">Height (cm)</label>
+        <input id="height" type="number" min="120" max="230" step="0.5" placeholder="Your height in cm" />
+      </div>
+
+      <div class="form-group">
+        <label for="workoutsPerWeek">Workouts per week</label>
+        <input id="workoutsPerWeek" type="number" min="0" max="14" placeholder="e.g. 3, 4, 5…" />
+      </div>
+
+      <div class="form-group">
+        <label for="hoursPerWorkout">Hours per workout</label>
+        <input id="hoursPerWorkout" type="number" step="0.1" min="0" max="4" placeholder="e.g. 1.0, 1.5" />
+      </div>
+
+      <div class="form-group">
+        <label for="intensity">Training Intensity</label>
+        <select id="intensity">
+          <option value="" disabled selected hidden>Select intensity</option>
+          <option value="light">Light (walking, light activity)</option>
+          <option value="moderate">Moderate (regular gym / sports)</option>
+          <option value="intense">Intense (heavy training)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="goal">Goal</label>
+        <select id="goal">
+          <option value="" disabled selected hidden>Select goal</option>
+          <option value="loss">Fat Loss</option>
+          <option value="maintain">Maintenance</option>
+          <option value="gain">Lean Gain</option>
+          <option value="bulk">Bulk</option>
+        </select>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+        <button id="calculateBtn" class="hero-btn primary" type="button">
+          Calculate Targets
+        </button>
+
+        <button id="viewDataBtn" class="hero-btn secondary" type="button">
+          View Saved Data
+        </button>
+
+        <button id="clearDataBtn" class="hero-btn secondary" type="button">
+          Clear Saved Data
+        </button>
+      </div>
+
+      <!-- RESULTS -->
+      <section
+        id="results"
+        class="results"
+        aria-live="polite"
+        aria-atomic="true"
+        style="display: none; margin-top: 1.8rem;"
+      ></section>
+    </section>
+
+  </main>
+
+   <footer>
+  <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+  <p>
+    <a href="terms.html" class="link">Terms of Use</a> •
+    <a href="privacy.html" class="link">Privacy Policy</a> •
+    <a href="disclaimer.html" class="link">Disclaimer</a>
+  </p>
+</footer>
+
+ 
+  <script type="module" src="js/main.js"></script>
+
+  
+</body>
+</html>
