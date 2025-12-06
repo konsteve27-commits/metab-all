@@ -1,0 +1,147 @@
+/* ============ RESPONSIVE ADJUSTMENTS ============ */
+
+@media (max-width: 960px) {
+  .aio-header > div {
+    padding-inline: 1rem;
+  }
+  .aio-nav {
+    padding-inline: 1rem;
+    overflow-x: auto;
+  }
+
+  .hero {
+    padding: 1.8rem 1.4rem;
+    margin-inline: -0.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: 1.6rem 1rem 3rem;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    justify-content: flex-start;
+  }
+
+  .food-row {
+    flex-direction: column;
+  }
+  #grams {
+    width: 100%;
+  }
+
+  .progress-row {
+    grid-template-columns: minmax(90px, 1.5fr) minmax(0, 2.2fr);
+    row-gap: 0.3rem;
+  }
+
+  .progress-values {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .workout-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .workout-actions {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 480px) {
+  .aio-logo h1 {
+    font-size: 1.15rem;
+  }
+  .aio-logo span {
+    font-size: 0.7rem;
+  }
+
+  .aio-nav a {
+    padding-inline: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .card {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .saved-meals {
+    margin-top: 1.3rem;
+  }
+}
+/* ===== Workout table – mobile fix ===== */
+@media (max-width: 768px) {
+  /* Κάνουμε το table οριζόντια scrollable αντί να το ζουλάει */
+  #exerciseTable .table-wrapper {
+    overflow-x: auto;
+  }
+
+  /* Δεν αφήνουμε το table να μικρύνει κάτω από ένα όριο */
+  #exerciseTable table {
+    min-width: 520px;
+  }
+
+  /* Τα inputs για Weight / Reps / Sets να είναι εμφανή */
+  #exerciseTable input[type="number"] {
+    width: 64px;
+    min-width: 64px;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.35rem;
+    text-align: center;
+  }
+}
+
+/* ===== Meals Table – mobile fix ===== */
+@media (max-width: 768px) {
+  #meal-table table {
+    min-width: 620px; /* δίνει χώρο αντί να σπάει */
+  }
+
+  #meal-table .styled-table input[type="number"] {
+    width: 64px;
+    min-width: 64px;
+    padding: 0.25rem 0.35rem;
+    font-size: 0.85rem;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 0.55rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* Enable horizontal scroll */
+  #meal-table {
+    overflow-x: auto;
+  }
+}
+/* ===== Meals Table – mobile improved ===== */
+@media (max-width: 768px) {
+  #meal-table table {
+    min-width: 520px;   /* μικρότερο από 620px */
+  }
+
+  #meal-table .styled-table td,
+  #meal-table .styled-table th {
+    padding: 0.45rem 0.35rem;
+    font-size: 0.82rem;
+  }
+
+  #meal-table {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+}

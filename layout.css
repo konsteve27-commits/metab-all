@@ -1,0 +1,275 @@
+/* ============ RESET ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: clip; /* κόβουμε το σύρσιμο */
+}
+
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+}
+
+/* ============ BODY / GLOBAL ============ */
+body {
+  min-height: 100vh;
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 60%),
+    radial-gradient(circle at bottom, rgba(34, 197, 94, 0.15), transparent 55%),
+    linear-gradient(135deg, #020617 0%, #020617 55%, #020617 100%);
+  background-attachment: scroll;
+  -webkit-font-smoothing: antialiased;
+  /* ❌ ΧΩΡΙΣ opacity / transform / animation εδώ */
+}
+
+
+/* Subtle grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
+  z-index: -1;
+}
+
+/* Layout container */
+.main-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-lg) 4rem;
+  position: relative;
+   padding-bottom: calc(var(--space-xl) + env(safe-area-inset-bottom));
+}
+
+/* Background orbs */
+.main-container::before,
+.main-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.45;
+  z-index: -1;
+}
+
+.main-container::before {
+  width: 260px;
+  height: 260px;
+  top: -120px;
+  right: -70px;
+  background: radial-gradient(circle, var(--color-primary-soft), transparent);
+}
+.main-container::after {
+  width: 220px;
+  height: 220px;
+  bottom: -120px;
+  left: -60px;
+  background: radial-gradient(circle, var(--color-accent-soft), transparent);
+}
+
+/* ============ HEADER ============ */
+.aio-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(22px);
+  background: linear-gradient(
+      120deg,
+      rgba(15, 23, 42, 0.93),
+      rgba(15, 23, 42, 0.86)
+    );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+}
+
+.aio-header > div,
+.aio-nav {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Inner header layout */
+.aio-header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+}
+
+/* Logo */
+.aio-logo h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f9fafb;
+}
+
+.aio-logo span {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Nav */
+.aio-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0 1.5rem 0.7rem;
+}
+
+.aio-nav a {
+  position: relative;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  transition: color var(--transition-fast), background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.aio-nav a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent))
+    border-box;
+  mask:
+    linear-gradient(#000 0 0) padding-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.aio-nav a:hover {
+  color: #e5e7eb;
+  background: rgba(148, 163, 184, 0.12);
+  transform: translateY(-1px);
+}
+
+.aio-nav a.active {
+  color: #f9fafb;
+  background: radial-gradient(
+    circle at top left,
+    rgba(34, 197, 94, 0.32),
+    rgba(15, 23, 42, 0.6)
+  );
+  box-shadow: 0 8px 18px rgba(16, 185, 129, 0.4);
+}
+
+.aio-nav a.active::after {
+  opacity: 1;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem var(--space-lg) 2.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  border-top: 1px solid rgba(55, 65, 81, 0.7);
+  margin-top: 1.5rem;
+}
+
+footer h3 {
+  margin-top: 0;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+footer p {
+  margin: 0.15rem 0;
+  line-height: 1.5;
+}
+/* ===== Metab-all: smooth page enter μόνο για το περιεχόμενο ===== */
+.main-container {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: metaball-page-enter 0.35s ease-out forwards;
+}
+
+@keyframes metaball-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Όταν είναι ανοιχτό το Metab-all dialog κλειδώνουμε το scroll της σελίδας */
+html.mb-dialog-open,
+body.mb-dialog-open {
+  overflow: hidden;
+  height: 100%;
+  touch-action: none;     /* για mobile, να μην τραβιέται με swipe */
+}
+/* ========== FIX FOOTER LAYOUT & CENTER LINKS ========== */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+footer p {
+    margin: 6px 0;
+}
+
+footer a {
+    color: var(--color-text);
+    text-decoration: underline;
+    cursor: pointer;
+}
+:root {
+    --safe-bottom: env(safe-area-inset-bottom);
+}
+
+body {
+    padding-bottom: var(--safe-bottom);
+}
+
+.floating-profile-button {
+    margin-bottom: calc(20px + var(--safe-bottom));
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 60%),
+      radial-gradient(circle at bottom, rgba(34, 197, 94, 0.15), transparent 55%),
+      linear-gradient(135deg, #020617 0%, #020617 55%, #020617 100%);
+    z-index: -1;
+    pointer-events: none;
+}

@@ -1,0 +1,105 @@
+/* ============ HERO SECTIONS (Home, Calories, Meals, My Meals, Workout) ============ */
+
+.hero {
+  position: relative;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  padding: 2.5rem 2.2rem;
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 55%),
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.14), transparent 55%),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9));
+  border: 1px solid rgba(148, 163, 184, 0.37);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+/* Decorative glow blobs */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 280px;
+  height: 280px;
+  top: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.5), transparent 60%);
+}
+.hero::after {
+  width: 240px;
+  height: 240px;
+  bottom: -90px;
+  right: -70px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.55), transparent 60%);
+}
+
+.hero h2 {
+  position: relative;
+  margin: 0 0 0.75rem;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #f9fafb;
+}
+
+.hero p {
+  position: relative;
+  max-width: 620px;
+  margin: 0 0 1.7rem;
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+  color: var(--color-text-soft);
+}
+
+/* Bullet feature list on Home */
+.hero-features {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.6rem 1.6rem;
+}
+
+.hero-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.hero-features strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+/* Hero layout on larger screens: hero + secondary panel (if needed in future) */
+@media (min-width: 960px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1.2fr);
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-buttons {
+    justify-content: flex-start;
+  }
+}
