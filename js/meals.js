@@ -282,13 +282,15 @@ if (!grams || grams <= 0) {
       targets
     );
   }
-
-  // ================================
-  // PROGRESS BARS (Macros + Micros)
-  // ================================
-  function updateProgressBars(mealTotals, mealMicros, dailyGoals) {
+// ================================
+// PROGRESS BARS (Macros + Micros)
+// ================================
+function updateProgressBars(mealTotals, mealMicros, dailyGoals) {
     if (!dailyGoals || !progressSection) return;
 
+    // Μακροθρεπτικά που πρέπει να εκπληρωθούν (στόχος = minimum)
+    const meetGoalsMacros = ["protein", "fibre"];
+    
     const macroData = [
       {
         key: "calories",
@@ -336,7 +338,28 @@ if (!grams || grams <= 0) {
       if (!m.target || m.target <= 0) return;
       const percent = ((m.value / m.target) * 100).toFixed(1);
       const limited = Math.min(parseFloat(percent), 120);
-      const color = parseFloat(percent) > 100 ? "#e74c3c" : "#2ecc71";
+      
+      let color = "#2ecc71"; // Default Green
+      const p = parseFloat(percent);
+
+      if (meetGoalsMacros.includes(m.key)) {
+        // Logic for Protein/Fibre:
+        if (p < 40) {
+          color = "#e74c3c"; // RED if < 80% (Critical Undershoot)
+        } else if (p < 100) {
+          color = "#f59e0b"; // ORANGE if 80% <= percent < 100% (Near Miss)
+        }
+        // Green if >= 100%
+      } else {
+        // Logic for Calories/Carbs/Fat:
+        if (p > 120) {
+          color = "#e74c3c"; // RED if > 120% (Critical Overshoot)
+        } else if (p > 100) {
+          color = "#f59e0b"; // ORANGE if 100% < percent <= 120% (Slight Overshoot)
+        }
+        // Green if <= 100%
+      }
+
 
       html += `
         <div class="progress-row">
@@ -384,7 +407,15 @@ if (!grams || grams <= 0) {
 
         const percent = ((value / target) * 100).toFixed(1);
         const limited = Math.min(parseFloat(percent), 120);
-        const color = parseFloat(percent) > 100 ? "#e74c3c" : "#27ae60";
+        const p = parseFloat(percent);
+        
+        // Λογική Micros (Meet Goal):
+        let color = "#2ecc71"; // Default Green
+        if (p < 40) {
+          color = "#e74c3c"; // RED if < 80% (Critical Undershoot)
+        } else if (p < 100) {
+          color = "#f59e0b"; // ORANGE if 80% <= percent < 100% (Near Miss)
+        }
 
         html += `
           <div class="progress-row">
@@ -405,7 +436,6 @@ if (!grams || grams <= 0) {
     html += `</div>`;
     progressSection.innerHTML = html;
   }
-
   // ================================
   // SAVE MEAL TO LOCALSTORAGE
   // ================================
