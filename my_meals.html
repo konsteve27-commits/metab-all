@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Metab-all | My Meals</title>
-  <meta name="description" content="Review your saved meals in Metab-all, see total macros and micronutrients for the day and compare them to your personal targets." />
+  <meta name="description"
+    content="Review your saved meals in Metab-all, see total macros and micronutrients for the day and compare them to your personal targets." />
 
   <!-- CSS architecture -->
   <link rel="stylesheet" href="css/variables.css" />
@@ -14,7 +16,7 @@
   <link rel="stylesheet" href="css/hero_section.css" />
   <link rel="stylesheet" href="css/pages.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="icon" type="image/png" href="icon.png">
+  <link rel="icon" type="image/png" href="icon.png">
 
 </head>
 
@@ -35,48 +37,117 @@
     </nav>
   </header>
 
-  <!-- ===== MAIN CONTENT ===== -->
   <main class="main-container">
-    <section class="hero">
-      <h2>Saved Meals</h2>
-      <p>
-        Review your saved meals, see total macros for the day and track
-        micronutrient intake against your Metab-all targets.
-      </p>
-    </section>
-    <section class="meals-card card" aria-labelledby="mealBuilderTitle">
-      <!-- === Saved meals list === -->
-      <div id="mealsContainer" class="saved-meals" aria-live="polite" aria-atomic="true"></div>
 
-      <!-- === Total nutrients from all meals === -->
-      <div id="summarySection" class="summary-section" style="margin-top: 1.5rem;">
-        <h3>Total Nutrients from All Meals</h3>
-        <div id="totalStats"></div>
-      </div>
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <h2>Saved Meals</h2>
+    <p>
+      Review your saved meals, see total macros for the day and track
+      micronutrient intake against your Metab-all targets.
+    </p>
+  </section>
 
-      <!-- === Daily macro & micro progress bars === -->
-      <section id="dailyProgress" class="card" style="margin-top: 1.5rem;">
-</section>
+  <!-- ===== Main Card Wrapper ===== -->
+  <section class="card" id="myMealsCard">
+
+    <!-- === Saved meals list === -->
+    <h3>Saved Meals</h3>
+    <div id="mealsContainer" class="saved-meals" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- === Total nutrients === -->
+    <div class="summary-section" style="margin-top: 1.8rem;">
+      <h3>Total Nutrients from All Meals</h3>
+      <div id="totalStats"></div>
+    </div>
+
+    <!-- === Daily Progress === -->
+    <div style="margin-top: 1.8rem;">
+      <h3>Daily Progress</h3>
+      <section id="dailyProgress" class="card" style="margin-top: 1rem;"></section>
+    </div>
+
+    <!-- === Actions === -->
+    <div class="actions" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+      <a href="meals.html" class="btn btn-outline">← Back to Meal Creator</a>
+      <button id="clearTodayBtn" class="btn-danger" type="button">Clear Today</button>
+    </div>
+
+  </section>
+
+  <!-- ===== Legend Card ===== -->
+  <section class="card legend-card" aria-labelledby="legendTitle" style="margin-top: 2rem;">
+    <h3 id="legendTitle" style="margin-top: 0;">Progress Bar Color Legend</h3>
+    <p style="margin-bottom: 1rem; color: var(--color-text-soft); font-size: var(--font-size-sm);">
+      The color indicates your daily status relative to your personalized targets.
+    </p>
+
+    <table class="styled-table legend-table">
+      <thead>
+        <tr>
+          <th style="width: 15%; text-align: center;">Color</th>
+          <th>Goal Type</th>
+          <th>Percentage (%)</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
+          <td><strong>Meet Goal</strong> (Protein, Fibre, Micros)</td>
+          <td>≥ 100%</td>
+          <td>Target Met / Full Coverage</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
+          <td><strong>Limit Goal</strong> (Calories, Carbs, Fat)</td>
+          <td>≤ 100%</td>
+          <td>Within Limit / Safe Zone</td>
+        </tr>
+
+        <tr>
+          <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
+          <td><strong>Meet Goal</strong></td>
+          <td>40% → 99.9%</td>
+          <td>Moderate Undershoot / Needs Attention</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
+          <td><strong>Limit Goal</strong></td>
+          <td>100.1% → 120%</td>
+          <td>Moderate Overshoot</td>
+        </tr>
+
+        <tr>
+          <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
+          <td><strong>Meet Goal</strong></td>
+          <td>&lt; 40%</td>
+          <td>Critical Deficiency</td>
+        </tr>
+        <tr>
+          <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
+          <td><strong>Limit Goal</strong></td>
+          <td>&gt; 120%</td>
+          <td>Critical Overshoot</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
 
 
-      <!-- === Actions === -->
-      <div class="actions" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
-        <a href="meals.html" class="btn btn-outline">← Back to Meal Creator</a>
-        <button id="clearTodayBtn" class="btn-danger" type="button">Clear Today</button>
-      </div>
-    </section>
-  </main>
-
-   <footer>
-  <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
-  <p>
-    <a href="terms.html" class="link">Terms of Use</a> •
-    <a href="privacy.html" class="link">Privacy Policy</a> •
-    <a href="disclaimer.html" class="link">Disclaimer</a>
-  </p>
-</footer>
+  <footer>
+    <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+    <p>
+      <a href="terms.html" class="link">Terms of Use</a> •
+      <a href="privacy.html" class="link">Privacy Policy</a> •
+      <a href="disclaimer.html" class="link">Disclaimer</a>
+    </p>
+  </footer>
 
   <script type="module" src="js/my_meals.js"></script>
 
 </body>
+
 </html>
