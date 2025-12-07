@@ -1159,3 +1159,33 @@ input[type="number"]::-webkit-outer-spin-button {
 .action-btn:hover {
     background: rgba(255,255,255,0.14);
 }
+/* ----- Progress Legend (New Component) ----- */
+
+.legend-card {
+  /* Specific adjustment for spacing when reusing .card */
+  margin-top: 2rem;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  vertical-align: middle;
+}
+
+.status-green {
+  background-color: #2ecc71; /* Green: Success */
+}
+.status-orange {
+  background-color: #f59e0b; /* Orange: Moderate Warning */
+}
+.status-red {
+  background-color: #e74c3c; /* Red: Critical Warning */
+}
+/* Ensure table text remains left-aligned for readability */
+.legend-table td,
+.legend-table th {
+    text-align: left;
+}
