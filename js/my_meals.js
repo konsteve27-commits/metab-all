@@ -150,14 +150,36 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // ================================
-  // PROGRESS BARS
-  // ================================
-  function bar(label, value, target, unit = "") {
+// ================================
+// PROGRESS BARS
+// ================================
+// Προσθήκη του ορίσματος isMeetGoal: true αν ο στόχος είναι minimum, false αν είναι maximum.
+function bar(label, value, target, unit = "", isMeetGoal = true) { 
     if (!target || target <= 0) target = 1;
     const percent = (value / target) * 100;
-    const width = Math.min(100, percent);
-    const color = percent >= 100 ? "#e74c3c" : "#2ecc71";
+    
+    // 1. Clamping στο 120% για ομοιομορφία
+    const width = Math.min(120, percent); 
+    
+    let color = "#2ecc71"; // Default Green
+
+    if (isMeetGoal) {
+      // Logic for Protein/Fibre/Micros:
+      if (percent < 40) {
+        color = "#e74c3c"; // RED if < 80% (Critical Undershoot)
+      } else if (percent < 100) {
+        color = "#f59e0b"; // ORANGE if 80% <= percent < 100% (Near Miss)
+      }
+      // Green if >= 100%
+    } else {
+      // Logic for Calories/Carbs/Fat:
+      if (percent > 120) {
+        color = "#e74c3c"; // RED if > 120% (Critical Overshoot)
+      } else if (percent > 100) {
+        color = "#f59e0b"; // ORANGE if 100% < percent <= 120% (Slight Overshoot)
+      }
+      // Green if <= 100%
+    }
 
     return `
       <div class="progress-row">
@@ -188,35 +210,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let html = `<h4>Daily Macros Progress</h4>`;
 
-    html += bar("Calories", t.kcal, macroTargets.calories, "kcal");
-    html += bar("Protein", t.protein, macroTargets.protein, "g");
-    html += bar("Carbs", t.carbs, macroTargets.carbs, "g");
-    html += bar("Fat", t.fat, macroTargets.fat, "g");
-    html += bar("Fibre", t.fibre, macroTargets.fibre || 30, "g");
+    // Calories, Carbs, Fat -> Limit Goal (false)
+    html += bar("Calories", t.kcal, macroTargets.calories, "kcal", false); 
+    html += bar("Protein", t.protein, macroTargets.protein, "g", true); // Meet Goal (true)
+    html += bar("Carbs", t.carbs, macroTargets.carbs, "g", false);
+    html += bar("Fat", t.fat, macroTargets.fat, "g", false);
+    html += bar("Fibre", t.fibre, macroTargets.fibre || 30, "g", true); // Meet Goal (true)
 
     html += `<h4>Daily Micronutrients Progress</h4>`;
 
     const units = {
-      A: "μg",
-      B6: "mg",
-      B12: "μg",
-      C: "mg",
-      Ca: "mg",
-      D: "μg",
-      E: "mg",
-      Fe: "mg",
-      Folate: "μg",
-      K: "mg",
-      Mg: "mg",
-      Zn: "mg"
-    };
+  Fe: "mg",
+  Ca: "mg",
+  Mg: "mg",
+  Zn: "mg",
+  K: "mg",
+  C: "mg",
+  E: "mg",
+  B6: "mg",
+  A: "μg",
+  D: "μg",
+  B12: "μg",
+  Folate: "μg"
+};
+
 
     for (const k in t.micros) {
       if (!microTargets[k]) continue;
       const value = t.micros[k];
       const target = microTargets[k];
       const unit = units[k] || "";
-      html += bar(k, value, target, unit);
+      html += bar(k, value, target, unit, true); // Όλα τα Micros είναι Meet Goal (true)
     }
 
     dailyDiv.innerHTML = html;
