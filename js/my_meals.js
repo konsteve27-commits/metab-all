@@ -194,6 +194,8 @@ function bar(label, value, target, unit = "", isMeetGoal = true) {
     `;
   }
 
+ // ===== my_meals.js (Εντός της function renderBars()) =====
+
   function renderBars() {
     const t = computeTotals();
 
@@ -208,7 +210,8 @@ function bar(label, value, target, unit = "", isMeetGoal = true) {
       return;
     }
 
-    let html = `<h4>Daily Macros Progress</h4>`;
+    let html = `<h4>Daily Macros Progress</h4>
+      <div class="progress-section">`;
 
     // Calories, Carbs, Fat -> Limit Goal (false)
     html += bar("Calories", t.kcal, macroTargets.calories, "kcal", false); 
@@ -217,31 +220,43 @@ function bar(label, value, target, unit = "", isMeetGoal = true) {
     html += bar("Fat", t.fat, macroTargets.fat, "g", false);
     html += bar("Fibre", t.fibre, macroTargets.fibre || 30, "g", true); // Meet Goal (true)
 
-    html += `<h4>Daily Micronutrients Progress</h4>`;
+    html += `</div>`;
 
-    const units = {
-  Fe: "mg",
-  Ca: "mg",
-  Mg: "mg",
-  Zn: "mg",
-  K: "mg",
-  C: "mg",
-  E: "mg",
-  B6: "mg",
-  A: "μg",
-  D: "μg",
-  B12: "μg",
-  Folate: "μg"
-};
+    html += `<h4>Daily Micronutrients Progress</h4>
+      <div class="progress-section">`;
 
+    // ΝΕΟ: Χάρτης ονομάτων και μονάδων για τα μικροθρεπτικά
+    const nameMap = {
+      Fe: { unit: "mg", label: "Iron" },
+      Ca: { unit: "mg", label: "Calcium" },
+      Mg: { unit: "mg", label: "Magnesium" },
+      K: { unit: "mg", label: "Potassium" },
+      Zn: { unit: "mg", label: "Zinc" },
+      A: { unit: "μg", label: "Vitamin A" },
+      C: { unit: "mg", label: "Vitamin C" },
+      D: { unit: "μg", label: "Vitamin D" },
+      E: { unit: "mg", label: "Vitamin E" },
+      B6: { unit: "mg", label: "Vitamin B6" },
+      B12: { unit: "μg", label: "Vitamin B12" },
+      Folate: { unit: "μg", label: "Folate" }
+    };
 
+    // Οι μονάδες (units) αφαιρούνται από τον κώδικα και μπαίνουν στο nameMap για απλότητα
+    // οπότε το object units δεν χρειάζεται πλέον
+    
     for (const k in t.micros) {
-      if (!microTargets[k]) continue;
+      const map = nameMap[k];
+      if (!microTargets[k] || !map) continue;
+      
       const value = t.micros[k];
       const target = microTargets[k];
-      const unit = units[k] || "";
-      html += bar(k, value, target, unit, true); // Όλα τα Micros είναι Meet Goal (true)
+      const unit = map.unit || ""; // Χρήση μονάδας από τον χάρτη
+
+      // Χρήση του map.label αντί του k (π.χ. "Iron" αντί "Fe")
+      html += bar(map.label, value, target, unit, true); 
     }
+
+    html += `</div>`;
 
     dailyDiv.innerHTML = html;
   }
