@@ -1,6 +1,7 @@
 /* ============ RESPONSIVE ADJUSTMENTS ============ */
 
 @media (max-width: 960px) {
+  
   .aio-header > div {
     padding-inline: 1rem;
   }
@@ -165,6 +166,3 @@
     scrollbar-width: thin;
   }
 }
-
-
-

@@ -99,6 +99,7 @@ body::before {
     );
   border-bottom: 1px solid rgba(148, 163, 184, 0.3);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+  padding-top: env(safe-area-inset-top);
 }
 
 .aio-header > div,
@@ -185,7 +186,7 @@ body::before {
     rgba(15, 23, 42, 0.6)
   );
   /* Αλλαγή: Μηδενίζουμε το y-offset, αυξάνουμε το blur και το opacity */
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.6);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
 }
 
 .aio-nav a.active::after {
