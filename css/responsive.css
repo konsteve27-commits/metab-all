@@ -42,14 +42,34 @@
     width: 100%;
   }
 
-  .progress-row {
-    grid-template-columns: minmax(90px, 1.5fr) minmax(0, 2.2fr);
-    row-gap: 0.3rem;
+ .progress-row {
+    /* Ορίζουμε 2 στήλες (1 ευέλικτη, 1 για τα values) & 2 γραμμές (1 για το κείμενο, 1 για τη μπάρα) */
+    grid-template-columns: 1fr auto; 
+    grid-template-rows: auto auto; 
+    align-items: center;
+    gap: 0.3rem 0.7rem;
   }
 
+  /* 1. Το όνομα (progress-name) μένει στην πρώτη στήλη / πρώτη γραμμή (default) */
+  .progress-name {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  
+  /* 2. Οι τιμές (progress-values) μετακινούνται στη δεύτερη στήλη / πρώτη γραμμή */
   .progress-values {
-    grid-column: 1 / -1;
-    text-align: left;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    text-align: right;
+    font-size: 0.85rem; 
+    margin-top: 0; /* Μηδενίζουμε τυχόν παλιά margins */
+  }
+
+  /* 3. Το container της μπάρας πέφτει στη δεύτερη γραμμή, καταλαμβάνοντας όλο το πλάτος */
+  .progress-bar-container {
+    grid-column: 1 / -1; /* Σπαναρει όλες τις στήλες */
+    grid-row: 2 / 3;
+    margin-top: 0.4rem; /* Μικρή απόσταση από το κείμενο */
   }
 
   .workout-card {
