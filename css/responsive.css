@@ -165,3 +165,24 @@
     scrollbar-width: thin;
   }
 }
+/* =============================
+   MOBILE SAFE HEADER FIX (CSS ONLY)
+   ============================= */
+@media (max-width: 960px) {
+
+  /* Σπάει το implicit clipping του sticky header */
+  .aio-header {
+      overflow: visible !important;
+  }
+
+  /* Trick: δημιουργούμε ένα layer κάτω από το header που εμποδίζει το clipping */
+  .aio-header::before {
+      content: "";
+      position: absolute;
+      inset: -40px 0 0 0;   /* επεκτείνουμε το header προς τα πάνω */
+      background: transparent;
+      pointer-events: none;
+      z-index: -1;          /* κάθεται πίσω, δεν επηρεάζει τίποτα */
+  }
+}
+
