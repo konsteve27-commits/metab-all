@@ -166,3 +166,33 @@
     scrollbar-width: thin;
   }
 }
+@media (max-width: 768px) {
+  /* ...υπάρχων κώδικας... */
+
+  /* Στόχευση του container της γραμμής "Add Exercise" 
+     (είναι το 2ο παιδί div μέσα στο #activeWorkoutBox) 
+  */
+  #activeWorkoutBox > div:nth-child(2) {
+    /* 1. Ακύρωση του inline 'display:flex' για να στοιβάζονται κάθετα */
+    display: block !important; 
+    /* 2. Αφαίρεση του κενού */
+    gap: 0 !important;
+  }
+
+  /* Στόχευση του label "Add exercise:" */
+  #activeWorkoutBox > div:nth-child(2) > label {
+    /* Το κάνει να πιάνει όλο το πλάτος */
+    display: block !important; 
+    /* Ακύρωση του inline 'min-width:120px' */
+    min-width: auto !important; 
+    /* Προσθήκη κενού κάτω από το label */
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Στόχευση του input-wrapper (του search bar) */
+  #activeWorkoutBox > div:nth-child(2) > .input-wrapper {
+    /* Ακύρωση του inline 'flex:1' ώστε να πιάνει όλο το πλάτος */
+    flex: none !important; 
+    width: 100% !important;
+  }
+}
