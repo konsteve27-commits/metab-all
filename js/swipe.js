@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ρυθμίσεις ευαισθησίας
     const minSwipeDistance = 50;  // Πρέπει να σύρεις τουλάχιστον 50px οριζόντια
-    const maxVerticalDistance = 30; // ΝΕΟ: Απαγορεύεται να κουνηθείς πάνω/κάτω περισσότερο από 30px
+    const maxVerticalDistance = 10; // ΝΕΟ: Απαγορεύεται να κουνηθείς πάνω/κάτω περισσότερο από 30px
 
     function handleGesture() {
         let xDistance = touchEndX - touchStartX;
@@ -66,4 +66,5 @@ document.addEventListener('DOMContentLoaded', () => {
         touchEndY = e.changedTouches[0].screenY;   // Καταγραφή τελικού Υ
         handleGesture();
     }, false);
+
 });
