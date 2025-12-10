@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchEndY = 0;
 
     // 4. Ρυθμίσεις Ζώνης & Ευαισθησίας
-    const minSwipeDistance = 50;     // Ελάχιστη οριζόντια απόσταση για swipe
+    const minSwipeDistance = 70;     // Ελάχιστη οριζόντια απόσταση για swipe
     const maxVerticalDeviation = 40; // Μέγιστη επιτρεπτή απόκλιση πάνω/κάτω (για να μην είναι διαγώνιο)
-    const bottomZoneHeight = 150;    // ΕΝΕΡΓΗ ΖΩΝΗ: Τα τελευταία 150 pixels της οθόνης
+    const bottomZoneHeight = 100;    // ΕΝΕΡΓΗ ΖΩΝΗ: Τα τελευταία 150 pixels της οθόνης
 
     function handleGesture() {
         // Έλεγχος 1: Ξεκίνησε το δάχτυλο στο κάτω μέρος της οθόνης;

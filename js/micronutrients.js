@@ -1,16 +1,15 @@
 // ===== micronutrients.js (Metab-all) =====
 //
-// getMicronutrientNeeds(gender, age, activity)
-//  - επιστρέφει RDA / AI για βασικά μικροθρεπτικά
-//  - προσαρμόζει ελαφρώς ανάλογα με τη δραστηριότητα
+// getMicronutrientNeeds(gender, age, activity, intensity)
+//  - Returns RDA / AI for key micronutrients
+//  - Adjusts based on calculated activity AND user-defined intensity.
 //
-// micronutrientSources
-//  - σύντομη περιγραφή βασικής τροφικής πηγής για tooltip / title
-//
+// ... (rest of file description)
 
 // Main function – returns adjusted RDA values
-export function getMicronutrientNeeds(gender, age, activity) {
+export function getMicronutrientNeeds(gender, age, activity, intensity) { // MODIFIED: Added intensity
   const RDA = {
+    // ... (RDA object remains the same) ...
     male: {
       "18-30": {
         A: 900,
@@ -117,16 +116,33 @@ export function getMicronutrientNeeds(gender, age, activity) {
       ? RDA[normalizedGender][ageGroup]
       : RDA.male["18-30"];
 
-  // Αντιγράφουμε για να μην πειράζουμε το RDA object
+  // Create copy to not mutate RDA object
   const needs = { ...baseRDA };
 
-  // Adjust based on activity
-  // activity ~ 1.2–1.9 από calculator.js
-  const adj =
-    activity > 1.55 ? 1.15 : activity > 1.4 ? 1.1 : 1.0;
+  // ===== NEW ADJUSTMENT LOGIC (Based on Intensity) =====
+  let intensityAdjustment = 0;
+  if (intensity === "moderate") {
+    intensityAdjustment = 0.10; // 10% for Moderate
+  } else if (intensity === "intense") {
+    intensityAdjustment = 0.20; // 20% for Intense (higher metabolic demand)
+  }
+  
+  // Use a final factor based on activity factor for more granularity,
+  // but cap the max adjustment at 20%
+  const activityAdjustment = (activity - 1.2) * 0.1; // Scale 0-0.07
+
+  // Final multiplier, limited to 1.20 (20% total increase)
+  const adj = Math.min(1 + intensityAdjustment + activityAdjustment, 1.20); 
 
   for (let k in needs) {
-    needs[k] = Math.round(needs[k] * adj);
+    // Micronutrients vital for energy (B-vits, Mg, Fe, K, Zn) get the full boost
+    if (['B6', 'B12', 'Mg', 'Fe', 'Zn', 'K', 'C'].includes(k)) {
+        needs[k] = Math.round(needs[k] * adj);
+    } 
+    // Other micros (A, D, E, Ca, Folate) get a smaller, constant boost max 10%
+    else {
+        needs[k] = Math.round(needs[k] * Math.min(adj, 1.10));
+    }
   }
 
   return needs;
@@ -135,15 +151,31 @@ export function getMicronutrientNeeds(gender, age, activity) {
 // ===== Food sources (for info buttons / tooltips) =====
 export const micronutrientSources = {
   A: "Carrots – ~8350 μg vit. A / 100 g",
-  C: "Guava – ~228 mg vit. C / 100 g",
+  C: "Red Peppers – ~128 mg vit. C / 100 g",
   D: "Salmon – ~10 μg vit. D / 100 g",
-  E: "Sunflower seeds – ~35 mg vit. E / 100 g",
+  E: "Sunflower Seeds – ~35 mg vit. E / 100 g",
   B6: "Chickpeas – ~1.1 mg vit. B6 / 100 g",
-  B12: "Beef liver – ~83 μg vit. B12 / 100 g",
-  Folate: "Spinach – ~194 μg folate / 100 g",
-  Ca: "Parmesan cheese – ~1184 mg calcium / 100 g",
-  Fe: "Clams – ~28 mg iron / 100 g",
-  Mg: "Pumpkin seeds – ~535 mg magnesium / 100 g",
-  Zn: "Oysters – ~78 mg zinc / 100 g",
-  K: "Dried apricots – ~1160 mg potassium / 100 g"
+  B12: "Beef Liver – ~83 μg vit. B12 / 100 g",
+  Folate: "Spinach – ~194 μg Folate / 100 g",
+  Ca: "Parmesan Cheese – ~1184 mg Calcium / 100 g",
+  Fe: "Clams – ~28 mg Iron / 100 g",
+  Mg: "Pumpkin Seeds – ~535 mg Magnesium / 100 g",
+  Zn: "Oysters – ~78 mg Zinc / 100 g",
+  K: "Dried Apricots – ~1160 mg Potassium / 100 g"
+};
+
+// ===== Micronutrient Benefits (for info pop-up) =====
+export const micronutrientBenefits = {
+  A: "Essential for visual acuity, maintaining immune defenses, and cellular integrity.",
+  C: "A powerful antioxidant vital for collagen synthesis and enhancing iron absorption.",
+  D: "Crucial for calcium homeostasis, promoting skeletal strength, and modulating immune response.",
+  E: "Functions as a primary fat-soluble antioxidant, protecting cell membranes from oxidative stress.",
+  B6: "Key factor in protein metabolism, supporting neurotransmitter synthesis, and red blood cell formation.",
+  B12: "Required for neurological health, cognitive function, and essential for red blood cell production.",
+  Folate: "Fundamental for DNA and RNA synthesis and cell replication, critical during rapid growth.",
+  Ca: "The main structural component of bone density. Necessary for muscle contraction and nerve signal transmission.",
+  Fe: "Central component of hemoglobin, absolutely necessary for oxygen transport throughout tissues.",
+  Mg: "Involved in numerous enzymatic reactions, regulating muscle/nerve signaling, and energy (ATP) production.",
+  Zn: "Essential for robust immune system activity, protein synthesis, and efficient wound healing.",
+  K: "A primary electrolyte vital for fluid balance, regulating blood pressure, and ensuring cardiac rhythm stability."
 };

@@ -1,10 +1,10 @@
-// ui.js – Metab-all UI helpers (custom alerts / confirms)
+// ===== ui.js – Metab-all UI helpers (custom alerts / confirms) =====
 
 let dialogRoot;
 let panelEl;
 let accentEl;
 let titleEl;
-let messageEl;
+let messageEl; // Reference to the element that holds the message
 let confirmBtn;
 let cancelBtn;
 let backdropEl;
@@ -47,7 +47,7 @@ dialogRoot.innerHTML = `
 panelEl = dialogRoot.querySelector(".mb-dialog__panel");
 accentEl = dialogRoot.querySelector(".mb-dialog__accent");
 titleEl = dialogRoot.querySelector(".mb-dialog__title");
-messageEl = dialogRoot.querySelector(".mb-dialog__message");
+messageEl = dialogRoot.querySelector(".mb-dialog__message"); // DOM reference
 inputWrapper = dialogRoot.querySelector(".mb-dialog__field");
 inputEl = dialogRoot.querySelector(".mb-dialog__input");
 confirmBtn = dialogRoot.querySelector(".mb-dialog__btn-confirm");
@@ -92,7 +92,7 @@ function openDialog(message, options = {}) {
 
   currentMode = mode;
 
-  // καθάρισε παλιές κλάσεις variant
+  // Clear old variant classes
   dialogRoot.classList.remove(
     "mb-dialog--info",
     "mb-dialog--success",
@@ -101,7 +101,7 @@ function openDialog(message, options = {}) {
   );
   dialogRoot.classList.add(`mb-dialog--${type}`);
 
-  // icon ανάλογα με type
+  // Set icon based on type
   const iconMap = {
     info: "💡",
     success: "✅",
@@ -120,14 +120,15 @@ function openDialog(message, options = {}) {
       ? "Heads up"
       : "Metab-all");
 
-  messageEl.textContent = message;
+  // *** THE FIX IS HERE: Use innerHTML for rich text/HTML content ***
+  messageEl.innerHTML = message;
 
   confirmBtn.textContent = confirmText;
   cancelBtn.textContent = cancelText;
 
- // Αν είναι απλό alert -> κρύψε Cancel, αλλιώς (confirm/prompt) δείξ' το
+ // If it's a simple alert -> hide Cancel, otherwise (confirm/prompt) show it
 cancelBtn.style.display = mode === "alert" ? "none" : "inline-flex";
-// prompt mode -> δείξε input
+// prompt mode -> show input
 if (inputWrapper && inputEl) {
   if (mode === "prompt") {
     inputWrapper.style.display = "block";
@@ -145,7 +146,7 @@ dialogRoot.setAttribute("aria-hidden", "false");
 document.body.classList.add("mb-dialog-open");
 document.documentElement.classList.add("mb-dialog-open");
 
-  // μικρό focus για keyboard users
+  // Small focus for keyboard users
   setTimeout(() => {
     confirmBtn.focus();
   }, 10);
@@ -185,6 +186,10 @@ document.documentElement.classList.remove("mb-dialog-open");
   currentResolver(value);
 }
 
+  // Clear message content to prevent HTML/XSS issues after dialog closes
+  if (messageEl) {
+    messageEl.innerHTML = '';
+  }
 
   currentResolver = null;
   currentMode = "alert";
