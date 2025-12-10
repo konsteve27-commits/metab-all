@@ -223,6 +223,9 @@ resultsDiv.addEventListener('click', (e) => {
     const btn = e.target.closest('.info-btn');
     if (!btn) return;
     
+    // *** ΝΕΑ ΛΟΓΙΚΗ: Αποθήκευση του κουμπιού που πατήθηκε ***
+    const triggerButton = btn; 
+    
     const microKey = btn.dataset.micro;
     
     // Map names for pop-up display
@@ -242,10 +245,16 @@ resultsDiv.addEventListener('click', (e) => {
         <p style="margin-top: 10px;"><strong>Primary Food Sources:</strong> ${source}</p>
     `;
 
+    // Καλούμε το metaballAlert και, όταν η υπόσχεση ολοκληρωθεί (το modal κλείσει):
     metaballAlert(messageHTML, {
         type: 'info',
         title: `${microName} Info`,
+    }).then(() => {
+        // *** ΕΦΑΡΜΟΓΗ ΤΗΣ ΛΥΣΗΣ: Επαναφορά της εστίασης στο κουμπί ***
+        if (triggerButton) {
+            triggerButton.focus();
+        }
     });
 });
 
-});
+}); // End of DOMContentLoaded
