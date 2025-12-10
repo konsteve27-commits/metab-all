@@ -1,213 +1,356 @@
-// ===== foodData.js =====
-// Nutritional values per 100 g (average, USDA + EFSA)
 export const foodData = {
-  // === MEATS & PROTEINS ===
-"Chicken Breast (raw)": { kcal: 120, protein: 22, carbs: 0, fat: 2.6, fibre: 0, iron: 0.7, calcium: 12, magnesium: 25, potassium: 230, zinc: 1.0, vitaminA: 13, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 0.3, folate: 5 },
-"Chicken Breast (cooked)": { kcal: 165, protein: 31, carbs: 0, fat: 3.6, fibre: 0, iron: 1.0, calcium: 15, magnesium: 29, potassium: 256, zinc: 1.1, vitaminA: 15, vitaminD: 0.1, vitaminE: 0.4, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 0.3, folate: 6 },
-"Beef (lean, raw)": { kcal: 187, protein: 26, carbs: 0, fat: 9, fibre: 0, iron: 2.6, calcium: 18, magnesium: 20, potassium: 270, zinc: 4.8, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 1.0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 2.5, folate: 6 },
-"Beef (cooked)": { kcal: 250, protein: 27, carbs: 0, fat: 15, fibre: 0, iron: 2.5, calcium: 20, magnesium: 21, potassium: 310, zinc: 4.5, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.4, vitaminK: 1.2, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 2.4, folate: 7 },
-"Pork (lean, raw)": { kcal: 143, protein: 21, carbs: 0, fat: 6, fibre: 0, iron: 0.9, calcium: 10, magnesium: 23, potassium: 360, zinc: 2.4, vitaminA: 5, vitaminD: 0.2, vitaminE: 0.3, vitaminK: 0.2, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 0.7, folate: 2 },
-"Pork (cooked)": { kcal: 198, protein: 27, carbs: 0, fat: 9, fibre: 0, iron: 1.0, calcium: 12, magnesium: 24, potassium: 400, zinc: 2.8, vitaminA: 7, vitaminD: 0.3, vitaminE: 0.4, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 0.8, folate: 3 },
-"Salmon (raw)": { kcal: 208, protein: 20, carbs: 0, fat: 13, fibre: 0, iron: 0.3, calcium: 9, magnesium: 29, potassium: 490, zinc: 0.6, vitaminA: 40, vitaminD: 10.9, vitaminE: 2.8, vitaminK: 0.4, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 3.2, folate: 5 },
-"Salmon (cooked)": { kcal: 232, protein: 25, carbs: 0, fat: 14, fibre: 0, iron: 0.4, calcium: 10, magnesium: 30, potassium: 530, zinc: 0.7, vitaminA: 45, vitaminD: 11.0, vitaminE: 3.0, vitaminK: 0.5, vitaminC: 0, vitaminB6: 0.7, vitaminB12: 3.3, folate: 6 },
-"Tuna (raw)": { kcal: 130, protein: 29, carbs: 0, fat: 0.6, fibre: 0, iron: 1.0, calcium: 4, magnesium: 35, potassium: 250, zinc: 0.5, vitaminA: 20, vitaminD: 1.7, vitaminE: 1.0, vitaminK: 0.3, vitaminC: 0, vitaminB6: 1.0, vitaminB12: 2.5, folate: 2 },
-"Tuna (cooked)": { kcal: 150, protein: 30, carbs: 0, fat: 1.0, fibre: 0, iron: 1.1, calcium: 6, magnesium: 36, potassium: 270, zinc: 0.6, vitaminA: 22, vitaminD: 1.8, vitaminE: 1.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 1.0, vitaminB12: 2.6, folate: 2 },
-"Egg (raw)": { kcal: 143, protein: 13, carbs: 1.1, fat: 10, fibre: 0, iron: 1.8, calcium: 50, magnesium: 10, potassium: 126, zinc: 1.3, vitaminA: 160, vitaminD: 2.0, vitaminE: 1.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.1, folate: 47 },
-"Egg (cooked)": { kcal: 155, protein: 13, carbs: 1.1, fat: 11, fibre: 0, iron: 1.8, calcium: 50, magnesium: 10, potassium: 126, zinc: 1.3, vitaminA: 160, vitaminD: 2.0, vitaminE: 1.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.1, folate: 44 },
-"Tofu (firm)": { kcal: 76, protein: 8, carbs: 1.9, fat: 4.8, fibre: 0.3, iron: 1.6, calcium: 350, magnesium: 30, potassium: 121, zinc: 1.0, vitaminA: 2, vitaminD: 0, vitaminE: 0.3, vitaminK: 2.0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 25 },
-"Lentils (raw)": { kcal: 353, protein: 26, carbs: 60, fat: 1.1, fibre: 11, iron: 6.5, calcium: 35, magnesium: 47, potassium: 677, zinc: 3.3, vitaminA: 8, vitaminD: 0, vitaminE: 0.5, vitaminK: 5, vitaminC: 5, vitaminB6: 0.5, vitaminB12: 0, folate: 479 },
-"Lentils (cooked)": { kcal: 116, protein: 9, carbs: 20, fat: 0.4, fibre: 7.9, iron: 3.3, calcium: 19, magnesium: 36, potassium: 369, zinc: 1.3, vitaminA: 8, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.7, vitaminC: 1.5, vitaminB6: 0.2, vitaminB12: 0, folate: 181 },
-"Chickpeas (raw)": { kcal: 364, protein: 19, carbs: 61, fat: 6, fibre: 17, iron: 6.2, calcium: 105, magnesium: 115, potassium: 875, zinc: 3.4, vitaminA: 67, vitaminD: 0, vitaminE: 0.8, vitaminK: 9, vitaminC: 4, vitaminB6: 0.5, vitaminB12: 0, folate: 557 },
-"Chickpeas (cooked)": { kcal: 164, protein: 9, carbs: 27, fat: 2.6, fibre: 7.6, iron: 2.9, calcium: 49, magnesium: 48, potassium: 291, zinc: 1.5, vitaminA: 27, vitaminD: 0, vitaminE: 0.4, vitaminK: 4.0, vitaminC: 1.3, vitaminB6: 0.1, vitaminB12: 0, folate: 172 },
-"Kidney Beans (raw)": { kcal: 333, protein: 24, carbs: 60, fat: 0.8, fibre: 25, iron: 8.2, calcium: 83, magnesium: 140, potassium: 1350, zinc: 2.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 7, vitaminC: 5, vitaminB6: 0.4, vitaminB12: 0, folate: 394 },
-"Kidney Beans (cooked)": { kcal: 127, protein: 9, carbs: 22, fat: 0.5, fibre: 6.4, iron: 2.9, calcium: 28, magnesium: 45, potassium: 400, zinc: 1.1, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.5, vitaminC: 2.0, vitaminB6: 0.1, vitaminB12: 0, folate: 130 },
 
+// =========================================
+  // MEATS & POULTRY
+  // =========================================
+  
+  // --- CHICKEN ---
+  "Chicken Breast (raw)": { kcal: 120, protein: 22.5, carbs: 0, fat: 2.6, fibre: 0, iron: 0.7, calcium: 11, magnesium: 28, potassium: 255, zinc: 0.8, vitaminA: 10, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0.3, folate: 4 },
+  "Chicken Breast (cooked)": { kcal: 165, protein: 31, carbs: 0, fat: 3.6, fibre: 0, iron: 1.0, calcium: 15, magnesium: 29, potassium: 256, zinc: 1.0, vitaminA: 12, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 0.3, folate: 4 },
+  "Chicken Thigh (raw, skinless)": { kcal: 120, protein: 19, carbs: 0, fat: 4, fibre: 0, iron: 0.9, calcium: 10, magnesium: 20, potassium: 230, zinc: 1.6, vitaminA: 15, vitaminD: 0.1, vitaminE: 0.2, vitaminK: 1, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.4, folate: 6 },
+  "Chicken Thigh (cooked, skinless)": { kcal: 179, protein: 24, carbs: 0, fat: 8, fibre: 0, iron: 1.3, calcium: 12, magnesium: 24, potassium: 240, zinc: 2.0, vitaminA: 10, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 1.5, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 0.6, folate: 7 },
+  "Chicken Thigh (raw, with skin)": { kcal: 211, protein: 17, carbs: 0, fat: 15, fibre: 0, iron: 0.9, calcium: 11, magnesium: 19, potassium: 220, zinc: 1.5, vitaminA: 45, vitaminD: 0.1, vitaminE: 0.4, vitaminK: 2, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.3, folate: 5 },
+  "Chicken Thigh (cooked, with skin)": { kcal: 232, protein: 22, carbs: 0, fat: 16, fibre: 0, iron: 1.2, calcium: 12, magnesium: 22, potassium: 230, zinc: 1.9, vitaminA: 50, vitaminD: 0.2, vitaminE: 0.5, vitaminK: 2.5, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.4, folate: 6 },
+  "Chicken Drumstick (raw, with skin)": { kcal: 161, protein: 19, carbs: 0, fat: 9, fibre: 0, iron: 0.8, calcium: 10, magnesium: 20, potassium: 225, zinc: 1.8, vitaminA: 30, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 1.5, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.3, folate: 5 },
+  "Chicken Drumstick (cooked, with skin)": { kcal: 216, protein: 27, carbs: 0, fat: 12, fibre: 0, iron: 1.1, calcium: 13, magnesium: 24, potassium: 250, zinc: 2.3, vitaminA: 35, vitaminD: 0.1, vitaminE: 0.4, vitaminK: 2, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.4, folate: 6 },
+  "Chicken Wing (raw, with skin)": { kcal: 191, protein: 17.5, carbs: 0, fat: 13, fibre: 0, iron: 0.7, calcium: 10, magnesium: 17, potassium: 180, zinc: 1.1, vitaminA: 40, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 1.2, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0.2, folate: 3 },
+  "Chicken Wing (cooked, with skin)": { kcal: 290, protein: 27, carbs: 0, fat: 19.5, fibre: 0, iron: 1.0, calcium: 15, magnesium: 20, potassium: 210, zinc: 1.5, vitaminA: 55, vitaminD: 0.2, vitaminE: 0.5, vitaminK: 1.8, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.3, folate: 4 },
+  "Chicken Liver (raw)": { kcal: 119, protein: 17, carbs: 0.7, fat: 4.8, fibre: 0, iron: 9, calcium: 8, magnesium: 19, potassium: 230, zinc: 2.7, vitaminA: 3300, vitaminD: 0, vitaminE: 0.7, vitaminK: 0, vitaminC: 18, vitaminB6: 0.6, vitaminB12: 16, folate: 588 },
+  "Chicken Liver (cooked)": { kcal: 167, protein: 24.5, carbs: 0.9, fat: 6.5, fibre: 0, iron: 11.6, calcium: 10, magnesium: 25, potassium: 260, zinc: 4.0, vitaminA: 3900, vitaminD: 0, vitaminE: 0.8, vitaminK: 0, vitaminC: 25, vitaminB6: 0.8, vitaminB12: 20, folate: 570 },
 
-  // === GRAINS & CEREALS ===
-"White Rice (raw)": { kcal: 365, protein: 7.1, carbs: 80, fat: 0.7, fibre: 1.3, iron: 1.5, calcium: 28, magnesium: 25, potassium: 115, zinc: 1.1, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 58 },
-"White Rice (cooked)": { kcal: 130, protein: 2.7, carbs: 28, fat: 0.3, fibre: 0.4, iron: 0.2, calcium: 10, magnesium: 12, potassium: 35, zinc: 0.4, vitaminA: 0, vitaminD: 0, vitaminE: 0.0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 8 },
-"Brown Rice (raw)": { kcal: 370, protein: 7.9, carbs: 77, fat: 2.9, fibre: 3.5, iron: 1.8, calcium: 33, magnesium: 143, potassium: 223, zinc: 2.0, vitaminA: 0, vitaminD: 0, vitaminE: 0.6, vitaminK: 1.8, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0, folate: 20 },
-"Brown Rice (cooked)": { kcal: 111, protein: 2.6, carbs: 23, fat: 0.9, fibre: 1.8, iron: 0.4, calcium: 10, magnesium: 43, potassium: 79, zinc: 0.6, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 9 },
-"Oats (raw)": { kcal: 389, protein: 16.9, carbs: 66, fat: 6.9, fibre: 10.6, iron: 4.7, calcium: 54, magnesium: 177, potassium: 429, zinc: 3.9, vitaminA: 0, vitaminD: 0, vitaminE: 0.4, vitaminK: 2.0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 56 },
-"Oats (cooked)": { kcal: 71, protein: 2.5, carbs: 12, fat: 1.5, fibre: 1.7, iron: 0.6, calcium: 8, magnesium: 27, potassium: 61, zinc: 0.6, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.2, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0, folate: 7 },
-"Quinoa (raw)": { kcal: 368, protein: 14.1, carbs: 64, fat: 6.1, fibre: 7.0, iron: 4.6, calcium: 47, magnesium: 197, potassium: 563, zinc: 3.1, vitaminA: 1, vitaminD: 0, vitaminE: 2.4, vitaminK: 2.0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0, folate: 184 },
-"Quinoa (cooked)": { kcal: 120, protein: 4.1, carbs: 21, fat: 1.9, fibre: 2.8, iron: 1.5, calcium: 17, magnesium: 64, potassium: 172, zinc: 1.1, vitaminA: 0, vitaminD: 0, vitaminE: 0.6, vitaminK: 0.6, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 42 },
-"Whole Wheat Bread": { kcal: 247, protein: 12, carbs: 41, fat: 3.4, fibre: 6.8, iron: 3.6, calcium: 107, magnesium: 91, potassium: 230, zinc: 2.6, vitaminA: 0, vitaminD: 0, vitaminE: 0.4, vitaminK: 1.1, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 87 },
-"White Bread": { kcal: 266, protein: 8.8, carbs: 49, fat: 3.3, fibre: 2.7, iron: 3.6, calcium: 150, magnesium: 20, potassium: 115, zinc: 0.6, vitaminA: 0, vitaminD: 0, vitaminE: 0.2, vitaminK: 1.0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 99 },
-"Pasta (raw)": { kcal: 371, protein: 13, carbs: 75, fat: 1.5, fibre: 3.2, iron: 1.3, calcium: 21, magnesium: 53, potassium: 223, zinc: 1.2, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 0.4, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 62 },
-"Pasta (cooked)": { kcal: 131, protein: 5.0, carbs: 25, fat: 1.1, fibre: 1.5, iron: 0.4, calcium: 9, magnesium: 22, potassium: 78, zinc: 0.5, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0, folate: 18 },
-"Couscous (raw)": { kcal: 376, protein: 13, carbs: 77, fat: 0.6, fibre: 5.0, iron: 0.6, calcium: 24, magnesium: 44, potassium: 170, zinc: 0.7, vitaminA: 0, vitaminD: 0, vitaminE: 0.2, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 20 },
-"Couscous (cooked)": { kcal: 112, protein: 3.8, carbs: 23, fat: 0.2, fibre: 1.4, iron: 0.4, calcium: 8, magnesium: 24, potassium: 58, zinc: 0.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.0, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0, folate: 15 },
-"Barley (raw)": { kcal: 354, protein: 12.5, carbs: 73, fat: 2.3, fibre: 17.3, iron: 2.5, calcium: 33, magnesium: 133, potassium: 452, zinc: 2.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.6, vitaminK: 2.2, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0, folate: 23 },
-"Barley (cooked)": { kcal: 123, protein: 2.3, carbs: 28, fat: 0.4, fibre: 3.8, iron: 1.3, calcium: 11, magnesium: 33, potassium: 93, zinc: 1.0, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.4, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 16 },
+  // --- TURKEY ---
+  "Turkey Breast (raw)": { kcal: 110, protein: 23, carbs: 0, fat: 1.5, fibre: 0, iron: 0.8, calcium: 12, magnesium: 28, potassium: 290, zinc: 1.3, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.8, vitaminB12: 0.4, folate: 5 },
+  "Turkey Breast (cooked)": { kcal: 135, protein: 30, carbs: 0, fat: 1, fibre: 0, iron: 1.2, calcium: 14, magnesium: 30, potassium: 310, zinc: 1.8, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.9, vitaminB12: 0.5, folate: 6 },
+  "Turkey Thigh (raw, skinless)": { kcal: 140, protein: 20, carbs: 0, fat: 6, fibre: 0, iron: 1.4, calcium: 15, magnesium: 23, potassium: 260, zinc: 2.8, vitaminA: 5, vitaminD: 0.2, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 0.6, folate: 8 },
+  "Turkey Thigh (cooked, skinless)": { kcal: 170, protein: 28, carbs: 0, fat: 6.5, fibre: 0, iron: 1.8, calcium: 18, magnesium: 27, potassium: 290, zinc: 3.5, vitaminA: 5, vitaminD: 0.2, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0.7, folate: 9 },
+  "Turkey Mince (Lean, raw)": { kcal: 150, protein: 22, carbs: 0, fat: 7, fibre: 0, iron: 1.2, calcium: 18, magnesium: 22, potassium: 270, zinc: 2.5, vitaminA: 5, vitaminD: 0.2, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0.5, folate: 6 },
 
+  // --- BEEF ---
+  "Beef Mince (5% fat, raw)": { kcal: 135, protein: 21, carbs: 0, fat: 5, fibre: 0, iron: 2.0, calcium: 12, magnesium: 20, potassium: 300, zinc: 4.5, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 1.0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 2.0, folate: 8 },
+  "Beef Mince (10% fat, raw)": { kcal: 176, protein: 20, carbs: 0, fat: 10, fibre: 0, iron: 1.9, calcium: 12, magnesium: 19, potassium: 290, zinc: 4.2, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 1.1, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 2.0, folate: 7 },
+  "Beef Mince (20% fat, raw)": { kcal: 254, protein: 17, carbs: 0, fat: 20, fibre: 0, iron: 1.7, calcium: 11, magnesium: 17, potassium: 270, zinc: 3.8, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 1.2, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 1.9, folate: 6 },
+  "Beef Steak (Sirloin/Fillet, raw)": { kcal: 180, protein: 22, carbs: 0, fat: 10, fibre: 0, iron: 2.2, calcium: 15, magnesium: 22, potassium: 320, zinc: 4.8, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.4, vitaminK: 1.5, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 2.5, folate: 9 },
+  "Beef Steak (cooked)": { kcal: 250, protein: 27, carbs: 0, fat: 15, fibre: 0, iron: 3.2, calcium: 8, magnesium: 24, potassium: 350, zinc: 5.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 1.6, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 2.6, folate: 9 },
+  "Beef Liver (raw)": { kcal: 135, protein: 20, carbs: 3.6, fat: 3.6, fibre: 0, iron: 4.9, calcium: 5, magnesium: 18, potassium: 310, zinc: 4.0, vitaminA: 4968, vitaminD: 1.2, vitaminE: 0.7, vitaminK: 3.0, vitaminC: 1.3, vitaminB6: 1.0, vitaminB12: 59, folate: 290 },
+  "Beef Liver (cooked)": { kcal: 175, protein: 26, carbs: 5, fat: 4.5, fibre: 0, iron: 6.2, calcium: 6, magnesium: 21, potassium: 340, zinc: 5.2, vitaminA: 5500, vitaminD: 1.3, vitaminE: 0.8, vitaminK: 3.2, vitaminC: 1.0, vitaminB6: 1.1, vitaminB12: 70, folate: 250 },
 
-  // === OILS & FATS ===
-"Olive Oil (extra virgin)": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.6, calcium: 1, magnesium: 0, potassium: 1, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 14.4, vitaminK: 60, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Coconut Oil": { kcal: 862, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.1, calcium: 1, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.5, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Butter": { kcal: 717, protein: 0.9, carbs: 0.1, fat: 81, fibre: 0, iron: 0.0, calcium: 24, magnesium: 2, potassium: 24, zinc: 0.1, vitaminA: 684, vitaminD: 1.5, vitaminE: 2.3, vitaminK: 7, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0.2, folate: 3 },
-"Margarine": { kcal: 717, protein: 0.2, carbs: 0.7, fat: 80, fibre: 0, iron: 0.0, calcium: 4, magnesium: 1, potassium: 16, zinc: 0.0, vitaminA: 550, vitaminD: 7.5, vitaminE: 8.0, vitaminK: 62, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Avocado Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 13.5, vitaminK: 21, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Canola Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.1, calcium: 0, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 17.5, vitaminK: 71, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Sunflower Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 41, vitaminK: 5.4, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Flaxseed Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.0, calcium: 1, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 17.5, vitaminK: 9, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Sesame Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.1, calcium: 1, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 1.4, vitaminK: 13.6, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Peanut Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 15.7, vitaminK: 0.0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
-"Corn Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 14.3, vitaminK: 1.9, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  // --- PORK ---
+  "Pork Loin (raw)": { kcal: 143, protein: 21, carbs: 0, fat: 6, fibre: 0, iron: 0.8, calcium: 14, magnesium: 26, potassium: 360, zinc: 2.1, vitaminA: 2, vitaminD: 0.5, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.7, vitaminB12: 0.6, folate: 0 },
+  "Pork Loin (cooked)": { kcal: 198, protein: 27, carbs: 0, fat: 9, fibre: 0, iron: 1.0, calcium: 18, magnesium: 28, potassium: 400, zinc: 2.8, vitaminA: 2, vitaminD: 0.6, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.7, vitaminB12: 0.7, folate: 0 },
+  "Pork Belly (raw)": { kcal: 518, protein: 9, carbs: 0, fat: 53, fibre: 0, iron: 0.5, calcium: 8, magnesium: 9, potassium: 185, zinc: 1.0, vitaminA: 0, vitaminD: 0.8, vitaminE: 0.4, vitaminK: 0, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0.5, folate: 0 },
+  "Pork Tenderloin (raw)": { kcal: 120, protein: 22, carbs: 0, fat: 3.5, fibre: 0, iron: 1.1, calcium: 16, magnesium: 28, potassium: 400, zinc: 2.4, vitaminA: 0, vitaminD: 0.4, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.8, vitaminB12: 0.5, folate: 2 },
+  "Pork Mince (10% fat, raw)": { kcal: 170, protein: 20, carbs: 0, fat: 10, fibre: 0, iron: 1.0, calcium: 15, magnesium: 22, potassium: 330, zinc: 2.5, vitaminA: 2, vitaminD: 0.5, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 0.7, folate: 2 },
+  "Bacon (raw)": { kcal: 407, protein: 13, carbs: 1.5, fat: 39, fibre: 0, iron: 0.7, calcium: 8, magnesium: 15, potassium: 200, zinc: 1.8, vitaminA: 0, vitaminD: 0.6, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.5, folate: 0 },
+  "Bacon (cooked)": { kcal: 541, protein: 37, carbs: 1.4, fat: 42, fibre: 0, iron: 1.5, calcium: 12, magnesium: 28, potassium: 560, zinc: 3.5, vitaminA: 0, vitaminD: 0.8, vitaminE: 0.4, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 1.0, folate: 0 },
 
+  // --- LAMB ---
+  "Lamb Chop (raw)": { kcal: 280, protein: 17, carbs: 0, fat: 23, fibre: 0, iron: 1.8, calcium: 16, magnesium: 22, potassium: 250, zinc: 3.2, vitaminA: 0, vitaminD: 0.2, vitaminE: 0.5, vitaminK: 4, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 2.3, folate: 2 },
+  "Lamb Chop (cooked)": { kcal: 350, protein: 24, carbs: 0, fat: 28, fibre: 0, iron: 2.2, calcium: 18, magnesium: 25, potassium: 300, zinc: 4.5, vitaminA: 0, vitaminD: 0.2, vitaminE: 0.6, vitaminK: 5, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 2.6, folate: 3 },
+  "Lamb Leg (Lean, raw)": { kcal: 160, protein: 21, carbs: 0, fat: 8, fibre: 0, iron: 1.9, calcium: 10, magnesium: 23, potassium: 310, zinc: 4.0, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.3, vitaminK: 3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 2.4, folate: 2 },
+  "Lamb Leg (Lean, cooked)": { kcal: 200, protein: 28, carbs: 0, fat: 9, fibre: 0, iron: 2.4, calcium: 12, magnesium: 28, potassium: 350, zinc: 5.0, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.4, vitaminK: 4, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 2.7, folate: 3 },
 
-  // === VEGETABLES ===
-"Spinach (raw)": { kcal: 23, protein: 2.9, carbs: 3.6, fat: 0.4, fibre: 2.2, iron: 2.7, calcium: 99, magnesium: 79, potassium: 558, zinc: 0.5, vitaminA: 469, vitaminD: 0, vitaminE: 2.0, vitaminK: 483, vitaminC: 28, vitaminB6: 0.2, vitaminB12: 0, folate: 194 },
-"Spinach (cooked)": { kcal: 41, protein: 3.0, carbs: 4.3, fat: 0.5, fibre: 2.4, iron: 3.6, calcium: 136, magnesium: 87, potassium: 466, zinc: 0.6, vitaminA: 570, vitaminD: 0, vitaminE: 2.2, vitaminK: 540, vitaminC: 9, vitaminB6: 0.2, vitaminB12: 0, folate: 146 },
-"Kale (raw)": { kcal: 49, protein: 4.3, carbs: 8.8, fat: 0.9, fibre: 3.6, iron: 1.5, calcium: 150, magnesium: 47, potassium: 491, zinc: 0.4, vitaminA: 681, vitaminD: 0, vitaminE: 0.7, vitaminK: 704, vitaminC: 120, vitaminB6: 0.3, vitaminB12: 0, folate: 141 },
-"Broccoli (raw)": { kcal: 34, protein: 2.8, carbs: 6.6, fat: 0.4, fibre: 2.6, iron: 0.7, calcium: 47, magnesium: 21, potassium: 316, zinc: 0.4, vitaminA: 31, vitaminD: 0, vitaminE: 0.8, vitaminK: 101, vitaminC: 89, vitaminB6: 0.2, vitaminB12: 0, folate: 63 },
-"Broccoli (cooked)": { kcal: 35, protein: 2.4, carbs: 7.2, fat: 0.4, fibre: 3.3, iron: 0.6, calcium: 40, magnesium: 20, potassium: 293, zinc: 0.4, vitaminA: 30, vitaminD: 0, vitaminE: 0.6, vitaminK: 141, vitaminC: 65, vitaminB6: 0.2, vitaminB12: 0, folate: 108 },
-"Carrot (raw)": { kcal: 41, protein: 0.9, carbs: 10, fat: 0.2, fibre: 2.8, iron: 0.3, calcium: 33, magnesium: 12, potassium: 320, zinc: 0.2, vitaminA: 835, vitaminD: 0, vitaminE: 0.7, vitaminK: 13, vitaminC: 6, vitaminB6: 0.1, vitaminB12: 0, folate: 19 },
-"Carrot (cooked)": { kcal: 35, protein: 0.8, carbs: 8.2, fat: 0.2, fibre: 3.0, iron: 0.3, calcium: 28, magnesium: 10, potassium: 230, zinc: 0.2, vitaminA: 775, vitaminD: 0, vitaminE: 0.5, vitaminK: 12, vitaminC: 3, vitaminB6: 0.1, vitaminB12: 0, folate: 14 },
-"Zucchini (raw)": { kcal: 17, protein: 1.2, carbs: 3.1, fat: 0.3, fibre: 1.0, iron: 0.4, calcium: 16, magnesium: 18, potassium: 261, zinc: 0.3, vitaminA: 10, vitaminD: 0, vitaminE: 0.1, vitaminK: 4.3, vitaminC: 17, vitaminB6: 0.2, vitaminB12: 0, folate: 24 },
-"Zucchini (cooked)": { kcal: 15, protein: 1.1, carbs: 2.7, fat: 0.3, fibre: 1.3, iron: 0.3, calcium: 13, magnesium: 17, potassium: 220, zinc: 0.2, vitaminA: 8, vitaminD: 0, vitaminE: 0.1, vitaminK: 3.8, vitaminC: 10, vitaminB6: 0.1, vitaminB12: 0, folate: 19 },
-"Tomato (raw)": { kcal: 18, protein: 0.9, carbs: 3.9, fat: 0.2, fibre: 1.2, iron: 0.3, calcium: 10, magnesium: 11, potassium: 237, zinc: 0.2, vitaminA: 42, vitaminD: 0, vitaminE: 0.5, vitaminK: 7.9, vitaminC: 14, vitaminB6: 0.1, vitaminB12: 0, folate: 15 },
-"Tomato (cooked)": { kcal: 29, protein: 1.3, carbs: 6.6, fat: 0.3, fibre: 1.7, iron: 0.5, calcium: 14, magnesium: 20, potassium: 340, zinc: 0.3, vitaminA: 75, vitaminD: 0, vitaminE: 0.9, vitaminK: 13, vitaminC: 23, vitaminB6: 0.1, vitaminB12: 0, folate: 18 },
-"Cucumber (raw)": { kcal: 15, protein: 0.7, carbs: 3.6, fat: 0.1, fibre: 0.5, iron: 0.3, calcium: 16, magnesium: 13, potassium: 147, zinc: 0.2, vitaminA: 5, vitaminD: 0, vitaminE: 0.1, vitaminK: 16.4, vitaminC: 3, vitaminB6: 0.1, vitaminB12: 0, folate: 7 },
-"Peppers (red, raw)": { kcal: 31, protein: 1.0, carbs: 6.0, fat: 0.3, fibre: 2.1, iron: 0.4, calcium: 7, magnesium: 12, potassium: 211, zinc: 0.3, vitaminA: 157, vitaminD: 0, vitaminE: 1.6, vitaminK: 7.4, vitaminC: 127, vitaminB6: 0.3, vitaminB12: 0, folate: 46 },
-"Peppers (green, raw)": { kcal: 20, protein: 0.9, carbs: 4.6, fat: 0.2, fibre: 1.7, iron: 0.3, calcium: 10, magnesium: 10, potassium: 175, zinc: 0.1, vitaminA: 18, vitaminD: 0, vitaminE: 0.4, vitaminK: 7.4, vitaminC: 80, vitaminB6: 0.2, vitaminB12: 0, folate: 10 },
-"Onion (raw)": { kcal: 40, protein: 1.1, carbs: 9.3, fat: 0.1, fibre: 1.7, iron: 0.2, calcium: 23, magnesium: 10, potassium: 146, zinc: 0.2, vitaminA: 2, vitaminD: 0, vitaminE: 0.02, vitaminK: 0.4, vitaminC: 7, vitaminB6: 0.1, vitaminB12: 0, folate: 19 },
-"Garlic (raw)": { kcal: 149, protein: 6.4, carbs: 33, fat: 0.5, fibre: 2.1, iron: 1.7, calcium: 181, magnesium: 25, potassium: 401, zinc: 1.2, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 1.7, vitaminC: 31, vitaminB6: 1.2, vitaminB12: 0, folate: 3 },
-"Potato (raw)": { kcal: 77, protein: 2.0, carbs: 17, fat: 0.1, fibre: 2.2, iron: 0.8, calcium: 12, magnesium: 23, potassium: 421, zinc: 0.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 2, vitaminC: 19, vitaminB6: 0.3, vitaminB12: 0, folate: 16 },
-"Potato (cooked)": { kcal: 87, protein: 1.9, carbs: 20, fat: 0.1, fibre: 2.8, iron: 0.3, calcium: 5, magnesium: 23, potassium: 379, zinc: 0.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.05, vitaminK: 1.8, vitaminC: 8, vitaminB6: 0.2, vitaminB12: 0, folate: 11 },
-"Sweet Potato (raw)": { kcal: 86, protein: 1.6, carbs: 20, fat: 0.1, fibre: 3.0, iron: 0.6, calcium: 30, magnesium: 25, potassium: 337, zinc: 0.3, vitaminA: 709, vitaminD: 0, vitaminE: 0.3, vitaminK: 2.5, vitaminC: 3, vitaminB6: 0.2, vitaminB12: 0, folate: 11 },
-"Sweet Potato (cooked)": { kcal: 90, protein: 2.0, carbs: 21, fat: 0.2, fibre: 3.3, iron: 0.7, calcium: 38, magnesium: 27, potassium: 475, zinc: 0.4, vitaminA: 961, vitaminD: 0, vitaminE: 0.7, vitaminK: 2.6, vitaminC: 19, vitaminB6: 0.3, vitaminB12: 0, folate: 14 },
+  // --- OTHER ---
+  "Veal (Lean, raw)": { kcal: 110, protein: 20, carbs: 0, fat: 3, fibre: 0, iron: 0.9, calcium: 12, magnesium: 24, potassium: 340, zinc: 3.0, vitaminA: 0, vitaminD: 0.1, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 1.5, folate: 5 },
+  "Rabbit (raw)": { kcal: 136, protein: 20, carbs: 0, fat: 5.5, fibre: 0, iron: 2.3, calcium: 18, magnesium: 25, potassium: 350, zinc: 1.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 6.5, folate: 8 },
+  "Duck Breast (raw, skinless)": { kcal: 135, protein: 20, carbs: 0, fat: 6, fibre: 0, iron: 4.5, calcium: 11, magnesium: 22, potassium: 270, zinc: 2.5, vitaminA: 15, vitaminD: 0.1, vitaminE: 0.7, vitaminK: 0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0.3, folate: 10 },
+  "Duck Breast (raw, with skin)": { kcal: 337, protein: 11, carbs: 0, fat: 32, fibre: 0, iron: 2.4, calcium: 10, magnesium: 16, potassium: 190, zinc: 1.3, vitaminA: 60, vitaminD: 0.1, vitaminE: 0.7, vitaminK: 0, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0.2, folate: 6 },
+  // =========================================
+  // FISH & SEAFOOD
+  // =========================================
+  
+  // --- FISH (FATTY & LEAN) ---
+  "Salmon (raw)": { kcal: 208, protein: 20, carbs: 0, fat: 13, fibre: 0, iron: 0.3, calcium: 9, magnesium: 27, potassium: 363, zinc: 0.4, vitaminA: 40, vitaminD: 10.9, vitaminE: 2.8, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 3.2, folate: 25 },
+  "Salmon (cooked/baked)": { kcal: 232, protein: 25, carbs: 0, fat: 14, fibre: 0, iron: 0.4, calcium: 10, magnesium: 30, potassium: 400, zinc: 0.5, vitaminA: 45, vitaminD: 11, vitaminE: 3.0, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.7, vitaminB12: 3.5, folate: 28 },
+  "Tuna (fresh, raw)": { kcal: 144, protein: 23, carbs: 0, fat: 4.9, fibre: 0, iron: 1.0, calcium: 10, magnesium: 35, potassium: 400, zinc: 0.5, vitaminA: 20, vitaminD: 1.7, vitaminE: 1.0, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0.9, vitaminB12: 2.5, folate: 2 },
+  "Tuna (canned in water, drained)": { kcal: 116, protein: 26, carbs: 0, fat: 0.8, fibre: 0, iron: 1.6, calcium: 14, magnesium: 30, potassium: 250, zinc: 0.7, vitaminA: 10, vitaminD: 1.5, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 2.9, folate: 4 },
+  "Tuna (canned in oil, drained)": { kcal: 198, protein: 27, carbs: 0, fat: 9, fibre: 0, iron: 1.5, calcium: 13, magnesium: 30, potassium: 260, zinc: 0.8, vitaminA: 15, vitaminD: 1.8, vitaminE: 1.2, vitaminK: 2, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 2.8, folate: 4 },
+  "Cod (raw)": { kcal: 82, protein: 18, carbs: 0, fat: 0.7, fibre: 0, iron: 0.4, calcium: 16, magnesium: 32, potassium: 413, zinc: 0.4, vitaminA: 12, vitaminD: 1.1, vitaminE: 0.5, vitaminK: 0.1, vitaminC: 1, vitaminB6: 0.2, vitaminB12: 1.0, folate: 7 },
+  "Cod (baked/steamed)": { kcal: 105, protein: 23, carbs: 0, fat: 0.9, fibre: 0, iron: 0.5, calcium: 18, magnesium: 35, potassium: 440, zinc: 0.5, vitaminA: 13, vitaminD: 1.2, vitaminE: 0.6, vitaminK: 0.1, vitaminC: 1, vitaminB6: 0.3, vitaminB12: 1.2, folate: 8 },
+  "Sea Bass (Lavraki, raw)": { kcal: 97, protein: 18.4, carbs: 0, fat: 2.0, fibre: 0, iron: 0.3, calcium: 10, magnesium: 41, potassium: 256, zinc: 0.4, vitaminA: 2, vitaminD: 5.7, vitaminE: 0.1, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 0.3, folate: 5 },
+  "Sea Bass (Lavraki, grilled)": { kcal: 124, protein: 24, carbs: 0, fat: 2.6, fibre: 0, iron: 0.4, calcium: 13, magnesium: 53, potassium: 330, zinc: 0.5, vitaminA: 3, vitaminD: 7.3, vitaminE: 0.1, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0.4, folate: 6 },
+  "Sea Bream (Tsipoura, raw)": { kcal: 135, protein: 19, carbs: 0, fat: 6, fibre: 0, iron: 0.5, calcium: 15, magnesium: 35, potassium: 400, zinc: 0.5, vitaminA: 0, vitaminD: 8, vitaminE: 1, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 2, folate: 5 },
+  "Sea Bream (Tsipoura, grilled)": { kcal: 170, protein: 25, carbs: 0, fat: 7.5, fibre: 0, iron: 0.7, calcium: 20, magnesium: 45, potassium: 500, zinc: 0.7, vitaminA: 0, vitaminD: 10, vitaminE: 1.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 2.5, folate: 6 },
+  "Sardines (raw)": { kcal: 208, protein: 25, carbs: 0, fat: 11, fibre: 0, iron: 2.9, calcium: 382, magnesium: 39, potassium: 397, zinc: 1.3, vitaminA: 32, vitaminD: 4.8, vitaminE: 2.0, vitaminK: 2.6, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 8.9, folate: 10 },
+  "Anchovies (raw/fresh)": { kcal: 131, protein: 20, carbs: 0, fat: 4.8, fibre: 0, iron: 3.3, calcium: 147, magnesium: 41, potassium: 383, zinc: 1.7, vitaminA: 15, vitaminD: 1.7, vitaminE: 0.7, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.6, folate: 9 },
+  "Mackerel (raw)": { kcal: 205, protein: 19, carbs: 0, fat: 14, fibre: 0, iron: 1.6, calcium: 12, magnesium: 76, potassium: 314, zinc: 0.6, vitaminA: 50, vitaminD: 16, vitaminE: 1.5, vitaminK: 5, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 8.7, folate: 1 },
+  "Trout (raw)": { kcal: 148, protein: 20.8, carbs: 0, fat: 6.6, fibre: 0, iron: 1.5, calcium: 43, magnesium: 22, potassium: 361, zinc: 0.6, vitaminA: 17, vitaminD: 3.9, vitaminE: 2.4, vitaminK: 0, vitaminC: 0.5, vitaminB6: 0.2, vitaminB12: 4.5, folate: 13 },
+  "Swordfish (cooked)": { kcal: 172, protein: 23, carbs: 0, fat: 8, fibre: 0, iron: 1.4, calcium: 6, magnesium: 36, potassium: 506, zinc: 1.2, vitaminA: 40, vitaminD: 14, vitaminE: 1.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 1.7, folate: 2 },
 
+  // --- SHELLFISH & CEPHALOPODS ---
+  "Shrimp (raw)": { kcal: 85, protein: 20, carbs: 0.9, fat: 0.5, fibre: 0, iron: 0.5, calcium: 64, magnesium: 35, potassium: 260, zinc: 1.4, vitaminA: 2, vitaminD: 0.1, vitaminE: 1.3, vitaminK: 0, vitaminC: 2, vitaminB6: 0.1, vitaminB12: 1.2, folate: 3 },
+  "Shrimp (boiled/steamed)": { kcal: 99, protein: 24, carbs: 0.2, fat: 0.3, fibre: 0, iron: 0.6, calcium: 70, magnesium: 39, potassium: 260, zinc: 1.6, vitaminA: 3, vitaminD: 0.1, vitaminE: 1.5, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.5, folate: 4 },
+  "Octopus (raw)": { kcal: 82, protein: 15, carbs: 2.2, fat: 1.0, fibre: 0, iron: 5.3, calcium: 53, magnesium: 30, potassium: 350, zinc: 1.7, vitaminA: 45, vitaminD: 0, vitaminE: 1.2, vitaminK: 0, vitaminC: 5, vitaminB6: 0.4, vitaminB12: 20, folate: 16 },
+  "Octopus (boiled/grilled)": { kcal: 164, protein: 30, carbs: 4.4, fat: 2.1, fibre: 0, iron: 9.5, calcium: 106, magnesium: 60, potassium: 630, zinc: 3.3, vitaminA: 90, vitaminD: 0, vitaminE: 2.4, vitaminK: 0, vitaminC: 8, vitaminB6: 0.7, vitaminB12: 36, folate: 24 },
+  "Squid / Calamari (raw)": { kcal: 92, protein: 15.6, carbs: 3.1, fat: 1.4, fibre: 0, iron: 0.7, calcium: 32, magnesium: 33, potassium: 246, zinc: 1.5, vitaminA: 10, vitaminD: 0, vitaminE: 1.2, vitaminK: 0, vitaminC: 4.7, vitaminB6: 0.1, vitaminB12: 1.3, folate: 5 },
+  "Squid / Calamari (fried)": { kcal: 175, protein: 18, carbs: 8, fat: 7.5, fibre: 0, iron: 1.0, calcium: 35, magnesium: 38, potassium: 280, zinc: 1.7, vitaminA: 10, vitaminD: 0, vitaminE: 1.5, vitaminK: 5, vitaminC: 4, vitaminB6: 0.1, vitaminB12: 1.2, folate: 6 },
+  "Cuttlefish / Soupia (raw)": { kcal: 79, protein: 16, carbs: 0.8, fat: 0.7, fibre: 0, iron: 6.3, calcium: 92, magnesium: 30, potassium: 354, zinc: 1.7, vitaminA: 170, vitaminD: 0, vitaminE: 1, vitaminK: 0, vitaminC: 7, vitaminB6: 0.2, vitaminB12: 3, folate: 13 },
+  "Mussels (raw)": { kcal: 86, protein: 12, carbs: 3.7, fat: 2.2, fibre: 0, iron: 3.9, calcium: 26, magnesium: 34, potassium: 320, zinc: 1.6, vitaminA: 45, vitaminD: 0, vitaminE: 0.5, vitaminK: 0, vitaminC: 8, vitaminB6: 0.1, vitaminB12: 12, folate: 42 },
+  "Mussels (steamed)": { kcal: 172, protein: 24, carbs: 7.4, fat: 4.5, fibre: 0, iron: 6.7, calcium: 33, magnesium: 45, potassium: 300, zinc: 2.7, vitaminA: 90, vitaminD: 0, vitaminE: 1.0, vitaminK: 0, vitaminC: 13, vitaminB6: 0.1, vitaminB12: 24, folate: 76 },
+  "Oysters (raw)": { kcal: 68, protein: 7, carbs: 3.9, fat: 2.5, fibre: 0, iron: 6.7, calcium: 62, magnesium: 47, potassium: 156, zinc: 39.3, vitaminA: 35, vitaminD: 0.1, vitaminE: 0.9, vitaminK: 0.1, vitaminC: 8, vitaminB6: 0.1, vitaminB12: 16, folate: 10 },
+  "Crab (cooked meat)": { kcal: 97, protein: 19, carbs: 0, fat: 1.5, fibre: 0, iron: 0.8, calcium: 89, magnesium: 34, potassium: 250, zinc: 3.5, vitaminA: 2, vitaminD: 0, vitaminE: 1.5, vitaminK: 0, vitaminC: 3, vitaminB6: 0.2, vitaminB12: 10, folate: 44 },
+  "Lobster (cooked)": { kcal: 89, protein: 19, carbs: 0, fat: 0.9, fibre: 0, iron: 0.3, calcium: 60, magnesium: 43, potassium: 230, zinc: 3.0, vitaminA: 0, vitaminD: 0, vitaminE: 1.5, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.5, folate: 9 },
 
-  // === FRUITS ===
-"Apple (raw)": { kcal: 52, protein: 0.3, carbs: 14, fat: 0.2, fibre: 2.4, iron: 0.1, calcium: 6, magnesium: 5, potassium: 107, zinc: 0.0, vitaminA: 54, vitaminD: 0, vitaminE: 0.2, vitaminK: 2.2, vitaminC: 4.6, vitaminB6: 0.0, vitaminB12: 0, folate: 3 },
-"Banana (raw)": { kcal: 89, protein: 1.1, carbs: 23, fat: 0.3, fibre: 2.6, iron: 0.3, calcium: 5, magnesium: 27, potassium: 358, zinc: 0.2, vitaminA: 64, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.5, vitaminC: 8.7, vitaminB6: 0.4, vitaminB12: 0, folate: 20 },
-"Orange (raw)": { kcal: 47, protein: 0.9, carbs: 12, fat: 0.1, fibre: 2.4, iron: 0.1, calcium: 40, magnesium: 10, potassium: 181, zinc: 0.1, vitaminA: 11, vitaminD: 0, vitaminE: 0.2, vitaminK: 0, vitaminC: 53, vitaminB6: 0.1, vitaminB12: 0, folate: 30 },
-"Strawberries (raw)": { kcal: 32, protein: 0.7, carbs: 7.7, fat: 0.3, fibre: 2.0, iron: 0.4, calcium: 16, magnesium: 13, potassium: 153, zinc: 0.1, vitaminA: 12, vitaminD: 0, vitaminE: 0.3, vitaminK: 2.2, vitaminC: 59, vitaminB6: 0.1, vitaminB12: 0, folate: 24 },
-"Blueberries (raw)": { kcal: 57, protein: 0.7, carbs: 14, fat: 0.3, fibre: 2.4, iron: 0.3, calcium: 6, magnesium: 6, potassium: 77, zinc: 0.2, vitaminA: 54, vitaminD: 0, vitaminE: 0.6, vitaminK: 19, vitaminC: 9.7, vitaminB6: 0.1, vitaminB12: 0, folate: 6 },
-"Watermelon (raw)": { kcal: 30, protein: 0.6, carbs: 8, fat: 0.2, fibre: 0.4, iron: 0.2, calcium: 7, magnesium: 10, potassium: 112, zinc: 0.1, vitaminA: 28, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.1, vitaminC: 8, vitaminB6: 0.1, vitaminB12: 0, folate: 3 },
-"Grapes (raw)": { kcal: 69, protein: 0.7, carbs: 18, fat: 0.2, fibre: 0.9, iron: 0.4, calcium: 10, magnesium: 7, potassium: 191, zinc: 0.1, vitaminA: 66, vitaminD: 0, vitaminE: 0.2, vitaminK: 22, vitaminC: 4, vitaminB6: 0.1, vitaminB12: 0, folate: 2 },
-"Pear (raw)": { kcal: 57, protein: 0.4, carbs: 15, fat: 0.1, fibre: 3.1, iron: 0.2, calcium: 9, magnesium: 7, potassium: 116, zinc: 0.1, vitaminA: 25, vitaminD: 0, vitaminE: 0.1, vitaminK: 4.4, vitaminC: 4.3, vitaminB6: 0.0, vitaminB12: 0, folate: 7 },
-"Kiwi (raw)": { kcal: 41, protein: 1.1, carbs: 10, fat: 0.5, fibre: 2.1, iron: 0.3, calcium: 34, magnesium: 17, potassium: 312, zinc: 0.1, vitaminA: 4, vitaminD: 0, vitaminE: 1.5, vitaminK: 40, vitaminC: 93, vitaminB6: 0.1, vitaminB12: 0, folate: 25 },
-"Pineapple (raw)": { kcal: 50, protein: 0.5, carbs: 13, fat: 0.1, fibre: 1.4, iron: 0.3, calcium: 13, magnesium: 12, potassium: 109, zinc: 0.1, vitaminA: 58, vitaminD: 0, vitaminE: 0.0, vitaminK: 0.7, vitaminC: 47, vitaminB6: 0.1, vitaminB12: 0, folate: 18 },
-"Mango (raw)": { kcal: 60, protein: 0.8, carbs: 15, fat: 0.4, fibre: 1.6, iron: 0.2, calcium: 11, magnesium: 10, potassium: 168, zinc: 0.1, vitaminA: 54, vitaminD: 0, vitaminE: 0.9, vitaminK: 4.2, vitaminC: 36, vitaminB6: 0.1, vitaminB12: 0, folate: 43 },
-"Peach (raw)": { kcal: 39, protein: 0.9, carbs: 10, fat: 0.3, fibre: 1.5, iron: 0.3, calcium: 6, magnesium: 9, potassium: 190, zinc: 0.2, vitaminA: 16, vitaminD: 0, vitaminE: 0.7, vitaminK: 2.6, vitaminC: 10, vitaminB6: 0.0, vitaminB12: 0, folate: 4 },
-"Plum (raw)": { kcal: 46, protein: 0.7, carbs: 11, fat: 0.3, fibre: 1.4, iron: 0.2, calcium: 6, magnesium: 7, potassium: 157, zinc: 0.1, vitaminA: 17, vitaminD: 0, vitaminE: 0.3, vitaminK: 6.4, vitaminC: 9.5, vitaminB6: 0.0, vitaminB12: 0, folate: 5 },
-"Avocado (raw)": { kcal: 160, protein: 2.0, carbs: 9, fat: 15, fibre: 7.0, iron: 0.6, calcium: 12, magnesium: 29, potassium: 485, zinc: 0.6, vitaminA: 7, vitaminD: 0, vitaminE: 2.1, vitaminK: 21, vitaminC: 10, vitaminB6: 0.3, vitaminB12: 0, folate: 81 },
-"Pomegranate (raw)": { kcal: 83, protein: 1.7, carbs: 19, fat: 1.2, fibre: 4.0, iron: 0.3, calcium: 10, magnesium: 12, potassium: 236, zinc: 0.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.6, vitaminK: 16, vitaminC: 10, vitaminB6: 0.1, vitaminB12: 0, folate: 38 },
-"Cherry (raw)": { kcal: 50, protein: 1.0, carbs: 12, fat: 0.3, fibre: 1.6, iron: 0.3, calcium: 13, magnesium: 11, potassium: 222, zinc: 0.1, vitaminA: 64, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.1, vitaminC: 10, vitaminB6: 0.1, vitaminB12: 0, folate: 4 },
-"Raspberry (raw)": { kcal: 52, protein: 1.2, carbs: 12, fat: 0.7, fibre: 6.5, iron: 0.7, calcium: 25, magnesium: 22, potassium: 151, zinc: 0.4, vitaminA: 33, vitaminD: 0, vitaminE: 0.9, vitaminK: 7.8, vitaminC: 26, vitaminB6: 0.1, vitaminB12: 0, folate: 21 },
-"Apricot (raw)": { kcal: 48, protein: 1.4, carbs: 11, fat: 0.4, fibre: 2.0, iron: 0.4, calcium: 13, magnesium: 10, potassium: 259, zinc: 0.2, vitaminA: 96, vitaminD: 0, vitaminE: 0.9, vitaminK: 3.3, vitaminC: 10, vitaminB6: 0.1, vitaminB12: 0, folate: 9 },
-// ===================== DRIED FRUITS =====================
+  // =========================================
+  // DAIRY & EGGS
+  // =========================================
+  
+  // --- EGGS ---
+  "Egg (Large, raw)": { kcal: 143, protein: 12.6, carbs: 0.7, fat: 9.5, fibre: 0, iron: 1.8, calcium: 56, magnesium: 12, potassium: 138, zinc: 1.3, vitaminA: 160, vitaminD: 2.0, vitaminE: 1.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.9, folate: 47 },
+  "Egg (Boiled)": { kcal: 155, protein: 12.6, carbs: 1.1, fat: 10.6, fibre: 0, iron: 1.2, calcium: 50, magnesium: 10, potassium: 126, zinc: 1.1, vitaminA: 140, vitaminD: 2.2, vitaminE: 1.0, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.1, folate: 44 },
+  "Egg (Fried)": { kcal: 196, protein: 13.6, carbs: 0.8, fat: 15, fibre: 0, iron: 1.9, calcium: 60, magnesium: 11, potassium: 130, zinc: 1.3, vitaminA: 160, vitaminD: 2.0, vitaminE: 1.5, vitaminK: 4, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.9, folate: 45 },
+  "Egg White (raw/cooked)": { kcal: 52, protein: 11, carbs: 0.7, fat: 0.2, fibre: 0, iron: 0.1, calcium: 7, magnesium: 11, potassium: 163, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.1, folate: 4 },
+  "Egg Yolk (raw/cooked)": { kcal: 322, protein: 16, carbs: 3.6, fat: 26.5, fibre: 0, iron: 2.7, calcium: 129, magnesium: 10, potassium: 109, zinc: 2.3, vitaminA: 380, vitaminD: 5.4, vitaminE: 2.6, vitaminK: 0.7, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 2.0, folate: 146 },
 
-  "Dates (dried)": { 
-    kcal: 282, protein: 2.5, carbs: 75, fat: 0.4, fibre: 8.0,
-    iron: 1.0, calcium: 64, magnesium: 54, potassium: 656, zinc: 0.3,
-    vitaminA: 10, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.7,
-    vitaminC: 0.4, vitaminB6: 0.2, vitaminB12: 0, folate: 15
-  },
+  // --- MILK & YOGURT ---
+  "Milk (Whole, 3.5%)": { kcal: 61, protein: 3.2, carbs: 4.8, fat: 3.3, fibre: 0, iron: 0, calcium: 113, magnesium: 10, potassium: 132, zinc: 0.4, vitaminA: 46, vitaminD: 1.0, vitaminE: 0.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.4, folate: 5 },
+  "Milk (Semi-Skimmed, 1.5%)": { kcal: 47, protein: 3.3, carbs: 4.9, fat: 1.6, fibre: 0, iron: 0, calcium: 120, magnesium: 11, potassium: 140, zinc: 0.4, vitaminA: 20, vitaminD: 1.0, vitaminE: 0, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.5, folate: 5 },
+  "Milk (Skim, 0%)": { kcal: 34, protein: 3.4, carbs: 5.0, fat: 0.1, fibre: 0, iron: 0, calcium: 122, magnesium: 11, potassium: 150, zinc: 0.4, vitaminA: 0, vitaminD: 1.0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.5, folate: 5 },
+  "Yogurt (Whole, 3.5%)": { kcal: 61, protein: 3.5, carbs: 4.7, fat: 3.3, fibre: 0, iron: 0.1, calcium: 121, magnesium: 12, potassium: 155, zinc: 0.6, vitaminA: 27, vitaminD: 0.1, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.4, folate: 7 },
+  "Greek Yogurt (0%)": { kcal: 59, protein: 10, carbs: 3.6, fat: 0.4, fibre: 0, iron: 0.1, calcium: 110, magnesium: 11, potassium: 141, zinc: 0.6, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.7, folate: 7 },
+  "Greek Yogurt (2%)": { kcal: 73, protein: 9.5, carbs: 3.8, fat: 2.0, fibre: 0, iron: 0.1, calcium: 110, magnesium: 11, potassium: 141, zinc: 0.6, vitaminA: 10, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.6, folate: 7 },
+  "Greek Yogurt (Full Fat, 10%)": { kcal: 130, protein: 8, carbs: 4, fat: 10, fibre: 0, iron: 0.1, calcium: 100, magnesium: 11, potassium: 141, zinc: 0.6, vitaminA: 30, vitaminD: 0.1, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.5, folate: 6 },
+  "Sheep Yogurt (Paradosiako)": { kcal: 95, protein: 5.5, carbs: 5, fat: 6.5, fibre: 0, iron: 0.1, calcium: 180, magnesium: 18, potassium: 200, zinc: 0.8, vitaminA: 40, vitaminD: 0.2, vitaminE: 0.1, vitaminK: 0.5, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.5, folate: 10 },
 
-  "Apricots (dried)": {
-    kcal: 241, protein: 3.4, carbs: 63, fat: 0.5, fibre: 7.3,
-    iron: 2.7, calcium: 55, magnesium: 32, potassium: 1162, zinc: 0.4,
-    vitaminA: 360, vitaminD: 0, vitaminE: 4.3, vitaminK: 3.1,
-    vitaminC: 1, vitaminB6: 0.1, vitaminB12: 0, folate: 10
-  },
+  // --- CHEESE ---
+  "Feta Cheese": { kcal: 264, protein: 14, carbs: 4, fat: 21, fibre: 0, iron: 0.7, calcium: 493, magnesium: 19, potassium: 62, zinc: 2.9, vitaminA: 125, vitaminD: 0.4, vitaminE: 0.2, vitaminK: 1.8, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 1.7, folate: 32 },
+  "Cheddar Cheese": { kcal: 402, protein: 25, carbs: 1.3, fat: 33, fibre: 0, iron: 0.7, calcium: 721, magnesium: 28, potassium: 98, zinc: 3.1, vitaminA: 265, vitaminD: 0.6, vitaminE: 0.2, vitaminK: 2.4, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.8, folate: 18 },
+  "Mozzarella Cheese (Whole)": { kcal: 280, protein: 28, carbs: 3.1, fat: 17, fibre: 0, iron: 0.4, calcium: 731, magnesium: 20, potassium: 95, zinc: 2.9, vitaminA: 200, vitaminD: 0.3, vitaminE: 0.2, vitaminK: 2.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.9, folate: 7 },
+  "Parmesan Cheese": { kcal: 431, protein: 38, carbs: 4, fat: 29, fibre: 0, iron: 0.9, calcium: 1184, magnesium: 38, potassium: 125, zinc: 4.0, vitaminA: 200, vitaminD: 0.5, vitaminE: 0.2, vitaminK: 1.7, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.2, folate: 7 },
+  "Gouda Cheese": { kcal: 356, protein: 25, carbs: 2.2, fat: 27, fibre: 0, iron: 0.2, calcium: 700, magnesium: 29, potassium: 121, zinc: 3.9, vitaminA: 165, vitaminD: 0.3, vitaminE: 0.2, vitaminK: 2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.5, folate: 21 },
+  "Edam Cheese": { kcal: 357, protein: 25, carbs: 1.4, fat: 28, fibre: 0, iron: 0.4, calcium: 731, magnesium: 30, potassium: 188, zinc: 3.7, vitaminA: 243, vitaminD: 0.4, vitaminE: 0.2, vitaminK: 2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.5, folate: 16 },
+  "Cottage Cheese (low fat)": { kcal: 81, protein: 11, carbs: 3.4, fat: 2.3, fibre: 0, iron: 0.1, calcium: 83, magnesium: 8, potassium: 104, zinc: 0.4, vitaminA: 10, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.6, folate: 12 },
+  "Ricotta Cheese (Part skim)": { kcal: 138, protein: 11, carbs: 5, fat: 8, fibre: 0, iron: 0.4, calcium: 272, magnesium: 14, potassium: 125, zinc: 1.3, vitaminA: 100, vitaminD: 0.1, vitaminE: 0.1, vitaminK: 0.4, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.3, folate: 12 },
+  "Halloumi": { kcal: 320, protein: 21, carbs: 2, fat: 25, fibre: 0, iron: 0.2, calcium: 800, magnesium: 40, potassium: 100, zinc: 3.0, vitaminA: 150, vitaminD: 0.2, vitaminE: 0.1, vitaminK: 1.5, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.0, folate: 10 },
+  "Graviera (Greek Gruyere)": { kcal: 396, protein: 28, carbs: 0.5, fat: 31, fibre: 0, iron: 0.3, calcium: 1000, magnesium: 35, potassium: 100, zinc: 3.5, vitaminA: 300, vitaminD: 0.4, vitaminE: 0.3, vitaminK: 2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.5, folate: 20 },
+  "Kasseri": { kcal: 360, protein: 26, carbs: 1, fat: 28, fibre: 0, iron: 0.2, calcium: 700, magnesium: 30, potassium: 100, zinc: 3.2, vitaminA: 250, vitaminD: 0.3, vitaminE: 0.2, vitaminK: 1.8, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.2, folate: 15 },
+  "Kefalotyri": { kcal: 420, protein: 26, carbs: 2, fat: 34, fibre: 0, iron: 0.5, calcium: 900, magnesium: 40, potassium: 120, zinc: 3.8, vitaminA: 320, vitaminD: 0.5, vitaminE: 0.3, vitaminK: 2.2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.6, folate: 18 },
+  "Manouri": { kcal: 450, protein: 11, carbs: 1, fat: 45, fibre: 0, iron: 0.1, calcium: 200, magnesium: 10, potassium: 80, zinc: 1.5, vitaminA: 400, vitaminD: 0.6, vitaminE: 0.4, vitaminK: 2.5, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.5, folate: 5 },
 
-  "Figs (dried)": {
-    kcal: 249, protein: 3.3, carbs: 64, fat: 0.9, fibre: 9.8,
-    iron: 2, calcium: 162, magnesium: 68, potassium: 680, zinc: 0.6,
-    vitaminA: 13, vitaminD: 0, vitaminE: 0.3, vitaminK: 15.6,
-    vitaminC: 1.2, vitaminB6: 0.1, vitaminB12: 0, folate: 9
-  },
+  // --- PLANT MILKS (DAIRY ALTERNATIVES) ---
+  "Almond Milk (Unsweetened)": { kcal: 13, protein: 0.4, carbs: 0.1, fat: 1.1, fibre: 0.4, iron: 0.1, calcium: 120, magnesium: 7, potassium: 67, zinc: 0.1, vitaminA: 0, vitaminD: 1.0, vitaminE: 2.0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Soy Milk (Unsweetened)": { kcal: 33, protein: 2.8, carbs: 1.6, fat: 1.6, fibre: 0.6, iron: 0.4, calcium: 100, magnesium: 15, potassium: 120, zinc: 0.2, vitaminA: 0, vitaminD: 1.0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.4, folate: 10 },
+  "Oat Milk (Unsweetened)": { kcal: 40, protein: 0.8, carbs: 7, fat: 1.5, fibre: 0.8, iron: 0.2, calcium: 120, magnesium: 5, potassium: 80, zinc: 0.1, vitaminA: 0, vitaminD: 1.0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.4, folate: 5 },
+  "Coconut Milk (Drink)": { kcal: 20, protein: 0.1, carbs: 2, fat: 1.2, fibre: 0, iron: 0.1, calcium: 120, magnesium: 5, potassium: 40, zinc: 0, vitaminA: 0, vitaminD: 1.0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.4, folate: 0 },
 
-  "Prunes (dried plums)": {
-    kcal: 240, protein: 2.2, carbs: 64, fat: 0.4, fibre: 7.1,
-    iron: 0.9, calcium: 43, magnesium: 41, potassium: 732, zinc: 0.4,
-    vitaminA: 39, vitaminD: 0, vitaminE: 0.4, vitaminK: 59.5,
-    vitaminC: 0.6, vitaminB6: 0.2, vitaminB12: 0, folate: 4
-  },
+  // =========================================
+  // GRAINS, CEREALS & STARCHES
+  // =========================================
+  
+  // --- RICE ---
+  "White Rice (raw)": { kcal: 365, protein: 7.1, carbs: 80, fat: 0.7, fibre: 1.3, iron: 0.8, calcium: 28, magnesium: 25, potassium: 115, zinc: 1.1, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0, folate: 58 },
+  "White Rice (boiled/steamed)": { kcal: 130, protein: 2.7, carbs: 28, fat: 0.3, fibre: 0.4, iron: 0.2, calcium: 10, magnesium: 12, potassium: 35, zinc: 0.4, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 19 },
+  "Brown Rice (raw)": { kcal: 362, protein: 7.5, carbs: 76, fat: 2.7, fibre: 3.4, iron: 1.5, calcium: 23, magnesium: 143, potassium: 223, zinc: 2.0, vitaminA: 0, vitaminD: 0, vitaminE: 0.6, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0, folate: 20 },
+  "Brown Rice (boiled)": { kcal: 112, protein: 2.6, carbs: 23, fat: 0.9, fibre: 1.8, iron: 0.5, calcium: 10, magnesium: 43, potassium: 79, zinc: 0.6, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 9 },
+  "Basmati Rice (cooked)": { kcal: 121, protein: 3.5, carbs: 25, fat: 0.4, fibre: 0.4, iron: 0.2, calcium: 8, magnesium: 10, potassium: 30, zinc: 0.4, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 18 },
+  
+  // --- PASTA & NOODLES ---
+  "Pasta (White, raw)": { kcal: 371, protein: 13, carbs: 75, fat: 1.5, fibre: 3.2, iron: 1.3, calcium: 21, magnesium: 53, potassium: 223, zinc: 1.2, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 18 },
+  "Pasta (White, boiled)": { kcal: 158, protein: 5.8, carbs: 31, fat: 0.9, fibre: 1.8, iron: 0.5, calcium: 7, magnesium: 18, potassium: 75, zinc: 0.5, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 5 },
+  "Pasta (Whole Wheat, raw)": { kcal: 348, protein: 14.6, carbs: 75, fat: 2.0, fibre: 8.0, iron: 3.6, calcium: 40, magnesium: 140, potassium: 340, zinc: 3.0, vitaminA: 0, vitaminD: 0, vitaminE: 1.0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0, folate: 50 },
+  "Pasta (Whole Wheat, boiled)": { kcal: 124, protein: 5.3, carbs: 26.5, fat: 0.5, fibre: 4.2, iron: 1.2, calcium: 10, magnesium: 40, potassium: 60, zinc: 1.0, vitaminA: 0, vitaminD: 0, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 10 },
+  "Orzo (Kritharaki, raw)": { kcal: 360, protein: 12, carbs: 76, fat: 1.2, fibre: 3, iron: 1.1, calcium: 20, magnesium: 50, potassium: 200, zinc: 1.0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 15 },
+  "Egg Noodles (boiled)": { kcal: 138, protein: 4.5, carbs: 25, fat: 2.1, fibre: 1.2, iron: 1.6, calcium: 12, magnesium: 18, potassium: 30, zinc: 0.6, vitaminA: 15, vitaminD: 0.1, vitaminE: 0.1, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.1, folate: 20 },
 
-  "Raisins": {
-    kcal: 299, protein: 3.1, carbs: 79, fat: 0.5, fibre: 3.7,
-    iron: 1.9, calcium: 50, magnesium: 32, potassium: 749, zinc: 0.3,
-    vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 3.5,
-    vitaminC: 2.3, vitaminB6: 0.2, vitaminB12: 0, folate: 5
-  },
+  // --- OATS & CEREALS ---
+  "Oats (Rolled, raw)": { kcal: 389, protein: 16.9, carbs: 66, fat: 6.9, fibre: 10.6, iron: 4.7, calcium: 54, magnesium: 177, potassium: 429, zinc: 4.0, vitaminA: 0, vitaminD: 0, vitaminE: 0.5, vitaminK: 2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 56 },
+  "Oats (Porridge/boiled)": { kcal: 71, protein: 2.5, carbs: 12, fat: 1.5, fibre: 1.7, iron: 0.6, calcium: 10, magnesium: 26, potassium: 60, zinc: 0.6, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 6 },
+  "Quinoa (raw)": { kcal: 368, protein: 14, carbs: 64, fat: 6, fibre: 7, iron: 4.6, calcium: 47, magnesium: 197, potassium: 563, zinc: 3.1, vitaminA: 1, vitaminD: 0, vitaminE: 2.4, vitaminK: 0, vitaminC: 0, vitaminB6: 0.5, vitaminB12: 0, folate: 184 },
+  "Quinoa (boiled)": { kcal: 120, protein: 4.1, carbs: 21, fat: 1.9, fibre: 2.8, iron: 1.5, calcium: 17, magnesium: 64, potassium: 172, zinc: 1.1, vitaminA: 0, vitaminD: 0, vitaminE: 0.6, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 42 },
+  "Couscous (raw)": { kcal: 376, protein: 13, carbs: 77, fat: 0.6, fibre: 5, iron: 1.1, calcium: 24, magnesium: 44, potassium: 166, zinc: 0.8, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 20 },
+  "Bulgur (raw)": { kcal: 342, protein: 12.3, carbs: 76, fat: 1.3, fibre: 18, iron: 2.5, calcium: 35, magnesium: 164, potassium: 410, zinc: 1.9, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 1.9, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0, folate: 27 },
+  "Corn Flakes": { kcal: 378, protein: 7, carbs: 84, fat: 0.9, fibre: 3, iron: 1.8, calcium: 3, magnesium: 13, potassium: 90, zinc: 0.3, vitaminA: 200, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 1.0, vitaminB12: 0, folate: 50 },
 
-  "Cranberries (dried, sweetened)": {
-    kcal: 325, protein: 0.1, carbs: 82, fat: 1.1, fibre: 5.3,
-    iron: 0.4, calcium: 8, magnesium: 6, potassium: 85, zinc: 0.1,
-    vitaminA: 1, vitaminD: 0, vitaminE: 1.2, vitaminK: 5,
-    vitaminC: 0.2, vitaminB6: 0.01, vitaminB12: 0, folate: 1
-  },
+  // --- BREAD ---
+  "Bread (White)": { kcal: 265, protein: 9, carbs: 49, fat: 3.2, fibre: 2.7, iron: 3.6, calcium: 144, magnesium: 23, potassium: 115, zinc: 0.7, vitaminA: 0, vitaminD: 0, vitaminE: 0.2, vitaminK: 0.2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 110 },
+  "Bread (Whole Wheat)": { kcal: 247, protein: 13, carbs: 41, fat: 3.4, fibre: 7, iron: 2.5, calcium: 161, magnesium: 75, potassium: 250, zinc: 1.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.4, vitaminK: 2.5, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0, folate: 40 },
+  "Bread (Sourdough)": { kcal: 289, protein: 10, carbs: 53, fat: 1.8, fibre: 3, iron: 3.7, calcium: 20, magnesium: 30, potassium: 150, zinc: 1.0, vitaminA: 0, vitaminD: 0, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 85 },
+  "Pita Bread (White)": { kcal: 275, protein: 9, carbs: 56, fat: 1.0, fibre: 2.2, iron: 1.6, calcium: 15, magnesium: 20, potassium: 120, zinc: 0.8, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 24 },
+  "Toast (Whole Wheat)": { kcal: 260, protein: 12, carbs: 45, fat: 4, fibre: 6.5, iron: 3, calcium: 130, magnesium: 60, potassium: 200, zinc: 1.5, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 1, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 35 },
 
-  "Medjool Dates": {
-    kcal: 277, protein: 1.8, carbs: 75, fat: 0.2, fibre: 6.7,
-    iron: 0.9, calcium: 64, magnesium: 54, potassium: 696, zinc: 0.4,
-    vitaminA: 10, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.7,
-    vitaminC: 0.4, vitaminB6: 0.2, vitaminB12: 0, folate: 15
-  },
+  // --- POTATOES & STARCHES ---
+  "Potato (raw)": { kcal: 77, protein: 2, carbs: 17.5, fat: 0.1, fibre: 2.2, iron: 0.8, calcium: 12, magnesium: 23, potassium: 421, zinc: 0.3, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 2, vitaminC: 20, vitaminB6: 0.3, vitaminB12: 0, folate: 16 },
+  "Potato (boiled)": { kcal: 87, protein: 1.9, carbs: 20, fat: 0.1, fibre: 1.8, iron: 0.3, calcium: 5, magnesium: 20, potassium: 379, zinc: 0.3, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 2, vitaminC: 13, vitaminB6: 0.3, vitaminB12: 0, folate: 10 },
+  "Potato (baked with skin)": { kcal: 93, protein: 2.5, carbs: 21, fat: 0.1, fibre: 2.2, iron: 1.1, calcium: 15, magnesium: 28, potassium: 535, zinc: 0.4, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 2, vitaminC: 9.6, vitaminB6: 0.3, vitaminB12: 0, folate: 28 },
+  "Potato (French Fries, fried)": { kcal: 312, protein: 3.4, carbs: 41, fat: 15, fibre: 3.8, iron: 0.8, calcium: 18, magnesium: 35, potassium: 579, zinc: 0.5, vitaminA: 0, vitaminD: 0, vitaminE: 2, vitaminK: 12, vitaminC: 4, vitaminB6: 0.4, vitaminB12: 0, folate: 30 },
+  "Sweet Potato (raw)": { kcal: 86, protein: 1.6, carbs: 20, fat: 0.1, fibre: 3, iron: 0.6, calcium: 30, magnesium: 25, potassium: 337, zinc: 0.3, vitaminA: 709, vitaminD: 0, vitaminE: 0.3, vitaminK: 2.3, vitaminC: 2.4, vitaminB6: 0.2, vitaminB12: 0, folate: 11 },
+  "Sweet Potato (baked)": { kcal: 90, protein: 2.0, carbs: 21, fat: 0.2, fibre: 3.3, iron: 0.7, calcium: 38, magnesium: 27, potassium: 475, zinc: 0.3, vitaminA: 961, vitaminD: 0, vitaminE: 0.7, vitaminK: 2.3, vitaminC: 19, vitaminB6: 0.3, vitaminB12: 0, folate: 6 },
 
+  // =========================================
+  // LEGUMES (BEANS, LENTILS, ETC.)
+  // =========================================
+  "Lentils (raw)": { kcal: 353, protein: 26, carbs: 60, fat: 1, fibre: 30, iron: 7.5, calcium: 56, magnesium: 122, potassium: 955, zinc: 4.8, vitaminA: 2, vitaminD: 0, vitaminE: 0.5, vitaminK: 5, vitaminC: 4, vitaminB6: 0.5, vitaminB12: 0, folate: 479 },
+  "Lentils (boiled)": { kcal: 116, protein: 9, carbs: 20, fat: 0.4, fibre: 8, iron: 3.3, calcium: 19, magnesium: 36, potassium: 369, zinc: 1.3, vitaminA: 1, vitaminD: 0, vitaminE: 0.1, vitaminK: 1.5, vitaminC: 1.5, vitaminB6: 0.2, vitaminB12: 0, folate: 181 },
+  "Chickpeas (raw)": { kcal: 364, protein: 19, carbs: 61, fat: 6, fibre: 17, iron: 6.2, calcium: 105, magnesium: 115, potassium: 875, zinc: 3.4, vitaminA: 3, vitaminD: 0, vitaminE: 0.8, vitaminK: 9, vitaminC: 4, vitaminB6: 0.5, vitaminB12: 0, folate: 557 },
+  "Chickpeas (boiled)": { kcal: 164, protein: 9, carbs: 27, fat: 2.6, fibre: 7.6, iron: 2.9, calcium: 49, magnesium: 48, potassium: 291, zinc: 1.5, vitaminA: 1, vitaminD: 0, vitaminE: 0.3, vitaminK: 4, vitaminC: 1.3, vitaminB6: 0.1, vitaminB12: 0, folate: 172 },
+  "Beans (White/Navy, raw)": { kcal: 333, protein: 23, carbs: 60, fat: 0.9, fibre: 15, iron: 10, calcium: 240, magnesium: 190, potassium: 1795, zinc: 3.7, vitaminA: 0, vitaminD: 0, vitaminE: 0.2, vitaminK: 5, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 0, folate: 388 },
+  "Beans (White/Navy, boiled)": { kcal: 142, protein: 9.7, carbs: 26, fat: 0.4, fibre: 6.3, iron: 3.7, calcium: 90, magnesium: 63, potassium: 561, zinc: 1.4, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 130 },
+  "Black Beans (boiled)": { kcal: 132, protein: 9, carbs: 24, fat: 0.5, fibre: 8.7, iron: 2.1, calcium: 27, magnesium: 70, potassium: 355, zinc: 1.1, vitaminA: 0, vitaminD: 0, vitaminE: 0.9, vitaminK: 3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 149 },
+  "Kidney Beans (boiled)": { kcal: 127, protein: 8.7, carbs: 22.8, fat: 0.5, fibre: 6.4, iron: 2.2, calcium: 28, magnesium: 45, potassium: 405, zinc: 1.0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 8.4, vitaminC: 1.2, vitaminB6: 0.1, vitaminB12: 0, folate: 130 },
+  "Fava (Yellow Split Peas, raw)": { kcal: 341, protein: 25, carbs: 60, fat: 1.2, fibre: 26, iron: 4.4, calcium: 55, magnesium: 110, potassium: 980, zinc: 3.0, vitaminA: 3, vitaminD: 0, vitaminE: 0, vitaminK: 1, vitaminC: 1.8, vitaminB6: 0.2, vitaminB12: 0, folate: 270 },
+  "Fava (Yellow Split Peas, boiled)": { kcal: 118, protein: 8.3, carbs: 21, fat: 0.4, fibre: 8.3, iron: 1.3, calcium: 14, magnesium: 36, potassium: 362, zinc: 1.0, vitaminA: 1, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 65 },
+  "Broad Beans (Koukia, raw)": { kcal: 341, protein: 26, carbs: 58, fat: 1.5, fibre: 25, iron: 6.7, calcium: 103, magnesium: 192, potassium: 1060, zinc: 3.1, vitaminA: 3, vitaminD: 0, vitaminE: 0, vitaminK: 9, vitaminC: 1.4, vitaminB6: 0.4, vitaminB12: 0, folate: 423 },
+  "Broad Beans (Koukia, boiled)": { kcal: 110, protein: 7.6, carbs: 19.6, fat: 0.4, fibre: 5.4, iron: 1.5, calcium: 37, magnesium: 43, potassium: 332, zinc: 1.0, vitaminA: 10, vitaminD: 0, vitaminE: 0, vitaminK: 2.9, vitaminC: 0.3, vitaminB6: 0.1, vitaminB12: 0, folate: 104 },
+  "Peas (Green, frozen/boiled)": { kcal: 81, protein: 5.4, carbs: 14.5, fat: 0.4, fibre: 5.5, iron: 1.5, calcium: 25, magnesium: 33, potassium: 244, zinc: 1.2, vitaminA: 38, vitaminD: 0, vitaminE: 0.1, vitaminK: 25, vitaminC: 14, vitaminB6: 0.2, vitaminB12: 0, folate: 65 },
+  "Edamame (boiled)": { kcal: 122, protein: 11, carbs: 10, fat: 5, fibre: 5, iron: 2.3, calcium: 63, magnesium: 64, potassium: 436, zinc: 1.4, vitaminA: 15, vitaminD: 0, vitaminE: 0.7, vitaminK: 27, vitaminC: 6, vitaminB6: 0.1, vitaminB12: 0, folate: 311 },
+  "Tofu (Firm)": { kcal: 144, protein: 15, carbs: 4, fat: 8, fibre: 2, iron: 2.7, calcium: 683, magnesium: 58, potassium: 237, zinc: 1.6, vitaminA: 5, vitaminD: 0, vitaminE: 0, vitaminK: 2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 29 },
 
- // === DAIRY & EGGS ===
-"Whole Milk": { kcal: 61, protein: 3.2, carbs: 4.8, fat: 3.3, fibre: 0, iron: 0.03, calcium: 113, magnesium: 10, potassium: 132, zinc: 0.4, vitaminA: 46, vitaminD: 0.1, vitaminE: 0.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0.4, folate: 5 },
-"Skim Milk": { kcal: 34, protein: 3.4, carbs: 5.0, fat: 0.1, fibre: 0, iron: 0.02, calcium: 125, magnesium: 11, potassium: 150, zinc: 0.4, vitaminA: 15, vitaminD: 0.0, vitaminE: 0.0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0.5, folate: 5 },
-"Greek Yogurt (plain, low-fat)": { kcal: 59, protein: 10, carbs: 3.6, fat: 0.4, fibre: 0, iron: 0.1, calcium: 110, magnesium: 11, potassium: 141, zinc: 0.6, vitaminA: 4, vitaminD: 0.0, vitaminE: 0.0, vitaminK: 0, vitaminC: 0.8, vitaminB6: 0.0, vitaminB12: 0.4, folate: 7 },
-"Yogurt (whole milk)": { kcal: 61, protein: 3.5, carbs: 4.7, fat: 3.3, fibre: 0, iron: 0.1, calcium: 121, magnesium: 12, potassium: 155, zinc: 0.6, vitaminA: 27, vitaminD: 0.1, vitaminE: 0.0, vitaminK: 0, vitaminC: 0.8, vitaminB6: 0.0, vitaminB12: 0.4, folate: 7 },
-"Cheddar Cheese": { kcal: 402, protein: 25, carbs: 1.3, fat: 33, fibre: 0, iron: 0.7, calcium: 721, magnesium: 28, potassium: 98, zinc: 3.1, vitaminA: 265, vitaminD: 0.5, vitaminE: 0.2, vitaminK: 2.5, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.8, folate: 18 },
-"Mozzarella Cheese": { kcal: 280, protein: 28, carbs: 3.1, fat: 17, fibre: 0, iron: 0.4, calcium: 731, magnesium: 25, potassium: 95, zinc: 2.8, vitaminA: 260, vitaminD: 0.2, vitaminE: 0.2, vitaminK: 2.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.8, folate: 13 },
-"Cottage Cheese (low-fat)": { kcal: 81, protein: 11, carbs: 3.4, fat: 1.0, fibre: 0, iron: 0.1, calcium: 83, magnesium: 8, potassium: 104, zinc: 0.5, vitaminA: 26, vitaminD: 0.0, vitaminE: 0.0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0.2, folate: 7 },
-"Butter": { kcal: 717, protein: 0.9, carbs: 0.1, fat: 81, fibre: 0, iron: 0.0, calcium: 24, magnesium: 2, potassium: 24, zinc: 0.1, vitaminA: 684, vitaminD: 1.5, vitaminE: 2.3, vitaminK: 7, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0.2, folate: 3 },
-"Egg (raw)": { kcal: 143, protein: 13, carbs: 1.1, fat: 10, fibre: 0, iron: 1.8, calcium: 50, magnesium: 10, potassium: 126, zinc: 1.3, vitaminA: 160, vitaminD: 2.0, vitaminE: 1.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.1, folate: 47 },
-"Egg (cooked)": { kcal: 155, protein: 13, carbs: 1.1, fat: 11, fibre: 0, iron: 1.8, calcium: 50, magnesium: 10, potassium: 126, zinc: 1.3, vitaminA: 160, vitaminD: 2.0, vitaminE: 1.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.1, folate: 44 },
-"Egg White (raw)": { kcal: 52, protein: 11, carbs: 0.7, fat: 0.2, fibre: 0, iron: 0.0, calcium: 7, magnesium: 11, potassium: 163, zinc: 0.0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.1, folate: 5 },
-"Egg Yolk (raw)": { kcal: 322, protein: 16, carbs: 3.6, fat: 27, fibre: 0, iron: 2.7, calcium: 129, magnesium: 10, potassium: 109, zinc: 2.3, vitaminA: 550, vitaminD: 5.4, vitaminE: 2.6, vitaminK: 0.4, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 1.9, folate: 146 },
-"Soy Milk": { kcal: 45, protein: 3.3, carbs: 4.3, fat: 1.9, fibre: 0.6, iron: 0.6, calcium: 25, magnesium: 25, potassium: 118, zinc: 0.2, vitaminA: 70, vitaminD: 1.0, vitaminE: 0.3, vitaminK: 2.0, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0.4, folate: 9 },
-"Almond Milk (unsweetened)": { kcal: 15, protein: 0.6, carbs: 0.3, fat: 1.2, fibre: 0.2, iron: 0.2, calcium: 173, magnesium: 6, potassium: 67, zinc: 0.1, vitaminA: 74, vitaminD: 1.0, vitaminE: 6.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.0, vitaminB12: 0.5, folate: 1 },
+  // =========================================
+  // VEGETABLES (FRESH & COOKED)
+  // =========================================
+  "Spinach (raw)": { kcal: 23, protein: 2.9, carbs: 3.6, fat: 0.4, fibre: 2.2, iron: 2.7, calcium: 99, magnesium: 79, potassium: 558, zinc: 0.5, vitaminA: 469, vitaminD: 0, vitaminE: 2.0, vitaminK: 483, vitaminC: 28, vitaminB6: 0.2, vitaminB12: 0, folate: 194 },
+  "Spinach (boiled)": { kcal: 23, protein: 3.0, carbs: 3.8, fat: 0.3, fibre: 2.4, iron: 3.6, calcium: 136, magnesium: 87, potassium: 466, zinc: 0.7, vitaminA: 524, vitaminD: 0, vitaminE: 2.1, vitaminK: 494, vitaminC: 9.8, vitaminB6: 0.2, vitaminB12: 0, folate: 146 },
+  "Broccoli (raw)": { kcal: 34, protein: 2.8, carbs: 6.6, fat: 0.4, fibre: 2.6, iron: 0.7, calcium: 47, magnesium: 21, potassium: 316, zinc: 0.4, vitaminA: 31, vitaminD: 0, vitaminE: 0.8, vitaminK: 101, vitaminC: 89, vitaminB6: 0.2, vitaminB12: 0, folate: 63 },
+  "Broccoli (boiled)": { kcal: 35, protein: 2.4, carbs: 7.2, fat: 0.4, fibre: 3.3, iron: 0.7, calcium: 40, magnesium: 21, potassium: 293, zinc: 0.4, vitaminA: 39, vitaminD: 0, vitaminE: 1.5, vitaminK: 141, vitaminC: 65, vitaminB6: 0.2, vitaminB12: 0, folate: 108 },
+  "Cauliflower (raw)": { kcal: 25, protein: 1.9, carbs: 5, fat: 0.3, fibre: 2, iron: 0.4, calcium: 22, magnesium: 15, potassium: 299, zinc: 0.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 15, vitaminC: 48, vitaminB6: 0.2, vitaminB12: 0, folate: 57 },
+  "Cauliflower (boiled)": { kcal: 23, protein: 1.8, carbs: 4.1, fat: 0.5, fibre: 2.3, iron: 0.3, calcium: 16, magnesium: 10, potassium: 142, zinc: 0.2, vitaminA: 1, vitaminD: 0, vitaminE: 0.1, vitaminK: 13, vitaminC: 44, vitaminB6: 0.2, vitaminB12: 0, folate: 44 },
+  "Carrot (raw)": { kcal: 41, protein: 0.9, carbs: 9.6, fat: 0.2, fibre: 2.8, iron: 0.3, calcium: 33, magnesium: 12, potassium: 320, zinc: 0.2, vitaminA: 835, vitaminD: 0, vitaminE: 0.7, vitaminK: 13, vitaminC: 6, vitaminB6: 0.1, vitaminB12: 0, folate: 19 },
+  "Carrot (boiled)": { kcal: 35, protein: 0.8, carbs: 8.2, fat: 0.2, fibre: 3, iron: 0.3, calcium: 30, magnesium: 10, potassium: 235, zinc: 0.2, vitaminA: 852, vitaminD: 0, vitaminE: 0.9, vitaminK: 13.7, vitaminC: 3.6, vitaminB6: 0.1, vitaminB12: 0, folate: 14 },
+  "Tomato (raw)": { kcal: 18, protein: 0.9, carbs: 3.9, fat: 0.2, fibre: 1.2, iron: 0.3, calcium: 10, magnesium: 11, potassium: 237, zinc: 0.2, vitaminA: 42, vitaminD: 0, vitaminE: 0.5, vitaminK: 8, vitaminC: 14, vitaminB6: 0.1, vitaminB12: 0, folate: 15 },
+  "Cherry Tomatoes": { kcal: 27, protein: 1.3, carbs: 5.8, fat: 0.3, fibre: 1.8, iron: 0.4, calcium: 13, magnesium: 14, potassium: 290, zinc: 0.2, vitaminA: 55, vitaminD: 0, vitaminE: 0.7, vitaminK: 10, vitaminC: 22, vitaminB6: 0.1, vitaminB12: 0, folate: 20 },
+  "Cucumber (raw, with skin)": { kcal: 15, protein: 0.7, carbs: 3.6, fat: 0.1, fibre: 0.5, iron: 0.3, calcium: 16, magnesium: 13, potassium: 147, zinc: 0.2, vitaminA: 5, vitaminD: 0, vitaminE: 0, vitaminK: 16, vitaminC: 3, vitaminB6: 0, vitaminB12: 0, folate: 7 },
+  "Lettuce (Iceberg)": { kcal: 14, protein: 0.9, carbs: 3, fat: 0.1, fibre: 1.2, iron: 0.4, calcium: 18, magnesium: 7, potassium: 141, zinc: 0.2, vitaminA: 25, vitaminD: 0, vitaminE: 0.2, vitaminK: 24, vitaminC: 3, vitaminB6: 0.1, vitaminB12: 0, folate: 29 },
+  "Lettuce (Romaine)": { kcal: 17, protein: 1.2, carbs: 3.3, fat: 0.3, fibre: 2.1, iron: 1.0, calcium: 33, magnesium: 14, potassium: 247, zinc: 0.2, vitaminA: 436, vitaminD: 0, vitaminE: 0.1, vitaminK: 102, vitaminC: 4, vitaminB6: 0.1, vitaminB12: 0, folate: 136 },
+  "Arugula (Rocket)": { kcal: 25, protein: 2.6, carbs: 3.7, fat: 0.7, fibre: 1.6, iron: 1.5, calcium: 160, magnesium: 47, potassium: 369, zinc: 0.5, vitaminA: 119, vitaminD: 0, vitaminE: 0.4, vitaminK: 109, vitaminC: 15, vitaminB6: 0.1, vitaminB12: 0, folate: 97 },
+  "Cabbage (White, raw)": { kcal: 25, protein: 1.3, carbs: 5.8, fat: 0.1, fibre: 2.5, iron: 0.5, calcium: 40, magnesium: 12, potassium: 170, zinc: 0.2, vitaminA: 5, vitaminD: 0, vitaminE: 0.1, vitaminK: 76, vitaminC: 36, vitaminB6: 0.1, vitaminB12: 0, folate: 43 },
+  "Cabbage (Red, raw)": { kcal: 31, protein: 1.4, carbs: 7.4, fat: 0.2, fibre: 2.1, iron: 0.8, calcium: 45, magnesium: 16, potassium: 243, zinc: 0.2, vitaminA: 56, vitaminD: 0, vitaminE: 0.1, vitaminK: 38, vitaminC: 57, vitaminB6: 0.2, vitaminB12: 0, folate: 18 },
+  "Peppers (Bell, Red, raw)": { kcal: 31, protein: 1, carbs: 6, fat: 0.3, fibre: 2.1, iron: 0.4, calcium: 7, magnesium: 12, potassium: 211, zinc: 0.3, vitaminA: 157, vitaminD: 0, vitaminE: 1.6, vitaminK: 5, vitaminC: 128, vitaminB6: 0.3, vitaminB12: 0, folate: 46 },
+  "Peppers (Bell, Green, raw)": { kcal: 20, protein: 0.9, carbs: 4.6, fat: 0.2, fibre: 1.7, iron: 0.3, calcium: 10, magnesium: 10, potassium: 175, zinc: 0.1, vitaminA: 18, vitaminD: 0, vitaminE: 0.4, vitaminK: 7, vitaminC: 80, vitaminB6: 0.2, vitaminB12: 0, folate: 10 },
+  "Zucchini (raw)": { kcal: 17, protein: 1.2, carbs: 3.1, fat: 0.3, fibre: 1, iron: 0.4, calcium: 16, magnesium: 18, potassium: 261, zinc: 0.3, vitaminA: 10, vitaminD: 0, vitaminE: 0.1, vitaminK: 4, vitaminC: 18, vitaminB6: 0.2, vitaminB12: 0, folate: 24 },
+  "Zucchini (boiled)": { kcal: 15, protein: 1.1, carbs: 2.7, fat: 0.4, fibre: 1, iron: 0.4, calcium: 18, magnesium: 17, potassium: 264, zinc: 0.3, vitaminA: 11, vitaminD: 0, vitaminE: 0.1, vitaminK: 4, vitaminC: 13, vitaminB6: 0.1, vitaminB12: 0, folate: 13 },
+  "Mushrooms (White, raw)": { kcal: 22, protein: 3.1, carbs: 3.3, fat: 0.3, fibre: 1, iron: 0.5, calcium: 3, magnesium: 9, potassium: 318, zinc: 0.5, vitaminA: 0, vitaminD: 0.2, vitaminE: 0, vitaminK: 0, vitaminC: 2, vitaminB6: 0.1, vitaminB12: 0, folate: 17 },
+  "Mushrooms (grilled/cooked)": { kcal: 28, protein: 2.2, carbs: 5.3, fat: 0.5, fibre: 2.2, iron: 0.7, calcium: 6, magnesium: 13, potassium: 356, zinc: 0.7, vitaminA: 0, vitaminD: 0.3, vitaminE: 0, vitaminK: 0, vitaminC: 3, vitaminB6: 0.1, vitaminB12: 0, folate: 20 },
+  "Onion (raw)": { kcal: 40, protein: 1.1, carbs: 9.3, fat: 0.1, fibre: 1.7, iron: 0.2, calcium: 23, magnesium: 10, potassium: 146, zinc: 0.2, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0.4, vitaminC: 7, vitaminB6: 0.1, vitaminB12: 0, folate: 19 },
+  "Garlic (raw)": { kcal: 149, protein: 6.4, carbs: 33, fat: 0.5, fibre: 2.1, iron: 1.7, calcium: 181, magnesium: 25, potassium: 401, zinc: 1.2, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 1.7, vitaminC: 31, vitaminB6: 1.2, vitaminB12: 0, folate: 3 },
+  "Green Beans (boiled)": { kcal: 35, protein: 1.9, carbs: 7.9, fat: 0.3, fibre: 3.2, iron: 0.7, calcium: 44, magnesium: 18, potassium: 146, zinc: 0.2, vitaminA: 35, vitaminD: 0, vitaminE: 0.4, vitaminK: 16, vitaminC: 9.7, vitaminB6: 0.1, vitaminB12: 0, folate: 37 },
+  "Green Beans (Fasolakia Laderia)": { kcal: 110, protein: 2, carbs: 7, fat: 8, fibre: 3, iron: 1.0, calcium: 50, magnesium: 20, potassium: 200, zinc: 0.3, vitaminA: 30, vitaminD: 0, vitaminE: 1.5, vitaminK: 30, vitaminC: 10, vitaminB6: 0.1, vitaminB12: 0, folate: 35 },
+  "Okra (Bamies, cooked)": { kcal: 22, protein: 1.9, carbs: 4.5, fat: 0.2, fibre: 2.5, iron: 0.3, calcium: 77, magnesium: 36, potassium: 135, zinc: 0.4, vitaminA: 14, vitaminD: 0, vitaminE: 0.2, vitaminK: 40, vitaminC: 16, vitaminB6: 0.2, vitaminB12: 0, folate: 46 },
+  "Eggplant (Aubergine, grilled)": { kcal: 35, protein: 0.8, carbs: 8.7, fat: 0.2, fibre: 2.5, iron: 0.2, calcium: 6, magnesium: 11, potassium: 123, zinc: 0.1, vitaminA: 1, vitaminD: 0, vitaminE: 0.4, vitaminK: 2.9, vitaminC: 1.3, vitaminB6: 0.1, vitaminB12: 0, folate: 14 },
+  "Beetroot (boiled)": { kcal: 44, protein: 1.7, carbs: 10, fat: 0.2, fibre: 2, iron: 0.8, calcium: 16, magnesium: 23, potassium: 305, zinc: 0.4, vitaminA: 2, vitaminD: 0, vitaminE: 0, vitaminK: 0.2, vitaminC: 3.6, vitaminB6: 0.1, vitaminB12: 0, folate: 80 },
 
-// === NUTS & SEEDS ===
-"Almonds (raw)": { kcal: 579, protein: 21, carbs: 22, fat: 50, fibre: 12.5, iron: 3.7, calcium: 269, magnesium: 270, potassium: 733, zinc: 3.1, vitaminA: 1, vitaminD: 0, vitaminE: 25.6, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 50 },
-"Walnuts (raw)": { kcal: 654, protein: 15, carbs: 14, fat: 65, fibre: 6.7, iron: 2.9, calcium: 98, magnesium: 158, potassium: 441, zinc: 3.1, vitaminA: 1, vitaminD: 0, vitaminE: 0.7, vitaminK: 2.7, vitaminC: 1.3, vitaminB6: 0.5, vitaminB12: 0, folate: 98 },
-"Cashews (raw)": { kcal: 553, protein: 18, carbs: 30, fat: 44, fibre: 3.3, iron: 6.7, calcium: 37, magnesium: 292, potassium: 660, zinc: 5.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.9, vitaminK: 34, vitaminC: 0.5, vitaminB6: 0.4, vitaminB12: 0, folate: 25 },
-"Peanuts (raw)": { kcal: 567, protein: 26, carbs: 16, fat: 49, fibre: 8.5, iron: 4.6, calcium: 92, magnesium: 168, potassium: 705, zinc: 3.3, vitaminA: 0, vitaminD: 0, vitaminE: 8.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0, folate: 240 },
-"Pistachios (raw)": { kcal: 560, protein: 20, carbs: 28, fat: 45, fibre: 10.6, iron: 4.0, calcium: 105, magnesium: 121, potassium: 1025, zinc: 2.2, vitaminA: 10, vitaminD: 0, vitaminE: 2.9, vitaminK: 13, vitaminC: 5.6, vitaminB6: 1.7, vitaminB12: 0, folate: 51 },
-"Hazelnuts (raw)": { kcal: 628, protein: 15, carbs: 17, fat: 61, fibre: 9.7, iron: 4.7, calcium: 114, magnesium: 163, potassium: 680, zinc: 2.5, vitaminA: 3, vitaminD: 0, vitaminE: 15, vitaminK: 14, vitaminC: 6, vitaminB6: 0.6, vitaminB12: 0, folate: 113 },
-"Macadamia Nuts (raw)": { kcal: 718, protein: 8, carbs: 14, fat: 76, fibre: 8.6, iron: 3.7, calcium: 85, magnesium: 130, potassium: 368, zinc: 1.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.5, vitaminK: 0, vitaminC: 1.2, vitaminB6: 0.3, vitaminB12: 0, folate: 11 },
-"Brazil Nuts (raw)": { kcal: 659, protein: 14, carbs: 12, fat: 67, fibre: 7.5, iron: 2.4, calcium: 160, magnesium: 376, potassium: 659, zinc: 4.1, vitaminA: 0, vitaminD: 0, vitaminE: 5.7, vitaminK: 0, vitaminC: 0.7, vitaminB6: 0.1, vitaminB12: 0, folate: 22 },
-"Sunflower Seeds (raw)": { kcal: 584, protein: 21, carbs: 20, fat: 51, fibre: 8.6, iron: 5.0, calcium: 78, magnesium: 325, potassium: 645, zinc: 5.0, vitaminA: 0, vitaminD: 0, vitaminE: 35, vitaminK: 2.7, vitaminC: 1.4, vitaminB6: 1.3, vitaminB12: 0, folate: 227 },
-"Pumpkin Seeds (raw)": { kcal: 559, protein: 30, carbs: 11, fat: 49, fibre: 6.0, iron: 8.8, calcium: 46, magnesium: 592, potassium: 809, zinc: 7.8, vitaminA: 16, vitaminD: 0, vitaminE: 2.2, vitaminK: 7, vitaminC: 1.9, vitaminB6: 0.1, vitaminB12: 0, folate: 58 },
-"Chia Seeds (raw)": { kcal: 486, protein: 17, carbs: 42, fat: 31, fibre: 34.4, iron: 7.7, calcium: 631, magnesium: 335, potassium: 407, zinc: 4.6, vitaminA: 0, vitaminD: 0, vitaminE: 0.5, vitaminK: 0, vitaminC: 1.6, vitaminB6: 0.1, vitaminB12: 0, folate: 49 },
-"Flaxseeds (raw)": { kcal: 534, protein: 18, carbs: 29, fat: 42, fibre: 27, iron: 5.7, calcium: 255, magnesium: 392, potassium: 813, zinc: 4.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 5, vitaminC: 0.6, vitaminB6: 0.5, vitaminB12: 0, folate: 87 },
-"Sesame Seeds (raw)": { kcal: 573, protein: 18, carbs: 23, fat: 50, fibre: 11.8, iron: 14.6, calcium: 975, magnesium: 351, potassium: 468, zinc: 7.8, vitaminA: 9, vitaminD: 0, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.8, vitaminB12: 0, folate: 97 },
-"Hemp Seeds (raw)": { kcal: 553, protein: 31, carbs: 8.7, fat: 49, fibre: 4.0, iron: 7.9, calcium: 70, magnesium: 700, potassium: 1200, zinc: 9.9, vitaminA: 1, vitaminD: 0, vitaminE: 0.8, vitaminK: 0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0, folate: 110 },
-"Pine Nuts (raw)": { kcal: 673, protein: 14, carbs: 13, fat: 68, fibre: 3.7, iron: 5.5, calcium: 16, magnesium: 251, potassium: 597, zinc: 6.5, vitaminA: 29, vitaminD: 0, vitaminE: 9.3, vitaminK: 54, vitaminC: 0.8, vitaminB6: 0.1, vitaminB12: 0, folate: 34 },
-"Coconut (raw)": { kcal: 354, protein: 3.3, carbs: 15, fat: 33, fibre: 9.0, iron: 2.4, calcium: 14, magnesium: 32, potassium: 356, zinc: 1.1, vitaminA: 0, vitaminD: 0, vitaminE: 0.2, vitaminK: 0.2, vitaminC: 3.3, vitaminB6: 0.1, vitaminB12: 0, folate: 26 },
+// =========================================
+  // FRUITS (FRESH)
+  // =========================================
+  "Apple (Red/Golden, raw with skin)": { kcal: 52, protein: 0.3, carbs: 14, fat: 0.2, fibre: 2.4, iron: 0.1, calcium: 6, magnesium: 5, potassium: 107, zinc: 0.05, vitaminA: 3, vitaminD: 0, vitaminE: 0.2, vitaminK: 2.2, vitaminC: 4.6, vitaminB6: 0.04, vitaminB12: 0, folate: 3 },
+  "Apple (Green/Granny Smith, raw)": { kcal: 58, protein: 0.4, carbs: 13.6, fat: 0.2, fibre: 2.8, iron: 0.2, calcium: 5, magnesium: 5, potassium: 120, zinc: 0.1, vitaminA: 2, vitaminD: 0, vitaminE: 0.2, vitaminK: 3, vitaminC: 4, vitaminB6: 0.04, vitaminB12: 0, folate: 3 },
+  "Banana (raw)": { kcal: 89, protein: 1.1, carbs: 23, fat: 0.3, fibre: 2.6, iron: 0.3, calcium: 5, magnesium: 27, potassium: 358, zinc: 0.2, vitaminA: 3, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.5, vitaminC: 8.7, vitaminB6: 0.4, vitaminB12: 0, folate: 20 },
+  "Orange (raw)": { kcal: 47, protein: 0.9, carbs: 12, fat: 0.1, fibre: 2.4, iron: 0.1, calcium: 40, magnesium: 10, potassium: 181, zinc: 0.1, vitaminA: 11, vitaminD: 0, vitaminE: 0.2, vitaminK: 0, vitaminC: 53, vitaminB6: 0.1, vitaminB12: 0, folate: 30 },
+  "Pear (raw)": { kcal: 57, protein: 0.4, carbs: 15, fat: 0.1, fibre: 3.1, iron: 0.2, calcium: 9, magnesium: 7, potassium: 116, zinc: 0.1, vitaminA: 1, vitaminD: 0, vitaminE: 0.1, vitaminK: 4.4, vitaminC: 4.3, vitaminB6: 0.02, vitaminB12: 0, folate: 7 },
+  "Peach (raw)": { kcal: 39, protein: 0.9, carbs: 10, fat: 0.3, fibre: 1.5, iron: 0.3, calcium: 6, magnesium: 9, potassium: 190, zinc: 0.2, vitaminA: 16, vitaminD: 0, vitaminE: 0.7, vitaminK: 2.6, vitaminC: 6.6, vitaminB6: 0.02, vitaminB12: 0, folate: 4 },
+  "Nectarine (raw)": { kcal: 44, protein: 1.1, carbs: 10.6, fat: 0.3, fibre: 1.7, iron: 0.3, calcium: 6, magnesium: 9, potassium: 201, zinc: 0.2, vitaminA: 17, vitaminD: 0, vitaminE: 0.8, vitaminK: 2.2, vitaminC: 5.4, vitaminB6: 0.03, vitaminB12: 0, folate: 5 },
+  "Apricot (raw)": { kcal: 48, protein: 1.4, carbs: 11, fat: 0.4, fibre: 2, iron: 0.4, calcium: 13, magnesium: 10, potassium: 259, zinc: 0.2, vitaminA: 96, vitaminD: 0, vitaminE: 0.9, vitaminK: 3.3, vitaminC: 10, vitaminB6: 0.1, vitaminB12: 0, folate: 9 },
+  "Strawberries (raw)": { kcal: 32, protein: 0.7, carbs: 7.7, fat: 0.3, fibre: 2, iron: 0.4, calcium: 16, magnesium: 13, potassium: 153, zinc: 0.1, vitaminA: 1, vitaminD: 0, vitaminE: 0.3, vitaminK: 2.2, vitaminC: 59, vitaminB6: 0.05, vitaminB12: 0, folate: 24 },
+  "Blueberries (raw)": { kcal: 57, protein: 0.7, carbs: 14, fat: 0.3, fibre: 2.4, iron: 0.3, calcium: 6, magnesium: 6, potassium: 77, zinc: 0.2, vitaminA: 3, vitaminD: 0, vitaminE: 0.6, vitaminK: 19, vitaminC: 9.7, vitaminB6: 0.1, vitaminB12: 0, folate: 6 },
+  "Raspberries (raw)": { kcal: 52, protein: 1.2, carbs: 12, fat: 0.7, fibre: 6.5, iron: 0.7, calcium: 25, magnesium: 22, potassium: 151, zinc: 0.4, vitaminA: 2, vitaminD: 0, vitaminE: 0.9, vitaminK: 7.8, vitaminC: 26, vitaminB6: 0.1, vitaminB12: 0, folate: 21 },
+  "Blackberries (raw)": { kcal: 43, protein: 1.4, carbs: 9.6, fat: 0.5, fibre: 5.3, iron: 0.6, calcium: 29, magnesium: 20, potassium: 162, zinc: 0.5, vitaminA: 11, vitaminD: 0, vitaminE: 1.2, vitaminK: 19.8, vitaminC: 21, vitaminB6: 0.03, vitaminB12: 0, folate: 25 },
+  "Watermelon (raw)": { kcal: 30, protein: 0.6, carbs: 8, fat: 0.2, fibre: 0.4, iron: 0.2, calcium: 7, magnesium: 10, potassium: 112, zinc: 0.1, vitaminA: 28, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.1, vitaminC: 8, vitaminB6: 0.1, vitaminB12: 0, folate: 3 },
+  "Melon (Cantaloupe)": { kcal: 34, protein: 0.8, carbs: 8, fat: 0.2, fibre: 0.9, iron: 0.2, calcium: 9, magnesium: 12, potassium: 267, zinc: 0.2, vitaminA: 169, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.5, vitaminC: 36, vitaminB6: 0.1, vitaminB12: 0, folate: 21 },
+  "Melon (Honeydew)": { kcal: 36, protein: 0.5, carbs: 9, fat: 0.1, fibre: 0.8, iron: 0.1, calcium: 6, magnesium: 10, potassium: 228, zinc: 0.1, vitaminA: 3, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.9, vitaminC: 18, vitaminB6: 0.1, vitaminB12: 0, folate: 19 },
+  "Grapes (Green/Red)": { kcal: 69, protein: 0.7, carbs: 18, fat: 0.2, fibre: 0.9, iron: 0.4, calcium: 10, magnesium: 7, potassium: 191, zinc: 0.1, vitaminA: 3, vitaminD: 0, vitaminE: 0.2, vitaminK: 14.6, vitaminC: 3.2, vitaminB6: 0.1, vitaminB12: 0, folate: 2 },
+  "Kiwi (raw)": { kcal: 61, protein: 1.1, carbs: 15, fat: 0.5, fibre: 3, iron: 0.3, calcium: 34, magnesium: 17, potassium: 312, zinc: 0.1, vitaminA: 4, vitaminD: 0, vitaminE: 1.5, vitaminK: 40.3, vitaminC: 93, vitaminB6: 0.1, vitaminB12: 0, folate: 25 },
+  "Pineapple (raw)": { kcal: 50, protein: 0.5, carbs: 13, fat: 0.1, fibre: 1.4, iron: 0.3, calcium: 13, magnesium: 12, potassium: 109, zinc: 0.1, vitaminA: 3, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.7, vitaminC: 47.8, vitaminB6: 0.1, vitaminB12: 0, folate: 18 },
+  "Mango (raw)": { kcal: 60, protein: 0.8, carbs: 15, fat: 0.4, fibre: 1.6, iron: 0.2, calcium: 11, magnesium: 10, potassium: 168, zinc: 0.1, vitaminA: 54, vitaminD: 0, vitaminE: 0.9, vitaminK: 4.2, vitaminC: 36.4, vitaminB6: 0.1, vitaminB12: 0, folate: 43 },
+  "Pomegranate (raw)": { kcal: 83, protein: 1.7, carbs: 19, fat: 1.2, fibre: 4, iron: 0.3, calcium: 10, magnesium: 12, potassium: 236, zinc: 0.4, vitaminA: 0, vitaminD: 0, vitaminE: 0.6, vitaminK: 16.4, vitaminC: 10, vitaminB6: 0.1, vitaminB12: 0, folate: 38 },
+  "Cherries (raw)": { kcal: 50, protein: 1.0, carbs: 12, fat: 0.3, fibre: 1.6, iron: 0.3, calcium: 13, magnesium: 11, potassium: 222, zinc: 0.1, vitaminA: 3, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.1, vitaminC: 7, vitaminB6: 0.1, vitaminB12: 0, folate: 4 },
+  "Plum (raw)": { kcal: 46, protein: 0.7, carbs: 11, fat: 0.3, fibre: 1.4, iron: 0.2, calcium: 6, magnesium: 7, potassium: 157, zinc: 0.1, vitaminA: 17, vitaminD: 0, vitaminE: 0.3, vitaminK: 6.4, vitaminC: 9.5, vitaminB6: 0.05, vitaminB12: 0, folate: 5 },
+  "Lemon (raw, without peel)": { kcal: 29, protein: 1.1, carbs: 9, fat: 0.3, fibre: 2.8, iron: 0.6, calcium: 26, magnesium: 8, potassium: 138, zinc: 0.1, vitaminA: 1, vitaminD: 0, vitaminE: 0.2, vitaminK: 0, vitaminC: 53, vitaminB6: 0.1, vitaminB12: 0, folate: 11 },
+  "Grapefruit (raw)": { kcal: 42, protein: 0.8, carbs: 11, fat: 0.1, fibre: 1.6, iron: 0.1, calcium: 22, magnesium: 9, potassium: 135, zinc: 0.1, vitaminA: 58, vitaminD: 0, vitaminE: 0.1, vitaminK: 0, vitaminC: 31, vitaminB6: 0.1, vitaminB12: 0, folate: 13 },
+  "Avocado (raw)": { kcal: 160, protein: 2, carbs: 9, fat: 15, fibre: 7, iron: 0.6, calcium: 12, magnesium: 29, potassium: 485, zinc: 0.6, vitaminA: 7, vitaminD: 0, vitaminE: 2.1, vitaminK: 21, vitaminC: 10, vitaminB6: 0.3, vitaminB12: 0, folate: 81 },
 
-// === SEAFOOD & FISH ===
-"Salmon (raw)": { kcal: 208, protein: 20, carbs: 0, fat: 13, fibre: 0, iron: 0.3, calcium: 9, magnesium: 29, potassium: 490, zinc: 0.6, vitaminA: 40, vitaminD: 10.9, vitaminE: 2.8, vitaminK: 0.4, vitaminC: 0, vitaminB6: 0.6, vitaminB12: 3.2, folate: 5 },
-"Salmon (cooked)": { kcal: 232, protein: 25, carbs: 0, fat: 14, fibre: 0, iron: 0.4, calcium: 10, magnesium: 30, potassium: 530, zinc: 0.7, vitaminA: 45, vitaminD: 11.0, vitaminE: 3.0, vitaminK: 0.5, vitaminC: 0, vitaminB6: 0.7, vitaminB12: 3.3, folate: 6 },
-"Tuna (raw)": { kcal: 130, protein: 29, carbs: 0, fat: 0.6, fibre: 0, iron: 1.0, calcium: 4, magnesium: 35, potassium: 250, zinc: 0.5, vitaminA: 20, vitaminD: 1.7, vitaminE: 1.0, vitaminK: 0.3, vitaminC: 0, vitaminB6: 1.0, vitaminB12: 2.5, folate: 2 },
-"Tuna (cooked)": { kcal: 150, protein: 30, carbs: 0, fat: 1.0, fibre: 0, iron: 1.1, calcium: 6, magnesium: 36, potassium: 270, zinc: 0.6, vitaminA: 22, vitaminD: 1.8, vitaminE: 1.1, vitaminK: 0.3, vitaminC: 0, vitaminB6: 1.0, vitaminB12: 2.6, folate: 2 },
-"Cod (raw)": { kcal: 82, protein: 18, carbs: 0, fat: 0.7, fibre: 0, iron: 0.4, calcium: 16, magnesium: 32, potassium: 413, zinc: 0.4, vitaminA: 12, vitaminD: 1.7, vitaminE: 0.9, vitaminK: 0, vitaminC: 1, vitaminB6: 0.2, vitaminB12: 1.3, folate: 7 },
-"Cod (cooked)": { kcal: 105, protein: 23, carbs: 0, fat: 0.9, fibre: 0, iron: 0.5, calcium: 18, magnesium: 35, potassium: 440, zinc: 0.5, vitaminA: 13, vitaminD: 1.8, vitaminE: 1.0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 1.4, folate: 7 },
-"Sardines (canned, in oil)": { kcal: 208, protein: 25, carbs: 0, fat: 11.5, fibre: 0, iron: 2.9, calcium: 382, magnesium: 39, potassium: 397, zinc: 1.3, vitaminA: 30, vitaminD: 4.8, vitaminE: 2.0, vitaminK: 2.6, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 8.9, folate: 10 },
-"Anchovies (canned, in oil)": { kcal: 210, protein: 29, carbs: 0, fat: 9.7, fibre: 0, iron: 3.3, calcium: 232, magnesium: 41, potassium: 544, zinc: 3.7, vitaminA: 15, vitaminD: 0.9, vitaminE: 1.4, vitaminK: 0.1, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.5, folate: 2 },
-"Shrimp (raw)": { kcal: 85, protein: 20, carbs: 0, fat: 0.5, fibre: 0, iron: 0.3, calcium: 64, magnesium: 35, potassium: 264, zinc: 1.3, vitaminA: 50, vitaminD: 0, vitaminE: 1.3, vitaminK: 0.3, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.1, folate: 15 },
-"Shrimp (cooked)": { kcal: 99, protein: 24, carbs: 0.2, fat: 0.3, fibre: 0, iron: 0.4, calcium: 70, magnesium: 37, potassium: 259, zinc: 1.5, vitaminA: 55, vitaminD: 0, vitaminE: 1.4, vitaminK: 0.4, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 1.2, folate: 16 },
-"Crab (cooked)": { kcal: 97, protein: 21, carbs: 0, fat: 1.5, fibre: 0, iron: 0.8, calcium: 91, magnesium: 34, potassium: 259, zinc: 3.1, vitaminA: 3, vitaminD: 0, vitaminE: 1.0, vitaminK: 0, vitaminC: 3, vitaminB6: 0.3, vitaminB12: 9.8, folate: 51 },
-"Lobster (cooked)": { kcal: 89, protein: 19, carbs: 0.3, fat: 0.9, fibre: 0, iron: 0.3, calcium: 60, magnesium: 43, potassium: 230, zinc: 3.3, vitaminA: 4, vitaminD: 0, vitaminE: 1.5, vitaminK: 0.2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 1.3, folate: 15 },
-"Octopus (cooked)": { kcal: 164, protein: 30, carbs: 4.4, fat: 2.1, fibre: 0, iron: 5.3, calcium: 106, magnesium: 30, potassium: 350, zinc: 1.7, vitaminA: 15, vitaminD: 0, vitaminE: 1.2, vitaminK: 0, vitaminC: 5, vitaminB6: 0.4, vitaminB12: 20, folate: 20 },
-"Squid (cooked)": { kcal: 92, protein: 16, carbs: 3.1, fat: 1.4, fibre: 0, iron: 0.7, calcium: 32, magnesium: 33, potassium: 246, zinc: 1.5, vitaminA: 16, vitaminD: 0, vitaminE: 1.2, vitaminK: 0, vitaminC: 3, vitaminB6: 0.3, vitaminB12: 1.3, folate: 8 },
-"Mussels (cooked)": { kcal: 172, protein: 24, carbs: 7.4, fat: 4.5, fibre: 0, iron: 6.7, calcium: 26, magnesium: 34, potassium: 320, zinc: 1.6, vitaminA: 240, vitaminD: 0, vitaminE: 1.0, vitaminK: 0, vitaminC: 8, vitaminB6: 0.1, vitaminB12: 20, folate: 50 },
-"Oysters (cooked)": { kcal: 102, protein: 9, carbs: 5.5, fat: 3.3, fibre: 0, iron: 6.7, calcium: 64, magnesium: 38, potassium: 220, zinc: 39, vitaminA: 85, vitaminD: 0, vitaminE: 1.7, vitaminK: 0, vitaminC: 8, vitaminB6: 0.1, vitaminB12: 16, folate: 15 },
+  // =========================================
+  // DRIED FRUITS
+  // =========================================
+  "Dates (Medjool)": { kcal: 277, protein: 1.8, carbs: 75, fat: 0.2, fibre: 6.7, iron: 0.9, calcium: 64, magnesium: 54, potassium: 696, zinc: 0.4, vitaminA: 7, vitaminD: 0, vitaminE: 0.1, vitaminK: 2.7, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0, folate: 15 },
+  "Raisins (Seedless)": { kcal: 299, protein: 3.1, carbs: 79, fat: 0.5, fibre: 3.7, iron: 1.9, calcium: 50, magnesium: 32, potassium: 749, zinc: 0.2, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 3.5, vitaminC: 2.3, vitaminB6: 0.2, vitaminB12: 0, folate: 5 },
+  "Dried Figs": { kcal: 249, protein: 3.3, carbs: 64, fat: 0.9, fibre: 9.8, iron: 2.0, calcium: 162, magnesium: 68, potassium: 680, zinc: 0.6, vitaminA: 0, vitaminD: 0, vitaminE: 0.4, vitaminK: 15.6, vitaminC: 1.2, vitaminB6: 0.1, vitaminB12: 0, folate: 9 },
+  "Dried Apricots": { kcal: 241, protein: 3.4, carbs: 63, fat: 0.5, fibre: 7.3, iron: 2.7, calcium: 55, magnesium: 32, potassium: 1162, zinc: 0.4, vitaminA: 180, vitaminD: 0, vitaminE: 4.3, vitaminK: 3.1, vitaminC: 1, vitaminB6: 0.1, vitaminB12: 0, folate: 10 },
+  "Prunes (Dried Plums)": { kcal: 240, protein: 2.2, carbs: 64, fat: 0.4, fibre: 7.1, iron: 0.9, calcium: 43, magnesium: 41, potassium: 732, zinc: 0.4, vitaminA: 39, vitaminD: 0, vitaminE: 0.4, vitaminK: 59.5, vitaminC: 0.6, vitaminB6: 0.2, vitaminB12: 0, folate: 4 },
+  "Cranberries (Dried, Sweetened)": { kcal: 308, protein: 0.1, carbs: 82, fat: 1.4, fibre: 5.7, iron: 0.5, calcium: 10, magnesium: 6, potassium: 85, zinc: 0.1, vitaminA: 2, vitaminD: 0, vitaminE: 1.3, vitaminK: 5, vitaminC: 0.2, vitaminB6: 0.1, vitaminB12: 0, folate: 1 },
+  "Goji Berries (Dried)": { kcal: 349, protein: 14, carbs: 77, fat: 0.4, fibre: 13, iron: 6.8, calcium: 190, magnesium: 0, potassium: 0, zinc: 2, vitaminA: 8000, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 48, vitaminB6: 0, vitaminB12: 0, folate: 0 },
 
-  // --- GREEK PRODUCTS ---
-  "Olives (Greek, black)": { kcal: 115, protein: 0.8, carbs: 6, fat: 10.7, iron: 3.3, calcium: 88, magnesium: 4, potassium: 8, vitaminC: 0 },
-  "Tahini": { kcal: 595, protein: 17, carbs: 22, fat: 53, iron: 5.5, calcium: 420, magnesium: 95, potassium: 414, vitaminC: 0 },
-  "Honey": { kcal: 304, protein: 0.3, carbs: 82, fat: 0, iron: 0.4, calcium: 6, magnesium: 2, potassium: 52, vitaminC: 0 },
-  "Sesame Seeds": { kcal: 573, protein: 17, carbs: 23, fat: 49, iron: 14.6, calcium: 975, magnesium: 351, potassium: 468, vitaminC: 0 },
-  "Sunflower Seeds": { kcal: 584, protein: 21, carbs: 20, fat: 51, iron: 5.3, calcium: 78, magnesium: 325, potassium: 645, vitaminC: 0 },
-  "Raisins": { kcal: 299, protein: 3, carbs: 79, fat: 0.5, iron: 1.9, calcium: 50, magnesium: 32, potassium: 749, vitaminC: 2.3 },
-  "Walnut (Greek)": { kcal: 654, protein: 15, carbs: 14, fat: 65, iron: 2.9, calcium: 98, magnesium: 158, potassium: 441, vitaminC: 1.3 },
+  // =========================================
+  // NUTS & SEEDS
+  // =========================================
+  "Almonds (raw)": { kcal: 579, protein: 21, carbs: 22, fat: 50, fibre: 12.5, iron: 3.7, calcium: 269, magnesium: 270, potassium: 733, zinc: 3.1, vitaminA: 0, vitaminD: 0, vitaminE: 25.6, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 44 },
+  "Walnuts (raw)": { kcal: 654, protein: 15, carbs: 14, fat: 65, fibre: 6.7, iron: 2.9, calcium: 98, magnesium: 158, potassium: 441, zinc: 3.1, vitaminA: 1, vitaminD: 0, vitaminE: 0.7, vitaminK: 2.7, vitaminC: 1.3, vitaminB6: 0.5, vitaminB12: 0, folate: 98 },
+  "Peanuts (raw)": { kcal: 567, protein: 26, carbs: 16, fat: 49, fibre: 8.5, iron: 4.6, calcium: 92, magnesium: 168, potassium: 705, zinc: 3.3, vitaminA: 0, vitaminD: 0, vitaminE: 8.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0, folate: 240 },
+  "Cashews (raw)": { kcal: 553, protein: 18, carbs: 30, fat: 44, fibre: 3.3, iron: 6.7, calcium: 37, magnesium: 292, potassium: 660, zinc: 5.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.9, vitaminK: 34, vitaminC: 0.5, vitaminB6: 0.4, vitaminB12: 0, folate: 25 },
+  "Pistachios (raw)": { kcal: 560, protein: 20, carbs: 28, fat: 45, fibre: 10.6, iron: 4, calcium: 105, magnesium: 121, potassium: 1025, zinc: 2.2, vitaminA: 26, vitaminD: 0, vitaminE: 2.9, vitaminK: 13, vitaminC: 5.6, vitaminB6: 1.7, vitaminB12: 0, folate: 51 },
+  "Hazelnuts (raw)": { kcal: 628, protein: 15, carbs: 17, fat: 61, fibre: 9.7, iron: 4.7, calcium: 114, magnesium: 163, potassium: 680, zinc: 2.5, vitaminA: 1, vitaminD: 0, vitaminE: 15, vitaminK: 14, vitaminC: 6.3, vitaminB6: 0.6, vitaminB12: 0, folate: 113 },
+  "Brazil Nuts (raw)": { kcal: 659, protein: 14, carbs: 12, fat: 67, fibre: 7.5, iron: 2.4, calcium: 160, magnesium: 376, potassium: 659, zinc: 4.1, vitaminA: 0, vitaminD: 0, vitaminE: 5.7, vitaminK: 0, vitaminC: 0.7, vitaminB6: 0.1, vitaminB12: 0, folate: 22 },
+  "Macadamia Nuts (raw)": { kcal: 718, protein: 8, carbs: 14, fat: 76, fibre: 8.6, iron: 3.7, calcium: 85, magnesium: 130, potassium: 368, zinc: 1.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.5, vitaminK: 0, vitaminC: 1.2, vitaminB6: 0.3, vitaminB12: 0, folate: 11 },
+  "Pecans (raw)": { kcal: 691, protein: 9, carbs: 14, fat: 72, fibre: 9.6, iron: 2.5, calcium: 70, magnesium: 121, potassium: 410, zinc: 4.5, vitaminA: 3, vitaminD: 0, vitaminE: 1.4, vitaminK: 3.5, vitaminC: 1.1, vitaminB6: 0.2, vitaminB12: 0, folate: 22 },
+  "Pine Nuts (raw)": { kcal: 673, protein: 13.7, carbs: 13, fat: 68, fibre: 3.7, iron: 5.5, calcium: 16, magnesium: 251, potassium: 597, zinc: 6.5, vitaminA: 1, vitaminD: 0, vitaminE: 9.3, vitaminK: 54, vitaminC: 0.8, vitaminB6: 0.1, vitaminB12: 0, folate: 34 },
+  "Sunflower Seeds (raw)": { kcal: 584, protein: 21, carbs: 20, fat: 51, fibre: 8.6, iron: 5.3, calcium: 78, magnesium: 325, potassium: 645, zinc: 5.0, vitaminA: 3, vitaminD: 0, vitaminE: 35, vitaminK: 2.7, vitaminC: 1.4, vitaminB6: 1.3, vitaminB12: 0, folate: 227 },
+  "Pumpkin Seeds (raw)": { kcal: 559, protein: 30, carbs: 10.7, fat: 49, fibre: 6, iron: 8.8, calcium: 46, magnesium: 592, potassium: 809, zinc: 7.6, vitaminA: 1, vitaminD: 0, vitaminE: 2.2, vitaminK: 7.3, vitaminC: 1.9, vitaminB6: 0.1, vitaminB12: 0, folate: 58 },
+  "Chia Seeds (dried)": { kcal: 486, protein: 17, carbs: 42, fat: 31, fibre: 34, iron: 7.7, calcium: 631, magnesium: 335, potassium: 407, zinc: 4.6, vitaminA: 3, vitaminD: 0, vitaminE: 0.5, vitaminK: 0, vitaminC: 1.6, vitaminB6: 0.1, vitaminB12: 0, folate: 49 },
+  "Flaxseeds (ground)": { kcal: 534, protein: 18, carbs: 29, fat: 42, fibre: 27, iron: 5.7, calcium: 255, magnesium: 392, potassium: 813, zinc: 4.3, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 4.3, vitaminC: 0.6, vitaminB6: 0.5, vitaminB12: 0, folate: 87 },
+  "Sesame Seeds (whole)": { kcal: 573, protein: 18, carbs: 23, fat: 50, fibre: 12, iron: 14.6, calcium: 975, magnesium: 351, potassium: 468, zinc: 7.8, vitaminA: 0, vitaminD: 0, vitaminE: 0.3, vitaminK: 0, vitaminC: 0, vitaminB6: 0.8, vitaminB12: 0, folate: 97 },
+  "Tahini (Whole Sesame Paste)": { kcal: 595, protein: 17, carbs: 21, fat: 53, fibre: 9.3, iron: 8.9, calcium: 426, magnesium: 95, potassium: 414, zinc: 4.6, vitaminA: 3, vitaminD: 0, vitaminE: 0.2, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 98 },
+  "Peanut Butter (100% Peanuts)": { kcal: 588, protein: 25, carbs: 20, fat: 50, fibre: 6, iron: 1.9, calcium: 43, magnesium: 154, potassium: 649, zinc: 2.5, vitaminA: 0, vitaminD: 0, vitaminE: 9, vitaminK: 0, vitaminC: 0, vitaminB6: 0.4, vitaminB12: 0, folate: 74 },
+
+  // =========================================
+  // OILS & FATS
+  // =========================================
+  "Olive Oil (Extra Virgin)": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.6, calcium: 1, magnesium: 0, potassium: 1, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 14.4, vitaminK: 60, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Butter (Salted)": { kcal: 717, protein: 0.9, carbs: 0.1, fat: 81, fibre: 0, iron: 0, calcium: 24, magnesium: 2, potassium: 24, zinc: 0.1, vitaminA: 684, vitaminD: 1.5, vitaminE: 2.3, vitaminK: 7, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.2, folate: 3 },
+  "Coconut Oil": { kcal: 862, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0.1, calcium: 1, magnesium: 0, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0.1, vitaminK: 0.5, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Sunflower Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 41, vitaminK: 5.4, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Canola Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 17.5, vitaminK: 71, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Avocado Oil": { kcal: 884, protein: 0, carbs: 0, fat: 100, fibre: 0, iron: 0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 13, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Margarine (Soft)": { kcal: 717, protein: 0.2, carbs: 1, fat: 80, fibre: 0, iron: 0, calcium: 4, magnesium: 2, potassium: 20, zinc: 0, vitaminA: 800, vitaminD: 7, vitaminE: 9, vitaminK: 90, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.1, folate: 1 },
+
+// =========================================
+  // BEVERAGES (ALCOHOLIC & NON-ALCOHOLIC)
+  // =========================================
+  "Water": { kcal: 0, protein: 0, carbs: 0, fat: 0, fibre: 0, iron: 0, calcium: 3, magnesium: 1, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Coffee (Black, brewed)": { kcal: 2, protein: 0.3, carbs: 0, fat: 0, fibre: 0, iron: 0, calcium: 2, magnesium: 3, potassium: 49, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Tea (Black/Green, brewed)": { kcal: 1, protein: 0, carbs: 0.2, fat: 0, fibre: 0, iron: 0, calcium: 0, magnesium: 1, potassium: 18, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Orange Juice (Freshly Squeezed)": { kcal: 45, protein: 0.7, carbs: 10.4, fat: 0.2, fibre: 0.2, iron: 0.2, calcium: 11, magnesium: 11, potassium: 200, zinc: 0.1, vitaminA: 10, vitaminD: 0, vitaminE: 0.2, vitaminK: 0.1, vitaminC: 50, vitaminB6: 0.1, vitaminB12: 0, folate: 30 },
+  "Wine (Red)": { kcal: 85, protein: 0.1, carbs: 2.6, fat: 0, fibre: 0, iron: 0.5, calcium: 8, magnesium: 12, potassium: 127, zinc: 0.1, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Wine (White)": { kcal: 82, protein: 0.1, carbs: 2.6, fat: 0, fibre: 0, iron: 0.3, calcium: 9, magnesium: 10, potassium: 71, zinc: 0.1, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Beer (Lager, 5%)": { kcal: 43, protein: 0.5, carbs: 3.6, fat: 0, fibre: 0, iron: 0, calcium: 4, magnesium: 6, potassium: 27, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 6 },
+  "Whiskey / Vodka / Gin (40%)": { kcal: 231, protein: 0, carbs: 0, fat: 0, fibre: 0, iron: 0, calcium: 0, magnesium: 0, potassium: 2, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Cola (Regular)": { kcal: 42, protein: 0, carbs: 10.6, fat: 0, fibre: 0, iron: 0, calcium: 2, magnesium: 0, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Cola (Zero/Light)": { kcal: 0.2, protein: 0, carbs: 0, fat: 0, fibre: 0, iron: 0, calcium: 2, magnesium: 0, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+
+  // =========================================
+  // CONDIMENTS, SAUCES & SWEETENERS
+  // =========================================
+  "Tomato Paste": { kcal: 82, protein: 4.3, carbs: 19, fat: 0.5, fibre: 4.1, iron: 2.8, calcium: 35, magnesium: 35, potassium: 1014, zinc: 0.6, vitaminA: 150, vitaminD: 0, vitaminE: 4.3, vitaminK: 11, vitaminC: 22, vitaminB6: 0.2, vitaminB12: 0, folate: 15 },
+  "Ketchup": { kcal: 100, protein: 1, carbs: 25, fat: 0.1, fibre: 0.3, iron: 0.4, calcium: 18, magnesium: 14, potassium: 380, zinc: 0.2, vitaminA: 20, vitaminD: 0, vitaminE: 1.5, vitaminK: 0, vitaminC: 15, vitaminB6: 0.1, vitaminB12: 0, folate: 0 },
+  "Mustard (Yellow)": { kcal: 66, protein: 4, carbs: 5, fat: 3.4, fibre: 3, iron: 1.5, calcium: 58, magnesium: 30, potassium: 130, zinc: 0.6, vitaminA: 2, vitaminD: 0, vitaminE: 0.1, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 0 },
+  "Mayonnaise": { kcal: 680, protein: 1, carbs: 1, fat: 75, fibre: 0, iron: 0.2, calcium: 8, magnesium: 1, potassium: 20, zinc: 0.1, vitaminA: 20, vitaminD: 0.1, vitaminE: 5, vitaminK: 160, vitaminC: 0, vitaminB6: 0, vitaminB12: 0.1, folate: 0 },
+  "Soy Sauce": { kcal: 53, protein: 8, carbs: 5, fat: 0.1, fibre: 0.8, iron: 1.7, calcium: 33, magnesium: 74, potassium: 435, zinc: 0.9, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 0 },
+  "Honey": { kcal: 304, protein: 0.3, carbs: 82, fat: 0, fibre: 0.2, iron: 0.4, calcium: 6, magnesium: 2, potassium: 52, zinc: 0.2, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0.5, vitaminB6: 0, vitaminB12: 0, folate: 2 },
+  "Sugar (White)": { kcal: 387, protein: 0, carbs: 100, fat: 0, fibre: 0, iron: 0, calcium: 0, magnesium: 0, potassium: 0, zinc: 0, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 0, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Jam / Marmalade": { kcal: 250, protein: 0.5, carbs: 60, fat: 0.1, fibre: 1, iron: 0.2, calcium: 15, magnesium: 5, potassium: 80, zinc: 0.1, vitaminA: 0, vitaminD: 0, vitaminE: 0, vitaminK: 0, vitaminC: 5, vitaminB6: 0, vitaminB12: 0, folate: 0 },
+  "Hummus": { kcal: 166, protein: 7.9, carbs: 14, fat: 9.6, fibre: 6, iron: 2.4, calcium: 38, magnesium: 71, potassium: 228, zinc: 1.8, vitaminA: 1, vitaminD: 0, vitaminE: 1.5, vitaminK: 6, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0, folate: 83 },
+  "Tzatziki": { kcal: 118, protein: 5.5, carbs: 3.5, fat: 9, fibre: 0.5, iron: 0.2, calcium: 80, magnesium: 12, potassium: 140, zinc: 0.4, vitaminA: 20, vitaminD: 0, vitaminE: 0.2, vitaminK: 1, vitaminC: 2, vitaminB6: 0.1, vitaminB12: 0.2, folate: 5 },
+
+  // =========================================
+  // SWEETS & SNACKS
+  // =========================================
+  "Dark Chocolate (70-85%)": { kcal: 598, protein: 7.8, carbs: 46, fat: 43, fibre: 11, iron: 11.9, calcium: 73, magnesium: 228, potassium: 715, zinc: 3.3, vitaminA: 2, vitaminD: 0, vitaminE: 0.6, vitaminK: 7, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 0 },
+  "Milk Chocolate": { kcal: 535, protein: 7.7, carbs: 59, fat: 30, fibre: 3.4, iron: 2.4, calcium: 189, magnesium: 63, potassium: 372, zinc: 2.3, vitaminA: 50, vitaminD: 1.5, vitaminE: 0.9, vitaminK: 5, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.8, folate: 5 },
+  "Popcorn (Air-popped, no salt)": { kcal: 387, protein: 13, carbs: 78, fat: 4.5, fibre: 14.5, iron: 3.2, calcium: 7, magnesium: 144, potassium: 329, zinc: 3.1, vitaminA: 10, vitaminD: 0, vitaminE: 0.3, vitaminK: 1, vitaminC: 0, vitaminB6: 0.3, vitaminB12: 0, folate: 31 },
+  "Potato Chips (Salted)": { kcal: 536, protein: 7, carbs: 53, fat: 35, fibre: 4.8, iron: 1.6, calcium: 30, magnesium: 65, potassium: 1275, zinc: 1.0, vitaminA: 0, vitaminD: 0, vitaminE: 9, vitaminK: 30, vitaminC: 15, vitaminB6: 0.7, vitaminB12: 0, folate: 0 },
+  "Biscuits (Digestive)": { kcal: 480, protein: 7, carbs: 62, fat: 21, fibre: 3.5, iron: 2.5, calcium: 40, magnesium: 30, potassium: 150, zinc: 0.8, vitaminA: 0, vitaminD: 0, vitaminE: 2, vitaminK: 5, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 15 },
+  "Halva (Sesame)": { kcal: 550, protein: 12, carbs: 45, fat: 35, fibre: 4.5, iron: 4.5, calcium: 35, magnesium: 105, potassium: 160, zinc: 2.0, vitaminA: 0, vitaminD: 0, vitaminE: 2.5, vitaminK: 0, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0, folate: 10 },
+  "Pasteli (Sesame & Honey bar)": { kcal: 500, protein: 12, carbs: 40, fat: 33, fibre: 6, iron: 5, calcium: 300, magnesium: 150, potassium: 250, zinc: 3.0, vitaminA: 0, vitaminD: 0, vitaminE: 1, vitaminK: 0, vitaminC: 0, vitaminB6: 0.2, vitaminB12: 0, folate: 20 },
+
+  // =========================================
+  // TRADITIONAL GREEK DISHES (ESTIMATES)
+  // =========================================
+  "Moussaka (cooked)": { kcal: 150, protein: 7, carbs: 9, fat: 10, fibre: 2, iron: 1.0, calcium: 40, magnesium: 20, potassium: 300, zinc: 1.2, vitaminA: 30, vitaminD: 0, vitaminE: 1, vitaminK: 5, vitaminC: 5, vitaminB6: 0.2, vitaminB12: 0.5, folate: 10 },
+  "Pastitsio (cooked)": { kcal: 180, protein: 9, carbs: 18, fat: 8, fibre: 1, iron: 1.2, calcium: 50, magnesium: 15, potassium: 150, zinc: 1.5, vitaminA: 25, vitaminD: 0.1, vitaminE: 0.5, vitaminK: 2, vitaminC: 1, vitaminB6: 0.1, vitaminB12: 0.6, folate: 12 },
+  "Gemista (Rice Stuffed Peppers/Tomatoes)": { kcal: 130, protein: 2.5, carbs: 18, fat: 6, fibre: 2.5, iron: 1.0, calcium: 20, magnesium: 15, potassium: 200, zinc: 0.5, vitaminA: 50, vitaminD: 0, vitaminE: 1, vitaminK: 10, vitaminC: 30, vitaminB6: 0.1, vitaminB12: 0, folate: 20 },
+  "Spanakopita (Spinach Pie)": { kcal: 260, protein: 8, carbs: 22, fat: 16, fibre: 2.5, iron: 1.8, calcium: 110, magnesium: 30, potassium: 180, zinc: 0.7, vitaminA: 150, vitaminD: 0.2, vitaminE: 2, vitaminK: 80, vitaminC: 6, vitaminB6: 0.1, vitaminB12: 0.2, folate: 45 },
+  "Tyropita (Cheese Pie)": { kcal: 310, protein: 11, carbs: 20, fat: 21, fibre: 0.5, iron: 0.8, calcium: 250, magnesium: 20, potassium: 80, zinc: 1.5, vitaminA: 100, vitaminD: 0.3, vitaminE: 1, vitaminK: 2, vitaminC: 0, vitaminB6: 0.1, vitaminB12: 0.5, folate: 15 },
+  "Fasolada (Bean Soup)": { kcal: 110, protein: 5, carbs: 12, fat: 5, fibre: 5, iron: 2.0, calcium: 40, magnesium: 35, potassium: 300, zinc: 0.8, vitaminA: 150, vitaminD: 0, vitaminE: 1, vitaminK: 5, vitaminC: 5, vitaminB6: 0.1, vitaminB12: 0, folate: 40 },
+  "Fakes (Lentil Soup)": { kcal: 115, protein: 7, carbs: 15, fat: 4, fibre: 6, iron: 2.8, calcium: 25, magnesium: 30, potassium: 280, zinc: 1.0, vitaminA: 10, vitaminD: 0, vitaminE: 0.5, vitaminK: 3, vitaminC: 3, vitaminB6: 0.2, vitaminB12: 0, folate: 90 },
+  "Gigantes Plaki (Baked Giant Beans)": { kcal: 140, protein: 6, carbs: 16, fat: 6, fibre: 5.5, iron: 2.2, calcium: 45, magnesium: 40, potassium: 350, zinc: 0.9, vitaminA: 40, vitaminD: 0, vitaminE: 1.2, vitaminK: 10, vitaminC: 8, vitaminB6: 0.1, vitaminB12: 0, folate: 50 },
+  "Horiatiki (Greek Salad, with Feta & Oil)": { kcal: 160, protein: 5, carbs: 5, fat: 14, fibre: 2, iron: 0.8, calcium: 120, magnesium: 20, potassium: 250, zinc: 0.5, vitaminA: 80, vitaminD: 0.1, vitaminE: 2, vitaminK: 30, vitaminC: 35, vitaminB6: 0.1, vitaminB12: 0.3, folate: 25 },
+  "Souvlaki (Pita with Pork Gyros & Tzatziki)": { kcal: 260, protein: 11, carbs: 22, fat: 14, fibre: 1.5, iron: 1.5, calcium: 40, magnesium: 20, potassium: 200, zinc: 1.8, vitaminA: 10, vitaminD: 0.1, vitaminE: 1, vitaminK: 2, vitaminC: 3, vitaminB6: 0.2, vitaminB12: 0.3, folate: 15 },
+  "Souvlaki (Pita with Chicken Gyros)": { kcal: 220, protein: 14, carbs: 22, fat: 9, fibre: 1.5, iron: 1.0, calcium: 30, magnesium: 22, potassium: 220, zinc: 1.2, vitaminA: 10, vitaminD: 0.1, vitaminE: 0.8, vitaminK: 2, vitaminC: 3, vitaminB6: 0.3, vitaminB12: 0.2, folate: 12 }
+
 };
