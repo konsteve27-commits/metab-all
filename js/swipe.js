@@ -1,8 +1,5 @@
-// ===== js/swipe.js =====
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Ορισμός της σειράς των σελίδων
     const pages = [
         "index.html",
         "calories.html",
@@ -11,50 +8,62 @@ document.addEventListener('DOMContentLoaded', () => {
         "workout.html"
     ];
 
-    // 2. Εύρεση της τρέχουσας σελίδας
     let path = window.location.pathname;
     let currentPage = path.substring(path.lastIndexOf('/') + 1);
 
-    // Αν είμαστε στο root (π.χ. metab-all.com/), θεωρούμε ότι είναι το index.html
     if (currentPage === "" || currentPage === "/") {
         currentPage = "index.html";
     }
 
     let currentIndex = pages.indexOf(currentPage);
-    
-    // Αν για κάποιο λόγο δεν βρεθεί η σελίδα, σταματάμε
     if (currentIndex === -1) return;
 
-    // 3. Logic για το Touch Event
+    // Μεταβλητές για τις συντεταγμένες
     let touchStartX = 0;
+    let touchStartY = 0; // ΝΕΟ: Κρατάμε και το ύψος
     let touchEndX = 0;
-    const minSwipeDistance = 50; // Ελάχιστα pixels για να θεωρηθεί swipe
+    let touchEndY = 0;   // ΝΕΟ: Κρατάμε και το ύψος
+
+    // Ρυθμίσεις ευαισθησίας
+    const minSwipeDistance = 50;  // Πρέπει να σύρεις τουλάχιστον 50px οριζόντια
+    const maxVerticalDistance = 30; // ΝΕΟ: Απαγορεύεται να κουνηθείς πάνω/κάτω περισσότερο από 30px
 
     function handleGesture() {
-        let distance = touchEndX - touchStartX;
+        let xDistance = touchEndX - touchStartX;
+        let yDistance = touchEndY - touchStartY;
 
-        if (Math.abs(distance) < minSwipeDistance) return; // Πολύ μικρή κίνηση, αγνόησέ την
+        // 1. Έλεγχος: Ήταν αρκετά μεγάλη η οριζόντια κίνηση;
+        if (Math.abs(xDistance) < minSwipeDistance) return;
 
-        if (distance < 0) {
-            // Swipe Left (δάχτυλο προς τα αριστερά) -> ΕΠΟΜΕΝΗ ΣΕΛΙΔΑ
+        // 2. Έλεγχος: Μήπως κουνήθηκε πολύ πάνω-κάτω (διαγώνια/scroll);
+        // Αν η κάθετη κίνηση είναι μεγαλύτερη από το όριο (30px), ακυρώνουμε το swipe.
+        if (Math.abs(yDistance) > maxVerticalDistance) return;
+
+        // 3. Έλεγχος ασφαλείας: Η οριζόντια κίνηση πρέπει να είναι μεγαλύτερη από την κάθετη
+        if (Math.abs(yDistance) >= Math.abs(xDistance)) return;
+
+        // Αν περάσουν όλοι οι έλεγχοι, κάνουμε την αλλαγή
+        if (xDistance < 0) {
+            // Swipe Left -> Next Page
             if (currentIndex < pages.length - 1) {
                 window.location.href = pages[currentIndex + 1];
             }
         } else {
-            // Swipe Right (δάχτυλο προς τα δεξιά) -> ΠΡΟΗΓΟΥΜΕΝΗ ΣΕΛΙΔΑ
+            // Swipe Right -> Previous Page
             if (currentIndex > 0) {
                 window.location.href = pages[currentIndex - 1];
             }
         }
     }
 
-    // 4. Listeners
     document.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY; // Καταγραφή αρχικού Υ
     }, false);
 
     document.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;   // Καταγραφή τελικού Υ
         handleGesture();
     }, false);
 });
