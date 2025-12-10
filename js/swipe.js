@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // 1. Λίστα σελίδων (βεβαιώσου ότι η σειρά είναι σωστή)
     const pages = [
         "index.html",
         "calories.html",
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "workout.html"
     ];
 
+    // 2. Εύρεση τρέχουσας σελίδας
     let path = window.location.pathname;
     let currentPage = path.substring(path.lastIndexOf('/') + 1);
 
@@ -18,31 +20,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = pages.indexOf(currentPage);
     if (currentIndex === -1) return;
 
-    // Μεταβλητές για τις συντεταγμένες
+    // 3. Μεταβλητές αφής
     let touchStartX = 0;
-    let touchStartY = 0; // ΝΕΟ: Κρατάμε και το ύψος
+    let touchStartY = 0;
     let touchEndX = 0;
-    let touchEndY = 0;   // ΝΕΟ: Κρατάμε και το ύψος
+    let touchEndY = 0;
 
-    // Ρυθμίσεις ευαισθησίας
-    const minSwipeDistance = 50;  // Πρέπει να σύρεις τουλάχιστον 50px οριζόντια
-    const maxVerticalDistance = 10; // ΝΕΟ: Απαγορεύεται να κουνηθείς πάνω/κάτω περισσότερο από 30px
+    // 4. Ρυθμίσεις Ζώνης & Ευαισθησίας
+    const minSwipeDistance = 50;     // Ελάχιστη οριζόντια απόσταση για swipe
+    const maxVerticalDeviation = 40; // Μέγιστη επιτρεπτή απόκλιση πάνω/κάτω (για να μην είναι διαγώνιο)
+    const bottomZoneHeight = 150;    // ΕΝΕΡΓΗ ΖΩΝΗ: Τα τελευταία 150 pixels της οθόνης
 
     function handleGesture() {
+        // Έλεγχος 1: Ξεκίνησε το δάχτυλο στο κάτω μέρος της οθόνης;
+        // Αν το touchStartY είναι μικρότερο από (Ύψος Οθόνης - 150px), ακυρώνουμε.
+        if (touchStartY < (window.innerHeight - bottomZoneHeight)) {
+            return; 
+        }
+
         let xDistance = touchEndX - touchStartX;
         let yDistance = touchEndY - touchStartY;
 
-        // 1. Έλεγχος: Ήταν αρκετά μεγάλη η οριζόντια κίνηση;
+        // Έλεγχος 2: Ήταν αρκετά μεγάλη η οριζόντια κίνηση;
         if (Math.abs(xDistance) < minSwipeDistance) return;
 
-        // 2. Έλεγχος: Μήπως κουνήθηκε πολύ πάνω-κάτω (διαγώνια/scroll);
-        // Αν η κάθετη κίνηση είναι μεγαλύτερη από το όριο (30px), ακυρώνουμε το swipe.
-        if (Math.abs(yDistance) > maxVerticalDistance) return;
+        // Έλεγχος 3: Μήπως ήταν πολύ διαγώνια η κίνηση;
+        if (Math.abs(yDistance) > maxVerticalDeviation) return;
 
-        // 3. Έλεγχος ασφαλείας: Η οριζόντια κίνηση πρέπει να είναι μεγαλύτερη από την κάθετη
-        if (Math.abs(yDistance) >= Math.abs(xDistance)) return;
-
-        // Αν περάσουν όλοι οι έλεγχοι, κάνουμε την αλλαγή
+        // Εκτέλεση αλλαγής σελίδας
         if (xDistance < 0) {
             // Swipe Left -> Next Page
             if (currentIndex < pages.length - 1) {
@@ -56,15 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Listeners
     document.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY; // Καταγραφή αρχικού Υ
+        touchStartY = e.changedTouches[0].screenY; // Καταγράφουμε πού ακούμπησε
     }, false);
 
     document.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;   // Καταγραφή τελικού Υ
+        touchEndY = e.changedTouches[0].screenY;
         handleGesture();
     }, false);
-
 });
