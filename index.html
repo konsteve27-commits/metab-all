@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0", viewport-fit=cover />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" , viewport-fit=cover />
 
   <title>Metab-all | Nutrition & Training Suite</title>
 
-  <meta name="description" content="Metab-all is your all-in-one fitness assistant. Calculate calories, plan meals with full macro & micro analysis, track saved meals and build custom workouts." />
+  <meta name="description"
+    content="Metab-all is your all-in-one fitness assistant. Calculate calories, plan meals with full macro & micro analysis, track saved meals and build custom workouts." />
 
   <!-- CSS architecture -->
   <link rel="stylesheet" href="css/variables.css" />
@@ -15,6 +17,7 @@
   <link rel="stylesheet" href="css/hero_section.css" />
   <link rel="stylesheet" href="css/pages.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/cards.css" />
   <link rel="icon" type="image/png" href="icon.png">
 
 </head>
@@ -38,15 +41,15 @@
 
 
 
-<!-- Name Modal -->
-<div id="nameModal">
+  <!-- Name Modal -->
+  <div id="nameModal">
     <div class="modal-content">
-        <h2>Welcome!</h2>
-        <p>What's your name?</p>
-        <input type="text" id="nameInput" placeholder="Enter name..." />
-        <button id="saveName">Save</button>
+      <h2>Welcome!</h2>
+      <p>What's your name?</p>
+      <input type="text" id="nameInput" placeholder="Enter name..." />
+      <button id="saveName">Save</button>
     </div>
-</div>
+  </div>
 
   <!-- ===== MAIN CONTENT ===== -->
   <main class="main-container">
@@ -68,9 +71,26 @@
       <div class="hero-buttons">
         <a class="hero-btn primary" href="calories.html">Start with Calories</a>
         <a class="hero-btn secondary" href="meals.html">Build a Meal</a>
-        
+
       </div>
     </section>
+    <section id="swipeCardsWrapper" class="card"
+      style="margin-top: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+      <h3 style="margin-top: 0;">Metab-all Tutorial</h3>
+
+      <div id="swipeCardsContainer" class="swipe-cards-container"></div>
+
+      <div id="swipeControls" style="display: flex; justify-content: space-between; margin-top: 1rem;">
+        <button id="resetTutorialBtn" class="btn-outline" type="button"
+          style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+          Reset Tutorial
+        </button>
+        <button id="nextCardBtn" class="btn-primary" type="button" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+          Next →
+        </button>
+      </div>
+    </section>
+
 
     <!-- INTRO TEXT -->
     <p class="index-intro">
@@ -80,13 +100,15 @@
     </p>
   </main>
   <footer>
-  <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
-  <p>
-    <a href="terms.html" class="link">Terms of Use</a> •
-    <a href="privacy.html" class="link">Privacy Policy</a> •
-    <a href="disclaimer.html" class="link">Disclaimer</a>
-  </p>
-</footer>
-<script src="js/swipe.js"></script>
+    <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+    <p>
+      <a href="terms.html" class="link">Terms of Use</a> •
+      <a href="privacy.html" class="link">Privacy Policy</a> •
+      <a href="disclaimer.html" class="link">Disclaimer</a>
+    </p>
+  </footer>
+  <script src="js/swipe.js"></script>
+  <script src="js/swipe_cards.js"></script>
 </body>
+
 </html>
