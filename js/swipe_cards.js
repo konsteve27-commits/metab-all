@@ -1,12 +1,12 @@
+import { facts } from "./facts.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("swipeCardsContainer");
     const resetBtn = document.getElementById("resetTutorialBtn");
     const nextBtn = document.getElementById("nextCardBtn");
 
-    let index = 0;
-
-    // Tutorial data
-    const cards = [
+    // Tutorial steps in correct order
+    const tutorial = [
         {
             title: "Welcome to Metab-all",
             text: "This short tutorial will guide you through the essential features. Swipe left or press Next to continue."
@@ -17,26 +17,64 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
             title: "2. Meal Creator",
-            text: "Build your meals by adding foods in grams and track your progress instantly."
+            text: "Add foods in grams and instantly get macro and micro analysis."
         },
         {
             title: "3. Daily Totals",
-            text: "See your daily totals and compare them to your goals using clear visual progress bars."
+            text: "Track daily intakes and compare them with your goals."
         },
         {
             title: "4. Workout Tracker",
-            text: "Create workouts, log weights and sets, and track progress over time."
+            text: "Create workouts, log sets, track volume, and monitor strength progression."
         },
         {
             title: "Tutorial Completed",
-            text: "You are ready to use the platform. You will also find daily tips and ideas here."
+            text: "You are ready to use the platform. From now on you will see daily tips and random facts."
         }
     ];
 
-    // Create card element
-    function createCard(data) {
+    let index = 0;
+    let tutorialMode = true;
+
+    // -------------------------------
+    // GET CURRENT + NEXT CARD DATA
+    // -------------------------------
+    function getCurrentCardData() {
+        if (tutorialMode) {
+            return tutorial[index];
+        }
+
+        // Random fact mode
+        const randomIdx = Math.floor(Math.random() * facts.length);
+        return facts[randomIdx];
+    }
+
+    function getNextCardData() {
+        if (tutorialMode) {
+            // next tutorial step?
+            if (index + 1 < tutorial.length) {
+                return tutorial[index + 1];
+            }
+
+            // tutorial finished → next is random fact
+            return {
+                title: "Daily Tip",
+                text: "Swipe to get a random fact."
+            };
+        }
+
+        // random fact mode
+        const randomIdx = Math.floor(Math.random() * facts.length);
+        return facts[randomIdx];
+    }
+
+    // -------------------------------
+    // CREATE CARD ELEMENT
+    // -------------------------------
+    function createCard(data, type = "current") {
         const el = document.createElement("div");
         el.className = "swipe-card";
+        el.dataset.card = type;
         el.innerHTML = `
             <h4>${data.title}</h4>
             <p>${data.text}</p>
@@ -44,52 +82,64 @@ document.addEventListener("DOMContentLoaded", () => {
         return el;
     }
 
-    // Render only current + next card
+    // -------------------------------
+    // RENDER ONLY 2 CARDS
+    // -------------------------------
     function renderCards() {
         container.innerHTML = "";
 
-        // top card
-        if (cards[index]) {
-            const current = createCard(cards[index]);
-            current.dataset.card = "current";
-            current.style.zIndex = 2;
-            container.appendChild(current);
-        }
+        const currentData = getCurrentCardData();
+        const nextData = getNextCardData();
 
-        // next card (blurred preview)
-        if (cards[index + 1]) {
-            const next = createCard(cards[index + 1]);
-            next.dataset.card = "next";
-            next.style.zIndex = 1;
-            next.classList.add("next-card");
-            container.appendChild(next);
-        }
+        const currentCard = createCard(currentData, "current");
+        currentCard.style.zIndex = 2;
 
-        updateControls();
+        const nextCard = createCard(nextData, "next");
+        nextCard.classList.add("next-card");
+        nextCard.style.zIndex = 1;
+
+        container.appendChild(currentCard);
+        container.appendChild(nextCard);
+
+        updateButton();
     }
 
-    function updateControls() {
-        if (index >= cards.length - 1) {
+    // -------------------------------
+    // UPDATE BUTTON LABEL
+    // -------------------------------
+    function updateButton() {
+        if (tutorialMode && index >= tutorial.length - 1) {
             nextBtn.textContent = "Finish";
         } else {
             nextBtn.textContent = "Next →";
         }
     }
 
-    // Animate swipe and move to next card
+    // -------------------------------
+    // ANIMATE AND ADVANCE
+    // -------------------------------
     function goNext() {
-        const topCard = container.querySelector('[data-card="current"]');
-        if (!topCard) return;
+        const top = container.querySelector('[data-card="current"]');
+        if (!top) return;
 
-        topCard.classList.add("swiped-left");
+        top.classList.add("swiped-left");
 
         setTimeout(() => {
-            index++;
+            if (tutorialMode) {
+                index++;
+
+                if (index >= tutorial.length) {
+                    tutorialMode = false; // switch to random facts
+                }
+            }
+
             renderCards();
-        }, 300);
+        }, 280);
     }
 
-    // Touch/drag logic
+    // -------------------------------
+    // DRAG / SWIPE LOGIC
+    // -------------------------------
     let startX = 0;
     let currentX = 0;
     let dragging = false;
@@ -108,14 +158,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function drag(e) {
         if (!dragging) return;
 
-        const topCard = container.querySelector('[data-card="current"]');
-        if (!topCard) return;
+        const top = container.querySelector('[data-card="current"]');
+        if (!top) return;
 
         currentX = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
-        const delta = currentX - startX;
 
-        topCard.style.transition = "none";
-        topCard.style.transform = `translateX(${delta}px) rotate(${delta / 15}deg)`;
+        const delta = currentX - startX;
+        top.style.transition = "none";
+        top.style.transform = `translateX(${delta}px) rotate(${delta / 15}deg)`;
     }
 
     document.addEventListener("mouseup", endDrag);
@@ -125,16 +175,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!dragging) return;
         dragging = false;
 
-        const topCard = container.querySelector('[data-card="current"]');
-        if (!topCard) return;
-
         const delta = currentX - startX;
+        const top = container.querySelector('[data-card="current"]');
+
+        if (!top) return;
 
         if (delta < -40) {
             goNext();
         } else {
-            topCard.style.transition = "transform 0.25s ease-out";
-            topCard.style.transform = "";
+            top.style.transition = "transform 0.25s ease-out";
+            top.style.transform = "";
         }
     }
 
@@ -142,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nextBtn.addEventListener("click", goNext);
     resetBtn.addEventListener("click", () => {
         index = 0;
+        tutorialMode = true;
         renderCards();
     });
 
