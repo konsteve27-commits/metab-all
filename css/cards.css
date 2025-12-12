@@ -1,27 +1,32 @@
 .swipe-cards-container {
     position: relative;
     width: 100%;
-    max-width: 420px;
-    min-height: 280px;
+    /* ΑΥΞΗΣΗ ΜΕΓ. ΠΛΑΤΟΥΣ */
+    max-width: 500px;
+    /* ΑΥΞΗΣΗ ΕΛΑΧ. ΥΨΟΥΣ */
+    min-height: 400px;
+    margin: 0 auto; /* Κεντράρισμα */
 }
 
 /* Main card */
 .swipe-card {
     position: absolute;
     inset: 0;
-    padding: 1.5rem;
+    padding: 1.8rem 1.5rem; /* Λίγο παραπάνω padding */
 
     background: var(--color-bg-alt);
     border-radius: 16px;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,255,0.05);
+    /* ΠΙΟ ΕΝΤΟΝΗ ΣΚΙΑ */
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
 
-    transition: transform 0.28s ease-out, opacity 0.25s ease-out;
+    /* ΠΡΟΣΘΗΚΗ BOX-SHADOW ΣΤΟ TRANSITION */
+    transition: transform 0.28s ease-out, opacity 0.25s ease-out, box-shadow 0.15s ease-out;
 }
 
 .swipe-card h4 {
@@ -32,13 +37,19 @@
 
 /* Next card preview */
 .next-card {
-    transform: scale(.96) translateY(10px);
+    /* ΠΙΟ ΔΡΑΜΑΤΙΚΗ ΕΜΦΑΝΙΣΗ */
+    transform: scale(.93) translateY(20px);
     opacity: .3;
-    filter: blur(1px);
+    filter: blur(1.5px);
+    pointer-events: none; /* Απενεργοποίηση κλικ */
+    
+    background: var(--color-bg-alt); 
+    border: 1px solid rgba(255,255,255,0.08); 
 }
 
 /* Swipe animation */
 .swipe-card.swiped-left {
-    transform: translateX(-260%) rotate(-10deg);
+    /* ΠΙΟ ΕΝΤΟΝΗ ΠΕΡΙΣΤΡΟΦΗ */
+    transform: translateX(-260%) rotate(-15deg);
     opacity: 0;
 }
