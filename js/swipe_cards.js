@@ -1,7 +1,5 @@
-// konsteve27-commits/metab-all/metab-all-48f41db8cb935963160130e2d93cc1c7d89773e1/js/swipe_cards.js
-
 import { facts } from "./facts.js";
-import { getUserData } from "./auth.js"; // Εισαγωγή getUserData για εξατομικευμένες κάρτες
+import { getUserData } from "./auth.js"; 
 
 // ΝΕΑ ΣΥΝΑΡΤΗΣΗ: Ολοκλήρωση Tutorial και Μετάβαση στο calories.html
 // Την ορίζουμε στο window για να καλείται από τον inline onclick του HTML
@@ -25,7 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     const TUTORIAL_KEY = 'metaballTutorialCompleted';
     const HISTORY_KEY = 'swipeCardFactHistory';
-    const HISTORY_SIZE = 5;
+    
+    // ----------------------------------------------------------------------
+    // --- ΔΙΟΡΘΩΣΗ: ΔΥΝΑΜΙΚΗ ΛΟΓΙΚΗ ΓΙΑ ΤΟ ΜΕΓΕΘΟΣ ΤΟΥ ΙΣΤΟΡΙΚΟΥ ---
+    
+    // ΡΥΘΜΙΣΗ: Πόσο μεγάλο ποσοστό των συνολικών facts θέλουμε να θυμόμαστε
+    // για να μην επαναλαμβάνονται άμεσα. (0.75 = 75%)
+    const HISTORY_PERCENTAGE = 0.75; // <-- Αλλάξτε αυτό το ποσοστό (π.χ. 0.5, 0.9)
+    
+    // Υπολογίζουμε το προτιμώμενο μέγεθος με βάση το ποσοστό
+    const calculatedHistorySize = Math.round(facts.length * HISTORY_PERCENTAGE); 
+    
+    // Ο τελικός περιορισμός: το μικρότερο μεταξύ του υπολογισμένου και του (συνολικού facts - 1)
+    // Αυτό εξασφαλίζει ότι το ιστορικό δεν θα υπερβεί το μέγιστο μέγεθος, αφήνοντας
+    // θεωρητικά τουλάχιστον μία κάρτα εκτός ιστορικού.
+    const HISTORY_SIZE = Math.min(calculatedHistorySize, facts.length > 0 ? facts.length - 1 : 0); 
+    // ----------------------------------------------------------------------
+
+    // ΝΕΑ ΚΑΤΑΣΤΑΣΗ: Κρατάμε τον δείκτη της τρέχουσας και της επόμενης κάρτας
+    let currentFactIndex = -1; 
+    let nextFactIndex = -1;
 
     // Tutorial steps in correct order
     const tutorial = [
@@ -69,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = 0;
     
     // ==========================================
-    // ΛΟΓΙΚΗ ΓΙΑ ΜΗ ΕΠΑΝΑΛΗΨΗ ΣΥΜΒΟΥΛΩΝ 
+    // ΛΟΓΙΚΗ ΓΙΑ ΜΗ ΕΠΑΝΑΛΗΨΗ ΣΥΜΒΟΥΛΩΝ & HISTORY
     // ==========================================
     function loadFactHistory() {
         try {
@@ -81,13 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Η ενημέρωση του ιστορικού γίνεται πλέον ΜΟΝΟ στο goNext()
     function updateFactHistory(newFactIndex) {
         let history = loadFactHistory();
         const indexNum = Number(newFactIndex);
+        
         // Αφαίρεση αν υπάρχει ήδη και προσθήκη στην αρχή
         history = history.filter(index => index !== indexNum);
         history.unshift(indexNum);
         
+        // --- Χρησιμοποιούμε το δυναμικά υπολογισμένο HISTORY_SIZE ---
         // Διατήρηση μόνο των HISTORY_SIZE τελευταίων
         if (history.length > HISTORY_SIZE) {
             history.length = HISTORY_SIZE;
@@ -100,7 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function getRandomFactIndex() {
+    // Τροποποιημένο: Τώρα επιστρέφει το index ΧΩΡΙΣ να ενημερώνει το history
+    function getNextRandomIndexOnly() {
         const history = loadFactHistory();
         const allIndices = Array.from({ length: facts.length }, (_, i) => i);
         
@@ -112,14 +133,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const randomIndex = Math.floor(Math.random() * availableIndices.length);
             selectedIndex = availableIndices[randomIndex];
         } else {
-            // Εφεδρική λύση
+            // Εφεδρική λύση: αν έχουν εξαντληθεί, επιλέγουμε τυχαία.
             const randomIndex = Math.floor(Math.random() * allIndices.length);
             selectedIndex = allIndices[randomIndex];
         }
         
-        // Ενημέρωση ιστορικού
-        updateFactHistory(selectedIndex);
-
         return selectedIndex;
     }
     
@@ -131,9 +149,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return tutorial[index];
         }
         
-        // --- ΕΔΩ ΘΑ ΜΠΕΙ Η ΛΟΓΙΚΗ ΕΞΑΤΟΜΙΚΕΥΜΕΝΩΝ ΚΑΡΤΩΝ ΣΤΟ ΕΠΟΜΕΝΟ ΒΗΜΑ ---
-        const randomIdx = getRandomFactIndex();
-        return facts[randomIdx];
+        // Daily Feed Mode: Επιστροφή της κάρτας που έχει οριστεί ως current
+        if (currentFactIndex === -1) {
+            // Σφάλμα αρχικοποίησης
+            return { title: "Error", text: "Restarting feed..." }; 
+        }
+
+        return facts[currentFactIndex];
     }
 
     function getNextCardData() {
@@ -146,13 +168,17 @@ document.addEventListener("DOMContentLoaded", () => {
             // tutorial finished → next is a dynamic tip preview
             return {
                 title: "Daily Insight",
-                text: "Swipe to discover your next valuable tip or update." // ΝΕΟ κείμενο preview
+                text: "Swipe to discover your next valuable tip or update." 
             };
         }
 
-        // random fact mode (preview): just pick a random one for the preview
-        const randomIdx = Math.floor(Math.random() * facts.length);
-        return facts[randomIdx];
+        // Daily Feed Mode: Χρησιμοποιούμε την κάρτα που έχει οριστεί ως preview.
+        if (nextFactIndex === -1) {
+             // Δεν θα έπρεπε να συμβεί αν η αρχικοποίηση είναι σωστή
+            return { title: "Daily Insight", text: "Swipe to discover your next valuable tip or update." };
+        }
+        
+        return facts[nextFactIndex];
     }
 
    // -------------------------------
@@ -175,8 +201,9 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         return el;
     }
+    
     // -------------------------------
-    // RENDER ONLY 2 CARDS (Τροποποιημένο για Dynamic Header)
+    // RENDER ONLY 2 CARDS 
     // -------------------------------
     function renderCards() {
         container.innerHTML = "";
@@ -186,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (tutorialMode) {
                 cardHeaderTitle.textContent = "Metab-all Tutorial";
             } else {
-                cardHeaderTitle.textContent = "Daily Feed"; // ΝΕΟ: Feed Mode
+                cardHeaderTitle.textContent = "Daily Feed"; 
             }
         }
 
@@ -237,9 +264,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (index >= tutorial.length) {
                     tutorialMode = false; 
-                    // ΝΕΟ: Σήμανση ολοκλήρωσης του tutorial στο localStorage (Για swipe/Finish button)
                     localStorage.setItem(TUTORIAL_KEY, "true"); 
+                    
+                    // TRANSITION TO FEED MODE
+                    currentFactIndex = getNextRandomIndexOnly();
+                    updateFactHistory(currentFactIndex);
+                    nextFactIndex = getNextRandomIndexOnly();
                 }
+            } else {
+                // ΚΥΡΙΑ ΛΟΓΙΚΗ ΓΙΑ ΤΟ DAILY FEED: Προάγουμε το preview σε current
+                currentFactIndex = nextFactIndex;
+                updateFactHistory(currentFactIndex); // Ενημερώνουμε το history για την νέα current κάρτα
+                
+                // Υπολογίζουμε τη νέα κάρτα preview (τη μεθεπόμενη)
+                nextFactIndex = getNextRandomIndexOnly(); 
             }
 
             renderCards();
@@ -247,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // -------------------------------
-    // DRAG / SWIPE LOGIC (Τροποποιημένο για Tinder-Style)
+    // DRAG / SWIPE LOGIC
     // -------------------------------
     let startX = 0;
     let currentX = 0;
@@ -258,7 +296,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function startDrag(e) {
         dragging = true;
-        startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX;
+        // ΔΙΟΡΘΩΣΗ: Χρησιμοποιούμε το event.clientX/touches[0].clientX για σωστή μέτρηση
+        startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX; 
+        
+        // ΔΙΟΡΘΩΣΗ: Πρέπει να σταματήσουμε την μετάβαση (transition) στο startDrag 
+        // ώστε να δουλέψει σωστά το drag.
+        const top = container.querySelector('[data-card="current"]');
+        if (top) {
+            top.style.transition = "none";
+        }
     }
 
     document.addEventListener("mousemove", drag);
@@ -273,10 +319,11 @@ document.addEventListener("DOMContentLoaded", () => {
         currentX = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
 
         const delta = currentX - startX;
-        top.style.transition = "none";
+        
+        // ΔΙΟΡΘΩΣΗ: Το transition είναι πλέον απενεργοποιημένο
         top.style.transform = `translateX(${delta}px) rotate(${delta / 15}deg)`;
         
-        // ΝΕΟ: Δυναμική σκιά για εφέ ανύψωσης (Tinder-style)
+        // Δυναμική σκιά για εφέ ανύψωσης (Tinder-style)
         const opacityFactor = Math.min(1, Math.abs(delta / 100));
         const shadowColor = `rgba(34, 197, 94, ${Math.min(0.5, opacityFactor * 0.5)})`; 
         top.style.boxShadow = `0 18px 50px rgba(0,0,0,0.5), 0 0 40px ${shadowColor}`;
@@ -294,14 +341,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!top) return;
         
-        // Επαναφορά της σκιάς στην κανονική τιμή (αφήνουμε το CSS)
-        top.style.boxShadow = '';
+        // Επαναφορά του transition για την animation
+        top.style.transition = "transform 0.25s ease-out, opacity 0.25s ease-out, box-shadow 0.15s ease-out"; 
+        top.style.boxShadow = ''; // Επαναφορά της σκιάς στην κανονική τιμή (αφήνουμε το CSS)
 
         if (delta < -40) {
             goNext();
         } else {
-            top.style.transition = "transform 0.25s ease-out";
-            top.style.transform = "";
+            top.style.transform = ""; // Επαναφορά στην αρχική θέση
         }
     }
 
@@ -312,12 +359,23 @@ document.addEventListener("DOMContentLoaded", () => {
         tutorialMode = true;
         // ΝΕΟ: Διαγραφή του status ολοκλήρωσης
         localStorage.removeItem(TUTORIAL_KEY); 
+        // Reset feed mode state
+        currentFactIndex = -1;
+        nextFactIndex = -1;
         renderCards();
     });
 
-    // ΝΕΟ: Αν το tutorial έχει ολοκληρωθεί, ξεκινάμε κατευθείαν στο feed.
+    // -------------------------------
+    // INITIALIZATION LOGIC
+    // -------------------------------
+
     if (!tutorialMode) {
         index = tutorial.length - 1; 
+        
+        // Αρχική ρύθμιση για το Daily Feed Mode
+        currentFactIndex = getNextRandomIndexOnly();
+        updateFactHistory(currentFactIndex); // Commit the first fact to history
+        nextFactIndex = getNextRandomIndexOnly(); // Pre-calculate the second fact
     }
     
     renderCards();
