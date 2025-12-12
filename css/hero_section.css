@@ -41,7 +41,7 @@
   background: radial-gradient(circle, rgba(56, 189, 248, 0.55), transparent 60%);
 }
 
-.hero h2 {
+.hero h1 {
   position: relative;
   margin: 0 0 0.75rem;
   font-size: var(--font-size-3xl);
@@ -103,3 +103,4 @@
     justify-content: flex-start;
   }
 }
+
