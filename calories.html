@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Metab-all | Calorie & Nutrient Calculator</title>
-  <meta name="description" content="Use Metab-all to calculate your BMR, TDEE and full daily macro and micronutrient targets based on your profile and training habits." />
+  <meta name="description"
+    content="Use Metab-all to calculate your BMR, TDEE and full daily macro and micronutrient targets based on your profile and training habits." />
 
   <!-- CSS architecture -->
   <link rel="stylesheet" href="css/variables.css" />
@@ -14,7 +16,17 @@
   <link rel="stylesheet" href="css/hero_section.css" />
   <link rel="stylesheet" href="css/pages.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="icon" type="image/png" href="icon.png">
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-41ZGGLH7D1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-41ZGGLH7D1');
+  </script>
 
 </head>
 
@@ -127,30 +139,26 @@
       </div>
 
       <!-- RESULTS -->
-      <section
-        id="results"
-        class="results"
-        aria-live="polite"
-        aria-atomic="true"
-        style="display: none; margin-top: 1.8rem;"
-      ></section>
+      <section id="results" class="results" aria-live="polite" aria-atomic="true"
+        style="display: none; margin-top: 1.8rem;"></section>
     </section>
 
   </main>
 
-   <footer>
-  <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
-  <p>
-    <a href="terms.html" class="link">Terms of Use</a> •
-    <a href="privacy.html" class="link">Privacy Policy</a> •
-    <a href="disclaimer.html" class="link">Disclaimer</a>
-  </p>
-</footer>
+  <footer>
+    <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+    <p>
+      <a href="terms.html" class="link">Terms of Use</a> •
+      <a href="privacy.html" class="link">Privacy Policy</a> •
+      <a href="disclaimer.html" class="link">Disclaimer</a>
+    </p>
+  </footer>
 
- 
+
   <script type="module" src="js/main.js"></script>
   <script src="js/swipe.js"></script>
 
-  
+
 </body>
+
 </html>

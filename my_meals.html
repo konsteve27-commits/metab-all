@@ -18,6 +18,16 @@
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="icon" type="image/png" href="icon.png">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-41ZGGLH7D1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-41ZGGLH7D1');
+  </script>
+
 </head>
 
 <body>
@@ -39,102 +49,102 @@
 
   <main class="main-container">
 
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <h2>Saved Meals</h2>
-    <p>
-      Review your saved meals, see total macros for the day and track
-      micronutrient intake against your Metab-all targets.
-    </p>
-  </section>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <h2>Saved Meals</h2>
+      <p>
+        Review your saved meals, see total macros for the day and track
+        micronutrient intake against your Metab-all targets.
+      </p>
+    </section>
 
-  <!-- ===== Main Card Wrapper ===== -->
-  <section class="card" id="myMealsCard">
+    <!-- ===== Main Card Wrapper ===== -->
+    <section class="card" id="myMealsCard">
 
-    <!-- === Saved meals list === -->
-    <h3>Saved Meals</h3>
-    <div id="mealsContainer" class="saved-meals" aria-live="polite" aria-atomic="true"></div>
+      <!-- === Saved meals list === -->
+      <h3>Saved Meals</h3>
+      <div id="mealsContainer" class="saved-meals" aria-live="polite" aria-atomic="true"></div>
 
-    <!-- === Total nutrients === -->
-    <div class="summary-section" style="margin-top: 1.8rem;">
-      <h3>Total Nutrients from All Meals</h3>
-      <div id="totalStats"></div>
-    </div>
+      <!-- === Total nutrients === -->
+      <div class="summary-section" style="margin-top: 1.8rem;">
+        <h3>Total Nutrients from All Meals</h3>
+        <div id="totalStats"></div>
+      </div>
 
-    <!-- === Daily Progress === -->
-    <div style="margin-top: 1.8rem;">
-      <h3>Daily Progress</h3>
-      <section id="dailyProgress" class="card" style="margin-top: 1rem;"></section>
-    </div>
+      <!-- === Daily Progress === -->
+      <div style="margin-top: 1.8rem;">
+        <h3>Daily Progress</h3>
+        <section id="dailyProgress" class="card" style="margin-top: 1rem;"></section>
+      </div>
 
-    <!-- === Actions === -->
-    <div class="actions" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
-      <a href="meals.html" class="btn btn-outline">← Back to Meal Creator</a>
-      <button id="clearTodayBtn" class="btn-danger" type="button">Clear Today</button>
-    </div>
+      <!-- === Actions === -->
+      <div class="actions" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+        <a href="meals.html" class="btn btn-outline">← Back to Meal Creator</a>
+        <button id="clearTodayBtn" class="btn-danger" type="button">Clear Today</button>
+      </div>
 
-  </section>
+    </section>
 
-  <!-- ===== Legend Card ===== -->
-  <section class="card legend-card" aria-labelledby="legendTitle" style="margin-top: 2rem;">
-    <h3 id="legendTitle" style="margin-top: 0;">Progress Bar Color</h3>
-    <p style="margin-bottom: 1rem; color: var(--color-text-soft); font-size: var(--font-size-sm);">
-      The color indicates your daily status relative to your personalized targets.
-    </p>
+    <!-- ===== Legend Card ===== -->
+    <section class="card legend-card" aria-labelledby="legendTitle" style="margin-top: 2rem;">
+      <h3 id="legendTitle" style="margin-top: 0;">Progress Bar Color</h3>
+      <p style="margin-bottom: 1rem; color: var(--color-text-soft); font-size: var(--font-size-sm);">
+        The color indicates your daily status relative to your personalized targets.
+      </p>
 
-    <table class="styled-table legend-table">
-      <thead>
-        <tr>
-          <th style="width: 15%; text-align: center;">Color</th>
-          <th>Goal Type</th>
-          <th>Percentage (%)</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
-          <td><strong>Meet Goal</strong> (Protein, Fibre, Micros)</td>
-          <td>≥ 100%</td>
-          <td>Target Met / Full Coverage</td>
-        </tr>
-        <tr>
-          <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
-          <td><strong>Limit Goal</strong> (Calories, Carbs, Fat)</td>
-          <td>≤ 100%</td>
-          <td>Within Limit / Safe Zone</td>
-        </tr>
+      <table class="styled-table legend-table">
+        <thead>
+          <tr>
+            <th style="width: 15%; text-align: center;">Color</th>
+            <th>Goal Type</th>
+            <th>Percentage (%)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
+            <td><strong>Meet Goal</strong> (Protein, Fibre, Micros)</td>
+            <td>≥ 100%</td>
+            <td>Target Met / Full Coverage</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
+            <td><strong>Limit Goal</strong> (Calories, Carbs, Fat)</td>
+            <td>≤ 100%</td>
+            <td>Within Limit / Safe Zone</td>
+          </tr>
 
-        <tr>
-          <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
-          <td><strong>Meet Goal</strong></td>
-          <td>40% → 99.9%</td>
-          <td>Moderate Undershoot / Needs Attention</td>
-        </tr>
-        <tr>
-          <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
-          <td><strong>Limit Goal</strong></td>
-          <td>100.1% → 120%</td>
-          <td>Moderate Overshoot</td>
-        </tr>
+          <tr>
+            <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
+            <td><strong>Meet Goal</strong></td>
+            <td>40% → 99.9%</td>
+            <td>Moderate Undershoot / Needs Attention</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
+            <td><strong>Limit Goal</strong></td>
+            <td>100.1% → 120%</td>
+            <td>Moderate Overshoot</td>
+          </tr>
 
-        <tr>
-          <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
-          <td><strong>Meet Goal</strong></td>
-          <td>&lt; 40%</td>
-          <td>Critical Deficiency</td>
-        </tr>
-        <tr>
-          <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
-          <td><strong>Limit Goal</strong></td>
-          <td>&gt; 120%</td>
-          <td>Critical Overshoot</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+          <tr>
+            <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
+            <td><strong>Meet Goal</strong></td>
+            <td>&lt; 40%</td>
+            <td>Critical Deficiency</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
+            <td><strong>Limit Goal</strong></td>
+            <td>&gt; 120%</td>
+            <td>Critical Overshoot</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-</main>
+  </main>
 
 
   <footer>
