@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let index = 0;
     
     // ==========================================
-    // ΛΟΓΙΚΗ ΓΙΑ ΜΗ ΕΠΑΝΑΛΗΨΗ ΣΥΜΒΟΥΛΩΝ (Παραμένει ίδια)
+    // ΛΟΓΙΚΗ ΓΙΑ ΜΗ ΕΠΑΝΑΛΗΨΗ ΣΥΜΒΟΥΛΩΝ 
     // ==========================================
     function loadFactHistory() {
         try {
@@ -155,20 +155,26 @@ document.addEventListener("DOMContentLoaded", () => {
         return facts[randomIdx];
     }
 
-    // -------------------------------
+   // -------------------------------
     // CREATE CARD ELEMENT 
     // -------------------------------
     function createCard(data, type = "current") {
         const el = document.createElement("div");
         el.className = "swipe-card";
         el.dataset.card = type;
+        
+        // NEW LOGIC: Add image wrapper if imageUrl exists
+        const imageHtml = data.imageUrl 
+            ? `<div class="card-image-wrapper"><img src="${data.imageUrl}" alt="${data.title}"></div>`
+            : ''; 
+
         el.innerHTML = `
             <h4>${data.title}</h4>
             <p>${data.text}</p>
+            ${imageHtml}
         `;
         return el;
     }
-
     // -------------------------------
     // RENDER ONLY 2 CARDS (Τροποποιημένο για Dynamic Header)
     // -------------------------------
