@@ -1,6 +1,6 @@
 
 export function calculateNeeds(data) {
-  const { gender, age, weight, height, workouts, hours, intensity } = data;
+  const { gender, age, weight, height, workouts, hours, intensity, goal } = data;
 
   // --- Basic safety checks ---
   const safeWeight = Number(weight) || 0;
