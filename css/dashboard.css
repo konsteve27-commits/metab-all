@@ -1,0 +1,173 @@
+/* =======================================
+   DASHBOARD / HOME PAGE WIDGETS
+   ======================================= */
+
+.main-features-grid {
+    display: grid;
+    /* PC/Desktop: 3 ίσες στήλες (Profile, Workout, Daily Progress) */
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); 
+    gap: 1.8rem;
+    max-width: 1120px;
+    margin: 3.5rem auto 0;
+}
+
+/* ΒΑΣΙΚΑ ΣΤΥΛ ΚΑΡΤΩΝ */
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.6rem;
+    text-decoration: none;
+    height: 100%; 
+}
+
+.feature-card h4 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+    color: var(--color-text);
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-soft);
+    line-height: 1.6;
+}
+
+/* Στυλ Badge για τα TRN, SUM */
+.card-icon {
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08); 
+    margin-bottom: 0.8rem;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+/* Profile Card Styling (PC View) */
+#card-profile {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Στυλ για το <img> tag (desktop) */
+#card-profile img.neon-avatar {
+    margin-bottom: 0.8rem;
+    width: 48px; 
+    height: 48px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    box-shadow: 0 0 10px var(--color-accent), inset 0 0 4px var(--color-accent-soft); 
+    border: 1px solid var(--color-accent);
+}
+
+#card-profile .profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+#card-profile .profile-details p {
+    margin: 0.15rem 0;
+    line-height: 1.4;
+}
+
+
+/* Ειδική ρύθμιση για να λειτουργεί το hover (link-card) */
+.link-card:hover h4 {
+    color: #f9fafb;
+}
+
+
+/* =======================================
+   MOBILE LAYOUT: DASHBOARD (max-width: 768px)
+   ======================================= */
+@media (max-width: 768px) {
+    /* MOBILE: Δύο στήλες. Profile (1η γραμμή), Workout & Progress (2η γραμμή) */
+    .main-features-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.9rem;
+        margin-top: 2rem;
+    }
+    
+    /* ---------------------------------------------------- */
+    /* MOBILE: PROFILE CARD (FULL WIDTH - 1η γραμμή) */
+    /* ---------------------------------------------------- */
+    #card-profile {
+        /* Τεντώνει σε όλο το πλάτος */
+        grid-column: 1 / -1; 
+        padding: 1.4rem 1.1rem;
+        
+        /* Εσωτερικό Grid για Avatar | Text Wrapper */
+        display: grid;
+        grid-template-columns: 48px 1fr; 
+        gap: 0 1rem;
+        min-height: 140px; 
+    }
+    
+    /* Στυλ για το <img> tag στο mobile */
+    #card-profile img.neon-avatar {
+        all: unset; 
+        grid-column: 1 / 2;
+        grid-row: 1 / 4; 
+        align-self: center;
+        width: 48px; 
+        height: 48px;
+        margin: 0; 
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 8px var(--color-accent), inset 0 0 3px var(--color-accent-soft); 
+        border: 1px solid var(--color-accent);
+    }
+    
+    /* Ο wrapper καταλαμβάνει τη στήλη 2 */
+    #card-profile .card-content-wrapper {
+        grid-column: 2 / 3; 
+        grid-row: 1 / 4; 
+        display: flex; 
+        flex-direction: column;
+        justify-content: center; 
+    }
+    
+    #card-profile h4 {
+        margin-bottom: 0;
+        font-size: 1.05rem;
+    }
+    #card-profile .profile-details {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.3rem;
+    }
+
+    /* ---------------------------------------------------- */
+    /* MOBILE: SMALL WIDGETS (Workout, Daily Progress) - 2η γραμμή */
+    /* ---------------------------------------------------- */
+    .feature-card {
+        padding: 1rem; 
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0; 
+    }
+    
+    .feature-card .card-icon {
+        font-size: 0.8rem; 
+        padding: 0.3rem 0.5rem; 
+        margin-bottom: 0.5rem; 
+        align-self: flex-start; 
+        background: rgba(255, 255, 255, 0.08); 
+    }
+    
+    .feature-card h4 {
+        font-size: 0.95rem; 
+        margin-bottom: 0.2rem;
+        margin-top: 0;
+    }
+    
+    .feature-card p {
+        font-size: 0.78rem; 
+        line-height: 1.4;
+        margin-top: 0;
+    }
+}
