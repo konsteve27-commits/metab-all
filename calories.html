@@ -8,8 +8,8 @@
   <title>Calorie Calculator (BMR/TDEE) & Macro Goals | Metab-all</title>
   <meta name="description"
     content="Use Metab-all's Calorie Calculator to find your Basal Metabolic Rate (BMR), Total Daily Energy Expenditure (TDEE), and set personalized macro nutrient targets." />
-    
-  
+
+
   <link rel="canonical" href="https://metab-all.com/calories.html" />
   <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icon.png">
@@ -17,13 +17,14 @@
   <link rel="shortcut icon" href="icon.png">
 
   <meta property="og:title" content="Calorie Calculator (BMR/TDEE) & Macro Goals | Metab-all" />
-  <meta property="og:description" content="Use Metab-all's Calorie Calculator to find your Basal Metabolic Rate (BMR), Total Daily Energy Expenditure (TDEE), and set personalized macro nutrient targets." />
+  <meta property="og:description"
+    content="Use Metab-all's Calorie Calculator to find your Basal Metabolic Rate (BMR), Total Daily Energy Expenditure (TDEE), and set personalized macro nutrient targets." />
   <meta property="og:url" content="https://metab-all.com/calories.html" />
   <meta property="og:image" content="https://metab-all.com/icon.png" />
   <meta property="og:image:width" content="1024" />
   <meta property="og:image:height" content="1024" />
   <meta property="og:type" content="website" />
- 
+
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
@@ -90,7 +91,10 @@
         These values are used to calculate your daily targets. You can always come back
         and update them as your bodyweight or training changes.
       </p>
-
+      <div class="input-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+      </div>
       <!-- We use plain layout so existing JS (main.js) continues to work perfectly -->
       <div class="form-group">
         <label for="gender">Gender</label>
