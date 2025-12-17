@@ -1,9 +1,9 @@
 // ===== dashboard.js (Metab-all) =====
-// Εμφανίζει ζωντανά δεδομένα στα κουτιά του index.html
+
 
 import { getUserData } from "./auth.js";
 // Δεν υπάρχει direct import για workoutData, foodData, κλπ,
-// αλλά μπορούμε να διαβάσουμε απευθείας από το localStorage.
+
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. DOM references
@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         
+        // ΝΕΑ ΛΟΓΙΚΗ: Παίρνουμε το πρώτο όνομα ή default σε 'User'
+        const greetingName = user.name ? user.name.split(' ')[0] : 'User';
+        
         const goalMap = {
             loss: "Fat Loss",
             gain: "Lean Gain",
@@ -69,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const contentHTML = `
             <div class="profile-details">
-                <h4 style="font-size: 1.25rem;">Hello, User!</h4>
+                <h4 style="font-size: 1.25rem;">Hello, ${greetingName}!</h4>
                 <p><strong>Age:</strong> ${user.age} y.o.</p>
                 <p><strong>Weight:</strong> ${user.weight} kg</p>
                 <p><strong>Target Goal:</strong> ${goalMap[user.goal]}</p>
@@ -82,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
             contentWrapper.innerHTML = contentHTML;
         }
     }
-    
     // Default profile state when no data is saved
     function updateProfileCardDefault(card) {
         if (!card) return;
