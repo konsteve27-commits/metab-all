@@ -103,4 +103,19 @@
     justify-content: flex-start;
   }
 }
+/* Media Query για μικρές οθόνες (π.χ. κάτω από 768px) */
+@media (max-width: 768px) {
+    .hero h1 {
+        /* Μειώνουμε σημαντικά το μέγεθος */
+        font-size: 1rem; 
+        /* Προσαρμόζουμε το line-height */
+        line-height: 1.2; 
+    }
+}
 
+/*  κάτω από 480px) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
