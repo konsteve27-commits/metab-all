@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   calculateBtn.addEventListener("click", () => {
     const data = {
       gender: document.getElementById("gender")?.value,
+      name: document.getElementById("name")?.value || "",
       age: parseFloat(document.getElementById("age")?.value),
       weight: parseFloat(document.getElementById("weight")?.value),
       height: parseFloat(document.getElementById("height")?.value),
@@ -71,6 +72,7 @@ if (!data.gender || !data.age || !data.weight || !data.height) {
 
     // === Build user data object for storage ===
     const userData = {
+      name: data.name,
       gender: data.gender,
       age: data.age,
       weight: data.weight,
