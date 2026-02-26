@@ -66,12 +66,6 @@ const protein = Math.round(safeWeight * proteinFactor);
     fibre,
   };
 
-  try {
-    localStorage.setItem("aioTargets", JSON.stringify(results));
-    console.log("✅ Metab-all daily targets saved:", results);
-  } catch (err) {
-    console.warn("⚠️ Could not save aioTargets:", err);
-  }
 
   return {
     BMR: Math.round(BMR),
