@@ -62,61 +62,458 @@
       <span>Nutrition &amp; Training Suite</span>
     </div>
 
-    <nav class="aio-nav" aria-label="Main navigation">
-      <a href="index.html" class="active" aria-current="page">Home</a>
-      <a href="calories.html">Calories</a>
-      <a href="meals.html">Meals</a>
-      <a href="my_meals.html">My Meals</a>
-      <a href="workout.html">Workout</a>
+    <nav class="aio-nav">
+      <a href="#home" class="nav-link active" data-section="home">Home</a>
+      <a href="#calories" class="nav-link" data-section="calories">Calories</a>
+      <a href="#meals" class="nav-link" data-section="meals">Meals</a>
+      <a href="#my_meals" class="nav-link" data-section="my_meals">My Meals</a>
+      <a href="#workout" class="nav-link" data-section="workout">Workout</a>
     </nav>
   </header>
 
-  <main class="main-container">
-    <section class="hero">
-      <h1>Your All-In-One Metabolic Assistant</h1>
-      <p>
-        Metab-all helps you understand your daily energy needs, build balanced meals,
-        track micronutrients and monitor workout performance — all in one platform.
-      </p>
-    </section>
-    
-    <div class="main-features-grid">
-        
-        <a href="calories.html" class="feature-card link-card card full-width" id="card-profile">
-            <img src="avatar.png" alt="User Profile Avatar" class="neon-avatar" />
-            <div class="card-content-wrapper"> 
-                <h4>Profile & Daily Targets</h4>
-                <p>Calculate your personalized targets now &rarr;</p>
-            </div>
-        </a>
+  <main id="spa-wrapper">
 
-        <a href="workout.html" class="feature-card link-card card" id="card-workout">
+    <section id="home" class="spa-page">
+      <div class="main-container">
+        <section class="hero">
+          <h1>Your All-In-One Metabolic Assistant</h1>
+          <p>
+            Metab-all helps you understand your daily energy needs, build balanced meals,
+            track micronutrients and monitor workout performance — all in one platform.
+          </p>
+        </section>
+
+        <div class="main-features-grid">
+
+          <a href="#calories" class="feature-card link-card card full-width" id="card-profile">
+            <img src="avatar.png" alt="User Profile Avatar" class="neon-avatar" />
+            <div class="card-content-wrapper">
+              <h4>Profile & Daily Targets</h4>
+              <p>Calculate your personalized targets now &rarr;</p>
+            </div>
+          </a>
+
+          <a href="#workout" class="feature-card link-card card" id="card-workout">
             <span class="card-icon" style="color: #f97373;">TRN</span>
             <h4>Workout Tracker</h4>
-            <p>Log your sets, calculate estimated 1RM, track volume, and monitor your strength progression over time.</p>
-        </a>
-        
-        <a href="my_meals.html" class="feature-card link-card card" id="card-my-meals">
+            <p>Log your sets, calculate estimated 1RM, track volume, and monitor your strength progression over time.
+            </p>
+          </a>
+
+          <a href="#my_meals" class="feature-card link-card card" id="card-my-meals">
             <span class="card-icon" style="color: #60a5fa;">SUM</span>
             <h4>Daily Progress Dashboard</h4>
             <p>Review your saved meals and see how close you are to hitting all your daily macro and micro targets.</p>
-        </a>
-        
-    </div>
+          </a>
+
+        </div>
+    </section>
+
+    <section id="calories" class="spa-page" style="display: none;">
+      <div class="main-container">
+        <section class="hero">
+          <h1>Calorie &amp; Nutrient Calculator</h1>
+          <p>
+            Enter your details to estimate your BMR, daily energy expenditure (TDEE)
+            and personalized macro &amp; micronutrient targets.
+          </p>
+        </section>
+        <section class="calories-card card" aria-labelledby="calorieFormTitle">
+          <h3 id="calorieFormTitle">Your Profile</h3>
+          <p class="index-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+            These values are used to calculate your daily targets. You can always come back
+            and update them as your bodyweight or training changes.
+          </p>
+          <div class="input-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+          </div>
+          <!-- We use plain layout so existing JS (main.js) continues to work perfectly -->
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender">
+              <option value="" disabled selected hidden>Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input id="age" type="number" min="16" max="90" placeholder="Age (years)" />
+          </div>
+
+          <div class="form-group">
+            <label for="weight">Weight (kg)</label>
+            <input id="weight" type="number" min="30" max="250" step="0.1" placeholder="Your weight in kg" />
+          </div>
+
+          <div class="form-group">
+            <label for="height">Height (cm)</label>
+            <input id="height" type="number" min="120" max="230" step="0.5" placeholder="Your height in cm" />
+          </div>
+
+          <div class="form-group">
+            <label for="workoutsPerWeek">Workouts per week</label>
+            <input id="workoutsPerWeek" type="number" min="0" max="14" placeholder="e.g. 3, 4, 5…" />
+          </div>
+
+          <div class="form-group">
+            <label for="hoursPerWorkout">Hours per workout</label>
+            <input id="hoursPerWorkout" type="number" step="0.1" min="0" max="4" placeholder="e.g. 1.0, 1.5" />
+          </div>
+
+          <div class="form-group">
+            <label for="intensity">Training Intensity</label>
+            <select id="intensity">
+              <option value="" disabled selected hidden>Select intensity</option>
+              <option value="light">Light (walking, light activity)</option>
+              <option value="moderate">Moderate (regular gym / sports)</option>
+              <option value="intense">Intense (heavy training)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="goal">Goal</label>
+            <select id="goal">
+              <option value="" disabled selected hidden>Select goal</option>
+              <option value="loss">Fat Loss</option>
+              <option value="maintain">Maintenance</option>
+              <option value="gain">Lean Gain</option>
+              <option value="bulk">Bulk</option>
+            </select>
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <button id="calculateBtn" class="hero-btn primary" type="button">
+              Calculate Targets
+            </button>
+
+            <button id="viewDataBtn" class="hero-btn secondary" type="button">
+              View Saved Data
+            </button>
+
+            <button id="clearDataBtn" class="hero-btn secondary" type="button">
+              Clear Saved Data
+            </button>
+          </div>
+
+          <!-- RESULTS -->
+          <section id="results" class="results" aria-live="polite" aria-atomic="true"
+            style="display: none; margin-top: 1.8rem;"></section>
+        </section>
+    </section>
+
+    <section id="meals" class="spa-page" style="display: none;">
+      <div class="main-container">
+        <section class="hero">
+          <h1>Meal Macro &amp; Micro Calculator</h1>
+          <p>
+            Search foods, add ingredients to your meal, see full macro &amp; micronutrient
+            analysis and track how close you are to your daily targets.
+          </p>
+        </section>
+
+        <!-- MAIN PAGE CONTENT -->
+        <section class="meals-card card" aria-labelledby="mealBuilderTitle">
+          <h3 id="mealBuilderTitle">Build Your Meal</h3>
+          <p class="index-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+            Your daily targets are loaded from the Calorie &amp; Nutrient Calculator.
+            Add ingredients in grams and Metab-all will update your macros and micros in real time.
+          </p>
+
+          <!-- === Inputs Row === -->
+          <div class="meal-inputs">
+            <div class="food-row">
+              <div class="food-search">
+                <label for="foodInput" class="visually-hidden">Food search</label>
+                <input id="foodInput" type="text" placeholder="Search food (e.g. chicken, rice, feta)"
+                  autocomplete="off" />
+                <div id="suggestions" class="suggestions"></div>
+              </div>
+              <div>
+                <label for="grams" class="visually-hidden">Grams</label>
+                <input type="number" id="grams" placeholder="Grams" min="1" step="1" />
+              </div>
+
+              <button id="addFoodBtn" class="btn-primary" type="button">
+                Add
+              </button>
+            </div>
+          </div>
+
+          <!-- === Meal Table === -->
+          <div id="meal-table" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- === Progress (Macros & Micros) === -->
+          <section id="daily-progress" class="card" style="margin-top: 1.5rem;" aria-live="polite" aria-atomic="true">
+            <!-- Το περιεχόμενο θα γεμίσει από το meals.js (updateProgressBars) -->
+          </section>
+
+          <!-- === Summary (optional extra info) === -->
+          <div id="meal-summary" class="meal-summary"></div>
+
+          <!-- === Actions === -->
+          <div class="meal-actions" style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button id="saveMealBtn" class="btn-primary" type="button">
+              Save Meal
+            </button>
+            <a href="#my_meals" class="btn btn-outline">
+              View Saved Meals
+            </a>
+          </div>
+        </section>
+    </section>
+
+    <section id="my_meals" class="spa-page" style="display: none;">
+
+      <div class="main-container">
+        <section class="hero">
+          <h1>Saved Meals</h1>
+          <p>
+            Review your saved meals, see total macros for the day and track
+            micronutrient intake against your Metab-all targets.
+          </p>
+        </section>
+
+        <!-- ===== Main Card Wrapper ===== -->
+        <section class="card" id="myMealsCard">
+
+          <!-- === Saved meals list === -->
+          <h3>Saved Meals</h3>
+          <div id="mealsContainer" class="saved-meals" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- === Total nutrients === -->
+          <div class="summary-section" style="margin-top: 1.8rem;">
+            <h3>Total Nutrients from All Meals</h3>
+            <div id="totalStats"></div>
+          </div>
+
+          <!-- === Daily Progress === -->
+          <div style="margin-top: 1.8rem;">
+            <h3>Daily Progress</h3>
+            <section id="dailyProgress" class="card" style="margin-top: 1rem;"></section>
+          </div>
+
+          <!-- === Actions === -->
+          <div class="actions" style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <a href="#meals" class="btn btn-outline">← Back to Meal Creator</a>
+            <button id="clearTodayBtn" class="btn-danger" type="button">Clear Today</button>
+          </div>
+
+        </section>
+
+        <!-- ===== Legend Card ===== -->
+        <section class="card legend-card" aria-labelledby="legendTitle" style="margin-top: 2rem;">
+          <h3 id="legendTitle" style="margin-top: 0;">Progress Bar Color</h3>
+          <p style="margin-bottom: 1rem; color: var(--color-text-soft); font-size: var(--font-size-sm);">
+            The color indicates your daily status relative to your personalized targets.
+          </p>
+
+          <table class="styled-table legend-table">
+            <thead>
+              <tr>
+                <th style="width: 15%; text-align: center;">Color</th>
+                <th>Goal Type</th>
+                <th>Percentage (%)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
+                <td><strong>Meet Goal</strong> (Protein, Fibre, Micros)</td>
+                <td>≥ 100%</td>
+                <td>Target Met / Full Coverage</td>
+              </tr>
+              <tr>
+                <td style="text-align: center;"><span class="color-swatch status-green"></span></td>
+                <td><strong>Limit Goal</strong> (Calories, Carbs, Fat)</td>
+                <td>≤ 100%</td>
+                <td>Within Limit / Safe Zone</td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
+                <td><strong>Meet Goal</strong></td>
+                <td>40% → 99.9%</td>
+                <td>Moderate Undershoot / Needs Attention</td>
+              </tr>
+              <tr>
+                <td style="text-align: center;"><span class="color-swatch status-orange"></span></td>
+                <td><strong>Limit Goal</strong></td>
+                <td>100.1% → 120%</td>
+                <td>Moderate Overshoot</td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
+                <td><strong>Meet Goal</strong></td>
+                <td>&lt; 40%</td>
+                <td>Critical Deficiency</td>
+              </tr>
+              <tr>
+                <td style="text-align: center;"><span class="color-swatch status-red"></span></td>
+                <td><strong>Limit Goal</strong></td>
+                <td>&gt; 120%</td>
+                <td>Critical Overshoot</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+    </section>
+
+    <section id="workout" class="spa-page" style="display: none;">
+      <!-- HERO SECTION -->
+      <div class="main-container">
+        <section class="hero">
+          <h1>Workout Performance Tracker</h1>
+          <p>
+            Create structured workouts, log your sets and track strength and volume
+            progress over time with automatic PR detection.
+          </p>
+        </section>
+
+        <!-- WORKOUT BUILDER + HISTORY -->
+        <section class="card" aria-labelledby="workoutSectionTitle">
+          <h3 id="workoutSectionTitle">Your Workouts</h3>
+          <p class="index-intro" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+            Start by creating a workout, then add exercises by muscle group. Metab-all
+            will track estimated 1RM, volume and highlight new personal records.
+          </p>
+
+          <!-- Saved workouts list -->
+          <div id="myWorkouts" class="my-workouts-list" aria-live="polite" aria-atomic="true"></div>
+
+
+
+
+          <!-- Create new workout -->
+          <div style="margin-top: 1.2rem; margin-bottom: 1.5rem;">
+            <button id="createWorkoutBtn" class="btn-primary" type="button">
+              Create New Workout
+            </button>
+          </div>
+
+          <!-- ACTIVE WORKOUT BLOCK -->
+          <div id="activeWorkoutBox" class="card" style="margin-top:1.5rem; padding:1.5rem; display:none;">
+
+            <!-- ACTIVE WORKOUT TITLE -->
+            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1.2rem;">
+              <span style="font-size:1.2rem; font-weight:600;">
+                Active Workout:
+              </span>
+              <span id="activeWorkoutName" style="font-size:1.2rem; font-weight:700;">
+                (none)
+              </span>
+            </div>
+
+
+            <!-- ADD EXERCISE ROW -->
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem;">
+
+              <label style="font-weight:600; min-width:120px;">Add exercise:</label>
+
+              <div class="input-wrapper" style="position:relative; flex:1;">
+                <input id="exerciseSearch" class="exercise-search" type="text" placeholder="Search exercises"
+                  autocomplete="off" style="width:100%;" />
+                <div id="exerciseResults" class="suggestions"></div>
+              </div>
+            </div>
+
+            <!-- TABLE -->
+            <div id="exerciseTable" style="margin-top:1rem;"></div>
+
+            <!-- SAVE -->
+            <div class="workout-save-row">
+              <button id="saveWorkoutBtn" class="btn-primary">Calculate & Save New Data</button>
+            </div>
+
+            <div class="workout-actions">
+              <button id="cancelEditBtn" class="action-btn cancel-btn">Cancel</button>
+              <button id="deleteWorkoutBtn" class="action-btn delete-btn">Delete</button>
+              <button id="undoBtn" class="action-btn undo-btn">Undo</button>
+            </div>
+            <!-- RESULTS -->
+            <div id="workoutResults" style="margin-top:1.5rem;" aria-live="polite" aria-atomic="true"></div>
+
+          </div>
+
+
+        </section>
+    </section>
+    <section id="disclaimer" class="spa-page" style="display: none;">
+      <div class="main-container">
+        <section class="hero">
+          <h1>Medical Disclaimer</h1>
+          <p>Metab-all provides educational tools, not medical advice.</p>
+        </section>
+        <div class="card">
+          <h3>No Professional Guidance</h3>
+          <p>The nutritional and training tools on this website are for informational purposes only and are not intended
+            to replace medical, nutritional, or fitness advice from certified professionals.</p>
+          <h3>Assumption of Risk</h3>
+          <p>By using Metab-all, you accept full responsibility for any health, diet, or exercise decisions you make.
+          </p>
+          <h3>Consult a Professional</h3>
+          <p>Always consult a doctor, nutritionist, or certified coach before starting or modifying a diet or exercise
+            plan.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="spa-page" style="display: none;">
+      <div class="main-container">
+        <section class="hero">
+          <h1>Privacy Policy</h1>
+          <p>Your privacy matters. Metab-all follows GDPR-friendly standards.</p>
+        </section>
+        <div class="card">
+          <h3>1. No Personal Data Collection</h3>
+          <p>Metab-all does not collect, store, or process personal data on external servers.</p>
+          <h3>2. Local Storage Only</h3>
+          <p>Saved meals, workouts, names, and settings are stored exclusively in your browser’s localStorage and are
+            never transmitted.</p>
+          <h3>3. Cookies</h3>
+          <p>Metab-all does not use tracking, advertising, or analytics cookies.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="terms" class="spa-page" style="display: none;">
+      <div class="main-container">
+        <section class="hero">
+          <h1>Terms of Use</h1>
+          <p>Please read these Terms of Use carefully before using Metab-all.</p>
+        </section>
+        <div class="card">
+          <h3>1. Purpose of the Website</h3>
+          <p>Metab-all provides calculators and tools for informational and educational purposes only.</p>
+          <h3>2. Limitation of Liability</h3>
+          <p>Metab-all is not responsible for injuries, health outcomes, data loss, or any decisions made based on the
+            calculators and tools.</p>
+        </div>
+      </div>
+    </section>
   </main>
-  
+
   <footer>
-    <p>© 2025 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
-    <p>
-      <a href="terms.html" class="link">Terms of Use</a> •
-      <a href="privacy.html" class="link">Privacy Policy</a> •
-      <a href="disclaimer.html" class="link">Disclaimer</a>
-    </p>
-  </footer>
-  <script src="js/swipe.js"></script>
-  <script type="module" src="js/dashboard.js"></script> 
+  <p>© 2026 <strong>Metab-all</strong> — Nutrition & Training Suite. All rights reserved.</p>
+  <p>
+    <a href="#terms" class="link" data-section="terms">Terms of Use</a> •
+    <a href="#privacy" class="link" data-section="privacy">Privacy Policy</a> •
+    <a href="#disclaimer" class="link" data-section="disclaimer">Disclaimer</a>
+  </p>
+</footer>
+  <script src="js/router.js"></script>
+  
+  <script type="module" src="js/dashboard.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/meals.js"></script>
+  <script type="module" src="js/my_meals.js"></script>
+  <script type="module" src="js/workout.js"></script>
+</body>
 </body>
 
-
 </html>
-
