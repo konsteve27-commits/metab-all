@@ -1,7 +1,7 @@
 // ===== dashboard.js (Metab-all) =====
 import { getUserData } from "./auth.js";
+import { metaballAlert, metaballConfirm } from "./ui.js";
 
-// 1. Τυλίγουμε όλο τον κώδικα σε μια συνάρτηση export
 export function updateDashboard() {
     // DOM references
     const profileCard = document.getElementById("card-profile");
@@ -152,13 +152,91 @@ export function updateDashboard() {
     updateWorkoutCard();
 }
 
-// 2. LISTENERS
-// Αρχικό φόρτωμα
-document.addEventListener("DOMContentLoaded", updateDashboard);
+function setupDataManagement() {
+    const exportBtn = document.getElementById("exportDataBtn");
+    const importBtn = document.getElementById("importDataBtn");
+    const importFile = document.getElementById("importFile");
 
-// Ανανέωση όταν ο Router δείχνει 'home'
+    if (!exportBtn || !importBtn || !importFile) return;
+
+    // --- 1. EXPORT LOGIC ---
+    exportBtn.onclick = () => {
+        const fullData = {
+            aioUserData: JSON.parse(localStorage.getItem("aioUserData")),
+            mealLibrary: JSON.parse(localStorage.getItem("mealLibrary")),
+            aioWorkouts: JSON.parse(localStorage.getItem("aioWorkouts")),
+            aioWorkoutPRs: JSON.parse(localStorage.getItem("aioWorkoutPRs")),
+            version: "1.0",
+            exportDate: new Date().toISOString()
+        };
+
+        const blob = new Blob([JSON.stringify(fullData, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `metaball_backup_${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        
+        metaballAlert("✅ Your data has been exported successfully.", { type: "success", title: "Export Complete" });
+    };
+
+    // --- 2. IMPORT LOGIC ---
+    importBtn.onclick = () => {
+        // Κάνουμε reset την τιμή, ώστε να δουλεύει ακόμα κι αν ανεβάσουμε το ΙΔΙΟ αρχείο 2 φορές σερί
+        importFile.value = ""; 
+        importFile.click();
+    };
+
+    importFile.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const importedData = JSON.parse(event.target.result);
+                
+                // Επιβεβαίωση πριν το overwrite
+                metaballConfirm("This will replace all your current profile, meals, and workouts. Are you sure?", {
+                    type: "warning",
+                    title: "Confirm Import",
+                    confirmText: "Overwrite Data"
+                }).then((ok) => {
+                    if (!ok) {
+                        importFile.value = ""; // Reset
+                        return;
+                    }
+
+                    // Αποθήκευση στο localStorage
+                    if (importedData.aioUserData) localStorage.setItem("aioUserData", JSON.stringify(importedData.aioUserData));
+                    if (importedData.mealLibrary) localStorage.setItem("mealLibrary", JSON.stringify(importedData.mealLibrary));
+                    if (importedData.aioWorkouts) localStorage.setItem("aioWorkouts", JSON.stringify(importedData.aioWorkouts));
+                    if (importedData.aioWorkoutPRs) localStorage.setItem("aioWorkoutPRs", JSON.stringify(importedData.aioWorkoutPRs));
+
+                    metaballAlert("✅ Import successful! The application will now reload.", { type: "success" }).then(() => {
+                        window.location.reload();
+                    });
+                });
+            } catch (err) {
+                metaballAlert("❌ Invalid JSON file. Please use a file previously exported from Metab-all.", { type: "danger" });
+            }
+        };
+        reader.readAsText(file);
+    };
+}
+
+
+// 1. Αρχικό φόρτωμα: Τρέχουμε το UI update ΚΑΙ το setup των κουμπιών data
+document.addEventListener("DOMContentLoaded", () => {
+    updateDashboard();
+    setupDataManagement(); // Τρέχει μόνο μία φορά εδώ
+});
+
+// 2. Όταν ο Router δείχνει 'home', ανανεώνουμε μόνο τα νούμερα στις κάρτες
 document.addEventListener('spaContentUpdate', (e) => {
     if (e.detail.section === 'home') {
-        updateDashboard();
+        updateDashboard(); 
+        // ΔΕΝ ξανακαλούμε το setupDataManagement εδώ
     }
 });

@@ -1,5 +1,5 @@
 // js/workout.js
-import { workoutData } from "./workoutData.js";
+import { workoutData } from "./workoutdata.js";
 import { metaballAlert, metaballConfirm, metaballPrompt } from "./ui.js";
 
 // === 1. STATE VARIABLES ===
@@ -43,6 +43,7 @@ export function initWorkout() {
     restoreDraft();
     renderMyWorkouts();
     updateActiveWorkoutBox();
+    renderWeeklyVolume();
 }
 
 // Ο Router ακούει εδώ
@@ -91,6 +92,10 @@ function handleCreateWorkout() {
         updateTable();
         saveDraft();
         renderMyWorkouts();
+        renderWeeklyVolume();
+        
+        
+        if (results) results.innerHTML = ""; 
         
         metaballAlert(`✅ Workout "${currentWorkout}" created.`, { type: "success", title: "Workout created" });
     });
@@ -108,6 +113,7 @@ function handleSaveWorkout() {
 
     const prev = aioWorkouts[currentWorkout] || null;
     const grouped = groupRawSets(workoutItems);
+    const savedName = currentWorkout;
 
     const progress = grouped.map((ex) => {
         const prevEx = prev?.grouped?.find((p) => p.name === ex.name) || null;
@@ -147,13 +153,22 @@ function handleSaveWorkout() {
         rawSets: JSON.parse(JSON.stringify(workoutItems)),
         grouped,
     };
+    aioWorkouts[savedName] = {
+        date: new Date().toISOString(),
+        rawSets: JSON.parse(JSON.stringify(workoutItems)),
+        grouped,
+    };
 
     localStorage.setItem("aioWorkouts", JSON.stringify(aioWorkouts));
     localStorage.setItem("aioWorkoutPRs", JSON.stringify(aioWorkoutPRs));
-    
     clearDraft();
     undoStack = [];
-    metaballAlert(`✅ Updated "${currentWorkout}" in Metab-all`, { type: "success", title: "Workout updated" });
+    currentWorkout = ""; // Μηδενισμός
+    workoutItems = [];   // Καθαρισμός λίστας
+    updateActiveWorkoutBox(); // Αυτό θα κρύψει το UI
+    renderWeeklyVolume(); // Ενημέρωση γραφήματος
+    
+    metaballAlert(`✅ Updated "${savedName}" in Metab-all`, { type: "success", title: "Workout updated" });
     renderMyWorkouts();
 }
 
@@ -181,6 +196,7 @@ function handleDeleteWorkout() {
         if (!ok) return;
         delete aioWorkouts[currentWorkout];
         localStorage.setItem("aioWorkouts", JSON.stringify(aioWorkouts));
+        renderWeeklyVolume();
         currentWorkout = ""; workoutItems = []; undoStack = []; clearDraft();
         updateActiveWorkoutBox(); updateTable(); 
         if (results) results.innerHTML = "";
@@ -199,7 +215,7 @@ function loadWorkout(name) {
     updateActiveWorkoutBox();
     updateTable();
     saveDraft();
-    if (results) results.innerHTML = "";
+    updateProgressView(); 
     metaballAlert(`Loaded "${name}"`, { type: "info", title: "Workout loaded" });
 }
 // === 6. TABLE & SEARCH HANDLERS ===
@@ -250,6 +266,10 @@ function handleTableInput(e) {
         workoutItems[i][f] = val;
         e.target.value = val;
         saveDraft();
+        renderWeeklyVolume();
+        
+        // ΠΡΟΣΘΗΚΗ: Live ενημέρωση του πίνακα προόδου
+        updateProgressView(); 
     }
 }
 
@@ -262,6 +282,10 @@ function handleTableClick(e) {
     workoutItems.splice(index, 1);
     updateTable();
     saveDraft();
+    renderWeeklyVolume();
+    
+    // ΠΡΟΣΘΗΚΗ: Live ενημέρωση αν σβήσεις μια άσκηση
+    updateProgressView(); 
 }
 
 // === 7. RENDER FUNCTIONS ===
@@ -326,6 +350,7 @@ function renderMyWorkouts() {
                     delete aioWorkouts[name];
                     localStorage.setItem("aioWorkouts", JSON.stringify(aioWorkouts));
                     renderMyWorkouts();
+                    renderWeeklyVolume();
                 }, 350);
             });
         };
@@ -418,4 +443,124 @@ function applyUndo() {
     workoutItems = undoStack.pop();
     updateTable();
     saveDraft();
+    renderWeeklyVolume();
+}
+
+function renderWeeklyVolume() {
+    const statsDiv = document.getElementById("weeklyVolumeStats");
+    const container = document.getElementById("weeklyVolumeContainer");
+    if (!statsDiv || !container) return;
+
+    // Πάντα εμφάνιση του container στο Workout tab
+    container.style.display = "block";
+
+    const now = new Date();
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(now.getDate() - 7);
+
+    // 1. Ορισμός όλων των μυϊκών ομάδων που υπάρχουν στο workoutData
+    const muscleGroups = ["Chest", "Back", "Legs", "Shoulders", "Arms", "Core", "Glutes", "Cardio"];
+    
+    // Αρχικοποίηση όλων με 0
+    const volumeByMuscle = {};
+    muscleGroups.forEach(m => volumeByMuscle[m] = 0);
+
+    // 2. Φιλτράρισμα προπονήσεων τελευταίων 7 ημερών
+    const recentWorkouts = Object.values(aioWorkouts).filter(w => new Date(w.date) >= sevenDaysAgo);
+
+    let totalWeeklyVolume = 0;
+
+    recentWorkouts.forEach(workout => {
+        workout.rawSets.forEach(set => {
+            const vol = (Number(set.weight) || 0) * (Number(set.reps) || 0) * (Number(set.sets) || 0);
+            if (vol > 0) {
+                const muscle = set.group || "Other";
+                // Αν η ομάδα υπάρχει στη λίστα μας, πρόσθεσε τον όγκο
+                if (volumeByMuscle.hasOwnProperty(muscle)) {
+                    volumeByMuscle[muscle] += vol;
+                } else {
+                    volumeByMuscle["Other"] = (volumeByMuscle["Other"] || 0) + vol;
+                }
+                totalWeeklyVolume += vol;
+            }
+        });
+    });
+
+    // 3. Χρώματα Metab-all (Dark Neon Palette)
+    const muscleColors = {
+        "Chest": "#38bdf8",     // Blue
+        "Back": "#22c55e",      // Green
+        "Legs": "#fbbf24",      // Amber
+        "Shoulders": "#f87171", // Red
+        "Arms": "#a78bfa",      // Purple
+        "Core": "#2dd4bf",      // Teal
+        "Glutes": "#f472b6",    // Pink
+        "Cardio": "#94a3b8"     // Slate
+    };
+
+    let html = "";
+    
+    // Εμφάνιση όλων των ομάδων με τη σειρά που τις ορίσαμε
+    muscleGroups.forEach(muscle => {
+        const vol = volumeByMuscle[muscle];
+        // Υπολογισμός ποσοστού (αν το συνολικό volume είναι 0, τότε 0%)
+        const percent = totalWeeklyVolume > 0 ? ((vol / totalWeeklyVolume) * 100).toFixed(1) : 0;
+        const color = muscleColors[muscle] || "var(--color-primary)";
+        
+        html += `
+            <div class="progress-row">
+                <div class="progress-name" style="color: ${color}">${muscle}</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: ${percent}%; background: ${color}; box-shadow: 0 0 10px ${color}44;"></div>
+                </div>
+                <div class="progress-values">${percent}%</div>
+            </div>
+        `;
+    });
+
+    statsDiv.innerHTML = html;
+    document.dispatchEvent(new CustomEvent('spaContentUpdate', { 
+        detail: { section: 'home' } 
+    }));
+}
+function updateProgressView() {
+    if (!results || !currentWorkout) return;
+
+    // Παίρνουμε τα δεδομένα της προηγούμενης αποθηκευμένης έκδοσης αυτού του workout
+    const prev = aioWorkouts[currentWorkout] || null;
+    const grouped = groupRawSets(workoutItems);
+
+    const progress = grouped.map((ex) => {
+        // Εύρεση της ίδιας άσκησης στην προηγούμενη καταγραφή
+        const prevEx = prev?.grouped?.find((p) => p.name === ex.name) || null;
+        const strength = safeDiff(ex.est1RM, prevEx?.est1RM);
+        const volume = safeDiff(ex.totalVolume, prevEx?.totalVolume);
+
+        let isPR = false;
+        if (aioWorkoutPRs[ex.name] && ex.est1RM >= aioWorkoutPRs[ex.name]) {
+            isPR = true;
+        }
+
+        return { ...ex, strength, volume, isPR };
+    });
+
+    results.innerHTML = `
+      <h2 style="margin-top:1rem;">Strength & Volume Progress</h2>
+      <div class="table-wrapper">
+        <table class="styled-table">
+          <tr><th>Exercise</th><th>1RM Progress</th><th>Volume Progress</th><th>Top Set</th><th>PR</th></tr>
+          ${progress.map((ex) => `
+            <tr>
+              <td>${ex.name}</td>
+              <td style="color: ${ex.strength.includes('-') ? '#f87171' : '#22c55e'}">${ex.strength}</td>
+              <td style="color: ${ex.volume.includes('-') ? '#f87171' : '#22c55e'}">${ex.volume}</td>
+              <td>${ex.topSetText}</td>
+              <td>${ex.isPR ? "🏆" : "-"}</td>
+            </tr>`).join("")}
+        </table>
+      </div>
+    `;
+}
+if (window.location.hash === '#workout') {
+    renderWeeklyVolume();
 }

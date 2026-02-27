@@ -7,7 +7,22 @@ export function initMyMeals() {
   const clearTodayBtn = document.getElementById("clearTodayBtn");
   const totalStats = document.getElementById("totalStats");
   const dailyDiv = document.getElementById("dailyProgress");
-
+  const toggleBtn = document.getElementById("toggleLegendBtn");
+  const legendWrapper = document.getElementById("legendWrapper");
+  
+  if (toggleBtn && legendWrapper) {
+        toggleBtn.onclick = () => {
+            const isHidden = legendWrapper.style.display === "none";
+            legendWrapper.style.display = isHidden ? "block" : "none";
+            toggleBtn.textContent = isHidden ? "Hide Color " : "Show Color";
+            
+            // Προαιρετικό: Scroll μέχρι το legend αν το ανοίγουμε
+            if (isHidden) {
+                legendWrapper.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+    }
+  
   if (!mealsContainer || !totalStats || !dailyDiv) {
     console.error("❌ Metab-all: Missing My Meals DOM elements.");
     return;

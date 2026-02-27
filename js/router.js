@@ -47,3 +47,8 @@ document.addEventListener('click', e => {
     }
 });
 handleRoute();
+document.addEventListener('spaContentUpdate', (e) => {
+    if (e.detail.section === 'workout') {
+        initWorkout(); // Η initWorkout καλεί ήδη τη renderWeeklyVolume()
+    }
+});
