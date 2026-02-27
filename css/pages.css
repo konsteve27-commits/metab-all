@@ -217,3 +217,11 @@
 .results {
   margin-top: 1.5rem;
 }
+/* Απόσταση μεταξύ Active Workout και Weekly Volume */
+#activeWorkoutBox {
+    margin-bottom: 2rem; 
+}
+
+#weeklyVolumeContainer {
+    margin-top: 2rem;
+}

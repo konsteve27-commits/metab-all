@@ -1135,13 +1135,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #3ebeff;
 }
 
-/* Mobile sizing */
-@media (max-width: 520px) {
-    .action-btn {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-    }
-}
+/* ΠΡΩΤΑ ΟΙ ΒΑΣΙΚΟΙ ΚΑΝΟΝΕΣ */
 .action-btn {
     padding: 0.45rem 0.9rem;
     font-size: 0.95rem;
@@ -1149,19 +1143,29 @@ input[type="number"]::-webkit-outer-spin-button {
     border: none;
     cursor: pointer;
     transition: 0.15s ease-in-out;
-
     background: rgba(255,255,255,0.08);
     color: #fff;
     border: 1px solid rgba(255,255,255,0.12);
-
-    /* REMOVE GREEN GLOW */
     box-shadow: none !important;
 }
 
+/* Hover effect */
 .action-btn:hover {
-    background: rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.16);
 }
-/* ----- Progress Legend (New Component) ----- */
+
+/* Variants */
+.cancel-btn { color: #ff5e5e; }
+.delete-btn { color: #ff3b3b; }
+.undo-btn { color: #3ebeff; }
+
+/* ΜΕΤΑ ΤΑ MEDIA QUERIES (για να μπορούν να κάνουν override) */
+@media (max-width: 520px) {
+    .action-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
 
 .legend-card {
   /* Specific adjustment for spacing when reusing .card */
@@ -1191,3 +1195,5 @@ input[type="number"]::-webkit-outer-spin-button {
 .legend-table th {
     text-align: left;
 }
+
+

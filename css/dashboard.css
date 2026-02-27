@@ -171,3 +171,29 @@
         margin-top: 0;
     }
 }
+/* Data Management Section */
+.data-management-card {
+    margin-top: 2.5rem;
+}
+
+.data-management-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.data-management-card .index-intro {
+    margin-bottom: 1.5rem;
+}
+
+.data-actions {
+    display: flex; 
+    gap: 1rem; 
+    flex-wrap: wrap;
+}
+
+/* Utility Class για το κρυφό input */
+.hidden-input {
+    display: none;
+}
+.progress-bar {
+    transition: width 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
